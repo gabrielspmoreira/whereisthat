@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:gravity="left" >
+
+        <TextView android:id="@+id/levelLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:maxLength="25"
+				android:singleLine="false" 
+				android:editable="false"
+				android:gravity="center_horizontal"
+				android:textColor="#FF0000"
+				android:text="Level"/>	
+
+        <TextView
+            android:id="@+id/locationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="top"
+            android:text="Location"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.esri.android.map.MapView
+  		android:id="@+id/map"
+  		android:layout_width="fill_parent"
+  		android:layout_height="fill_parent"
+  		initExtent = "-19332033.11, -3516.27, -1720941.80, 11737211.28">
+  	</com.esri.android.map.MapView>
+
+</LinearLayout>
