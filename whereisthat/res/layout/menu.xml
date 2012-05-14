@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   android:background="@drawable/menu_bg"
+   android:gravity="center_horizontal"
+   >
+   
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_margin="50dip"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="400dip"
+    >        
+        <Button
+            style="@style/MenuBtnTextStyle"
+            android:id="@+id/new_game_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_game_label"
+            android:textSize="40dip"
+            android:height="100dip"
+            android:background="@drawable/btn_menu"
+            android:onClick="btnNewGame"          
+        />
+       
+        <Button
+            style="@style/MenuBtnTextStyle"
+            android:id="@+id/how_to_play_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/how_to_play_label"
+            android:textSize="40dip"
+            android:height="100dip"
+            android:background="@drawable/btn_menu"
+        />
+       
+        <Button
+            style="@style/MenuBtnTextStyle"
+            android:id="@+id/about_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_label"
+            android:textSize="40dip"
+            android:height="100dip"
+            android:background="@drawable/btn_menu"
+        />
+       
+        <Button
+            style="@style/MenuBtnTextStyle"
+            android:id="@+id/exit_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exit_label"
+            android:textSize="40dip"
+            android:height="100dip"
+            android:background="@drawable/btn_menu"
+            android:onClick="btnExit" 
+        />
+    </LinearLayout>
+   
+</LinearLayout>

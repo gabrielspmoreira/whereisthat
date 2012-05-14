@@ -10,7 +10,7 @@ import com.androidquery.util.XmlDom;
 
 public class LocationsParser {
 	
-	protected static List<City> parseCities(InputStream is){		
+	public static List<City> parseCities(InputStream is){		
 		try {
 			XmlDom xmlRoot = new XmlDom(is);
 			List<XmlDom> citiesDom = xmlRoot.children("City");
