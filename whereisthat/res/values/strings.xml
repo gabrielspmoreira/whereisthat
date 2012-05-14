@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>    
-    <string name="app_name">Where is That?</string>
+<resources>
+
+    <string name="hello">Hello World, WhereIsThatActivity!</string>
+    <string name="app_name">Where Is That?</string>
+    
+    <!-- MENU LABELS -->
+    <string name="new_game_label">New Game</string>
+    <string name="how_to_play_label">Options</string>
+    <string name="about_label">About</string>
+    <string name="exit_label">Exit</string>
+
 </resources>
