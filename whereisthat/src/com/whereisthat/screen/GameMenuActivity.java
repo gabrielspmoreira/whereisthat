@@ -5,30 +5,33 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+
 import com.whereisthat.R;
 
 public class GameMenuActivity extends Activity {
 
-	private MediaPlayer backgroundSound;
+	private MediaPlayer soundbackground;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.menu);
+		setContentView(R.layout.menu);	
+		setCustomFontStyle();
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-		backgroundSound = MediaPlayer.create(this, R.raw.game_menu);
-		backgroundSound.setLooping(true);
-		backgroundSound.start();
+		soundbackground = MediaPlayer.create(this, R.raw.game_menu);
+		soundbackground.setLooping(true);
+		soundbackground.start();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		backgroundSound.stop();
+		soundbackground.stop();
 	}
 
 	public void btnNewGame(View view) {
@@ -40,5 +43,16 @@ public class GameMenuActivity extends Activity {
 	public void btnExit(View view) {
 		finish();
 		System.exit(0);
+	}
+	
+	public void setCustomFontStyle()
+	{
+		android.graphics.Typeface font = 
+				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");		
+
+		((Button) findViewById(R.id.new_game_button)).setTypeface(font);
+		((Button) findViewById(R.id.settings_button)).setTypeface(font);
+		((Button) findViewById(R.id.about_button)).setTypeface(font);
+		((Button) findViewById(R.id.exit_button)).setTypeface(font);
 	}
 }

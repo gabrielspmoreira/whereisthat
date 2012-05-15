@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:background="@drawable/gradient_header" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <ImageView                
+                android:id="@+id/imgLogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_marginLeft="-35dp"
+                android:src="@drawable/ingame_logo" /> 
+
+       </LinearLayout> 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:orientation="vertical"
+            android:paddingTop="0dp"
+            android:paddingRight="24dp" >
+            
+            <TextView
+                style="@style/PointsTextStyle"
+                android:id="@+id/points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center_horizontal"
+                android:maxLength="25"
+                android:singleLine="false"
+                android:text="@string/initial_points_label"
+             />
+            
+            <TextView
+                style="@style/OtherPointsTextStyle"
+                android:id="@+id/levelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center_horizontal"
+                android:maxLength="25"
+                android:singleLine="false"
+                android:text="Level 1 score: 0" />
+
+            <TextView
+                style="@style/OtherPointsTextStyle"
+                android:id="@+id/AdvanceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center_horizontal"
+                android:maxLength="25"
+                android:singleLine="false"
+                android:text="Score to advance: 1500" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="82dp"
+        android:gravity="center_horizontal" >
+	    <ProgressBar
+	        android:id="@+id/progressBar"
+	        style="@style/InGameProgressbarStyle"
+	        android:layout_width="fill_parent"
+	        android:layout_height="82dp"
+	        android:layout_alignParentTop="true"
+	        android:scaleType="center" />
+	
+	    <TextView
+	        android:id="@+id/locationLabel"
+	        style="@style/QuestionProgressBarStyle"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignTop="@id/progressBar"
+	        android:layout_centerHorizontal="true"
+	        android:text="Location"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />  
+	    
+    </RelativeLayout>
+    
+ 	<com.esri.android.map.MapView
+      android:id="@+id/gameMap"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      initExtent="-19332033.11, -3516.27, -1720941.80, 11737211.28" />
+
+
+</LinearLayout>

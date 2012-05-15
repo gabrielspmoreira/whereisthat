@@ -28,10 +28,10 @@
        
         <Button
             style="@style/MenuBtnTextStyle"
-            android:id="@+id/how_to_play_button"
+            android:id="@+id/settings_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/how_to_play_label"
+            android:text="@string/settings_label"
             android:textSize="40dip"
             android:height="100dip"
             android:background="@drawable/btn_menu"

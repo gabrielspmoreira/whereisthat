@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <style name="MenuBtnTextStyle">
-	    <item name="android:layout_width">fill_parent</item>
-	    <item name="android:layout_height">wrap_content</item>
-	    <item name="android:textColor">#ffffff</item>
-	    <item name="android:gravity">center</item>
-	    <item name="android:layout_margin">3dp</item>
-	    <item name="android:textSize">30dp</item>
-	    <item name="android:textStyle">bold</item>
-	    <item name="android:shadowColor">#000000</item>
-	    <item name="android:shadowDx">1</item>
-	    <item name="android:shadowDy">1</item>
-	    <item name="android:shadowRadius">2</item>
-	</style>
-
-    <string name="hello">Hello World, WhereIsThatActivity!</string>
     <string name="app_name">Where Is That?</string>
     
     <!-- MENU LABELS -->
     <string name="new_game_label">New Game</string>
-    <string name="how_to_play_label">Options</string>
+    <string name="settings_label">Options</string>
     <string name="about_label">About</string>
     <string name="exit_label">Exit</string>
+    
+    <!-- IN GAME LABELS -->
+    <string name="initial_points_label">10 pts</string>
 
 </resources>
