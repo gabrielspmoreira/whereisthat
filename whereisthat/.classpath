@@ -4,6 +4,12 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry exported="true" kind="con" path="com.esri.arcgis.android.LIBRARIES"/>
+	<classpathentry exported="true" kind="var" path="ARCGIS_FOR_ANDROID/ArcGIS_Android.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Gabriel/Instaladores/Eclipse/EclipseClassic3.7.2_64bits/eclipse-SDK-3.7.2-win32-x86_64/eclipse/plugins/com.esri.arcgis.android.doc_1.0.1.201112131338/doc.zip!/api"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="var" path="ARCGIS_FOR_ANDROID/jackson-core-lgpl-1.6.3.jar"/>
+	<classpathentry exported="true" kind="var" path="ARCGIS_FOR_ANDROID/jackson-mapper-lgpl-1.6.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
