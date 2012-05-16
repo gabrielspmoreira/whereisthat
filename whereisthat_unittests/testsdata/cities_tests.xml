@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cities>
+	<City>
+		<Id>1</Id>
+		<City>Aba</City>
+		<Population>1736361</Population>
+		<Lat>5.1</Lat>
+		<Long>7.35</Long>
+		<Country>Nigeria</Country>
+	</City>
+	<City>
+		<Id>2</Id>
+		<City>Abidjan</City>
+		<Population>4351086</Population>
+		<Lat>5.33</Lat>
+		<Long>-4.03</Long>
+		<Country>Ivory Coast</Country>
+	</City>	
+</Cities>

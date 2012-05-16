@@ -1,4 +1,4 @@
-package com.whereisthat.game;
+package com.whereisthat.game.rules;
 
 public class Round {
 	

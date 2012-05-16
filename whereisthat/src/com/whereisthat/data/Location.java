@@ -1,4 +1,4 @@
-package com.whereisthat;
+package com.whereisthat.data;
 
 public class Location {
 

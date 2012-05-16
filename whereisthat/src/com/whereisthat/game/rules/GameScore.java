@@ -1,13 +1,13 @@
-package com.whereisthat.game;
+package com.whereisthat.game.rules;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {	
+public class GameScore {	
 	
 	private List<Round> rounds;
 	
-	public Game(){
+	public GameScore(){
 		rounds = new ArrayList<Round>();
 	}
 	

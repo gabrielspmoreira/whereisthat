@@ -6,12 +6,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.whereisthat.game.Game;
-import com.whereisthat.game.Round;
+import com.whereisthat.game.rules.GameScore;
+import com.whereisthat.game.rules.Round;
 
-public class GameTests {
+public class GameScoreTests {
 
-	private Game game;
+	private GameScore game;
 	
 	// Distance constants
 	private static final long SHORT_DISTANCE_KM = 100;
@@ -26,7 +26,7 @@ public class GameTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		game = new Game();
+		game = new GameScore();
 	}
 
 	@After

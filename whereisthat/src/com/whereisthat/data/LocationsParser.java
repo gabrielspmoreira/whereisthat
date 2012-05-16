@@ -1,4 +1,4 @@
-package com.whereisthat;
+package com.whereisthat.data;
 
 import java.io.InputStream;
 import java.util.ArrayList;
