@@ -24,4 +24,11 @@ public class Game {
 		}		
 		return score;
 	}
+	
+	public long getLastRoundScore(){
+		if (rounds.size() > 0){
+			return rounds.get(rounds.size() -1).getScore();
+		}		
+		return 0;
+	}
 }

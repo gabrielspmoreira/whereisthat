@@ -95,7 +95,7 @@
       android:id="@+id/gameMap"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
-      initExtent="-19332033.11, -3516.27, -1720941.80, 11737211.28" />
+      />
 
 
 </LinearLayout>

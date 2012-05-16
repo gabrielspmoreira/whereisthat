@@ -15,7 +15,6 @@ public class GameTests {
 	
 	// Distance constants
 	private static final long SHORT_DISTANCE_KM = 100;
-	private static final long MEDIUM_DISTANCE_KM = 1500;
 	private static final long MAX_SCORE_DISTANCE_KM = 2000;
 	private static final long ABOVE_MAX_DISTANCE_KM = 5000;
 	
@@ -104,5 +103,14 @@ public class GameTests {
 	public void testRound1DistanceandTimeAboveMaximum(){
 		game.addRound(new Round(ABOVE_MAX_DISTANCE_KM, ABOVE_MAX_TIME_ANSWER));
 		assertEquals(0, game.getScore());
+	}
+	
+	
+	@Test
+	public void testGetOnlyLastScore(){
+		game.addRound(new Round(SHORT_DISTANCE_KM, ABOVE_MAX_TIME_ANSWER));
+		game.addRound(new Round(ABOVE_MAX_DISTANCE_KM, ABOVE_MAX_TIME_ANSWER));
+		game.addRound(new Round(ABOVE_MAX_DISTANCE_KM, QUICK_ANSWER));
+		assertEquals(160, game.getLastRoundScore());
 	}
 }

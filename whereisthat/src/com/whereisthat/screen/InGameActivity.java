@@ -1,15 +1,18 @@
 package com.whereisthat.screen;
 
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
-import java.util.Timer;
+import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,12 +36,15 @@ import com.whereisthat.City;
 import com.whereisthat.Locations;
 import com.whereisthat.LocationsParser;
 import com.whereisthat.R;
-import com.whereisthat.TimingTask;
+import com.whereisthat.game.Game;
+import com.whereisthat.game.Round;
 
 public class InGameActivity extends Activity {
 
 	private MapView map;
 	private GraphicsLayer locationsLayer;
+	
+	private ProgressBar progressBar;
 
 	private AQuery aq;
 
@@ -46,8 +52,10 @@ public class InGameActivity extends Activity {
 
 	private Point currentLocation;
 
-	private Timer timer = new Timer();
-	private boolean timing = false;
+	private ScheduledExecutorService scheduler;
+	private long startTime;
+	
+	private Game game = new Game();
 
 	private MediaPlayer clockTicking;
 	private MediaPlayer backgroundSound;
@@ -73,8 +81,11 @@ public class InGameActivity extends Activity {
 				"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");
 		map.addLayer(baseMap);
 
-		aq.id(R.id.progressBar).getProgressBar().setMax(100);
-		aq.id(R.id.progressBar).getProgressBar().setProgress(0);
+		progressBar = aq.id(R.id.progressBar).getProgressBar();
+		progressBar.setMax(10000);
+		progressBar.setProgress(0);	
+		
+		scheduler = Executors.newScheduledThreadPool(1);
 		
 		map.setOnStatusChangedListener(new OnStatusChangedListener() {
 
@@ -84,17 +95,16 @@ public class InGameActivity extends Activity {
 				if (source == map && status == STATUS.INITIALIZED) {
 					showLocationsInMap();
 
-					City city = locations.getCities().get(0);
-					aq.id(R.id.locationLabel).text(
-							city.getName() + "-" + city.getCountry());
-					currentLocation = city.getMapPoint();
+					setTargetLocation();
 
-					setTimer();
+					startTimer();
 				}
 			}
 		});
 
 		map.setOnSingleTapListener(new OnSingleTapListener() {
+			
+			private static final long serialVersionUID = 1L;
 
 			public void onSingleTap(float x, float y) {
 				if (map.isLoaded()) {
@@ -102,9 +112,23 @@ public class InGameActivity extends Activity {
 					double distance = GeometryEngine.distance(pointClicked,
 							currentLocation, map.getSpatialReference());
 
-					Toast.makeText(getApplicationContext(),
-							"Distance(Km): " + (distance / 1000),
-							Toast.LENGTH_SHORT).show();
+					Unit mapUnit = map.getSpatialReference().getUnit();
+					double distanceKm = Unit.convertUnits(distance,mapUnit,
+														 Unit.create(LinearUnit.Code.KILOMETER));									
+												
+					long elapsedTime = getElapsetTime();
+					game.addRound(new Round(distanceKm, elapsedTime));
+					long gameScore = game.getScore();
+					long roundScore = game.getLastRoundScore();
+					
+					Toast.makeText(getApplicationContext(), "Distance(Km): "+distanceKm + 
+															"\nElapsed Time(s): "+(elapsedTime/1000)+
+															"\nRound Score: "+roundScore,
+							Toast.LENGTH_LONG).show();
+					
+					aq.id(R.id.points).text(gameScore + " pts");
+					
+					setTargetLocation();
 				}
 			}
 		});
@@ -113,6 +137,7 @@ public class InGameActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		scheduler.shutdown();
 	}
 
 	@Override
@@ -153,13 +178,18 @@ public class InGameActivity extends Activity {
 		map.addLayer(locationsLayer);
 	}
 
-	protected void setTimer() {
-		if (!timing) {
-			TimingTask timingTask = new TimingTask(aq.id(R.id.progressBar)
-					.getProgressBar());
-			timer.schedule(timingTask, 100, 500);
-			timing = true;
-		}
+	protected void startTimer() {
+		scheduler.scheduleWithFixedDelay(new Runnable() {
+			  public void run() {
+			     try {			    	 
+			    	 progressBar.setProgress((int)getElapsetTime());
+			     } catch (Throwable t) {
+			       // handle exceptions there
+			     }
+			  }
+			}, 0, 200, TimeUnit.MILLISECONDS);
+		
+		startTime = new Date().getTime();
 	}
 
 	private void InitBackgroundSounds() {
@@ -180,5 +210,23 @@ public class InGameActivity extends Activity {
 				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");		
 
 		((TextView) findViewById(R.id.points)).setTypeface(font);
+	}
+	
+	public long getElapsetTime(){
+		return new Date().getTime() - startTime;
+	}
+	
+	public void setTargetLocation(){
+		List<City> cities = locations.getCities();
+		
+		Random random = new Random();
+		int randomCity = random.nextInt(cities.size() - 1);
+		City city = cities.get(randomCity);
+		aq.id(R.id.locationLabel).text(
+				city.getName() + "-" + city.getCountry());
+		currentLocation = city.getMapPoint();
+		
+		progressBar.setProgress(0);
+		startTime = new Date().getTime();
 	}
 }
