@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.androidquery.AQuery;
 import com.whereisthat.R;
 
 public class GameMenuActivity extends Activity {
 
 	private MediaPlayer soundbackground;
+	private AQuery aq;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu);	
 		setCustomFontStyle();
+		
+		aq = new AQuery(this);
 	}
 
 	@Override
@@ -50,6 +54,7 @@ public class GameMenuActivity extends Activity {
 		android.graphics.Typeface font = 
 				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");		
 
+		
 		((Button) findViewById(R.id.new_game_button)).setTypeface(font);
 		((Button) findViewById(R.id.settings_button)).setTypeface(font);
 		((Button) findViewById(R.id.about_button)).setTypeface(font);
