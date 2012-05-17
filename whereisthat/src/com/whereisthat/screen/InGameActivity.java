@@ -4,7 +4,10 @@ import java.io.InputStream;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -25,10 +28,12 @@ import com.esri.core.geometry.Point;
 import com.esri.core.geometry.SpatialReference;
 import com.esri.core.geometry.Unit;
 import com.esri.core.map.Graphic;
+import com.esri.core.symbol.PictureMarkerSymbol;
 import com.esri.core.symbol.SimpleMarkerSymbol;
 import com.esri.core.symbol.SimpleMarkerSymbol.STYLE;
 import com.whereisthat.R;
 import com.whereisthat.data.City;
+import com.whereisthat.data.Location;
 import com.whereisthat.data.Locations;
 import com.whereisthat.data.LocationsParser;
 import com.whereisthat.game.rules.GameScore;
@@ -45,7 +50,7 @@ public class InGameActivity extends Activity {
 
 	private Locations locations = new Locations();
 
-	private Point currentLocation;
+	private Location currentLocation;
 
 	
 	private GameScore gameScore = new GameScore();
@@ -75,6 +80,9 @@ public class InGameActivity extends Activity {
 		ArcGISDynamicMapServiceLayer baseMap = new ArcGISDynamicMapServiceLayer(
 				"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");
 		map.addLayer(baseMap);
+		
+		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
+				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));
 
 		progressBar = aq.id(R.id.progressBar).getProgressBar();
 		progressBar.setMax(10000);
@@ -87,11 +95,7 @@ public class InGameActivity extends Activity {
 
 			public void onStatusChanged(Object source, STATUS status) {
 				if (source == map && status == STATUS.INITIALIZED) {
-					showLocationsInMap();
-
-					setTargetLocation();
-
-					startRoundTimer();
+					gameStart();
 				}
 			}
 		});
@@ -102,22 +106,23 @@ public class InGameActivity extends Activity {
 
 			public void onSingleTap(float x, float y) {
 				if (map.isLoaded()) {
-					double distanceKm = getKmDistanceFromTarget(x,y);									
-												
 					long elapsedTime = gameTiming.getElapsetTime();
-					gameScore.addRound(new Round(distanceKm, elapsedTime));
+					stopRoundTimer();
+
+					Point pointClicked = map.toMapPoint(new Point(x, y));
+					Point targetPoint = currentLocation.getMapPoint();
+					showFlagPointInMap(pointClicked, R.drawable.flag_clicked);
+					showFlagPointInMap(targetPoint, R.drawable.flag_target);
 					
+					double distanceKm = getKmDistanceFromTarget(pointClicked);			
+					
+					gameScore.addRound(new Round(distanceKm, elapsedTime));
 					long score = gameScore.getScore();
 					long roundScore = gameScore.getLastRoundScore();
 					
-					Toast.makeText(getApplicationContext(), "Distance(Km): "+distanceKm + 
-															"\nElapsed Time(s): "+(elapsedTime/1000)+
-															"\nRound Score: "+roundScore,
-							Toast.LENGTH_LONG).show();
-					
-					aq.id(R.id.points).text(score + " pts");
-					
-					setTargetLocation();
+					showRoundScore(distanceKm, elapsedTime, roundScore);
+				
+					updateScorePanel(score);										
 				}
 			}
 		});
@@ -136,15 +141,122 @@ public class InGameActivity extends Activity {
 		clockTicking.stop();
 		backgroundSound.stop();
 	}
+	
+	private void gameStart(){
+		//showLocationsInMap();
 
-	protected void readLocations() {
+		setTargetLocation();
+		startRoundTimer();
+	}
+
+	private void readLocations() {
 		InputStream is = getResources().openRawResource(R.raw.cities);
 
 		List<City> cities = LocationsParser.parseCities(is);
 		locations.setCities(cities);
 	}
+	
+	
+	private void showRoundScore(double distanceKm, long elapsedTime, long roundScore){
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+	    alertDialog.setTitle(currentLocation.toString());
+    	alertDialog.setMessage( "Distance(Km): "+Math.round(distanceKm) + 
+								"\nElapsed Time(s): "+Math.round(elapsedTime/1000)+
+								"\nRound Score: "+roundScore);
+    	
+    	alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) {
+	        	clearLocationsLayer();
+				setTargetLocation();
+	         }
+	    });	  	  
+    	
+    	alertDialog.show();
+	}
 
-	protected void showLocationsInMap() {
+	
+	private void showFlagPointInMap(Point point, int pictureId){
+		Drawable drawable = getResources().getDrawable(pictureId);
+		PictureMarkerSymbol markerSymbol = new PictureMarkerSymbol(drawable);
+		markerSymbol.setOffsetX(10);
+		markerSymbol.setOffsetY(13);
+		
+		Graphic graphic = new Graphic(point, markerSymbol);		
+		locationsLayer.addGraphic(graphic);
+	}
+	
+	private void clearLocationsLayer(){
+		locationsLayer.removeAll();
+	}
+	
+	
+	
+	private void updateScorePanel(long totalScore){
+		aq.id(R.id.points).text(totalScore + " pts");
+	}	
+
+	protected void startRoundTimer() {
+		gameTiming.stopRound();
+		gameTiming.startRound(new Runnable() {
+			  public void run() {
+				     try {			    	 
+				    	 progressBar.setProgress((int) gameTiming.getElapsetTime());
+				     } catch (Throwable t) {
+				       // handle exceptions there
+				     }
+				  }
+				});
+	}
+	
+	private void stopRoundTimer(){
+		gameTiming.stopRound();
+	}
+
+	private void InitBackgroundSounds() {
+		backgroundSound = MediaPlayer.create(this, R.raw.game_bg);
+		backgroundSound.setVolume(0.3f, 0.3f);
+		backgroundSound.setLooping(true);
+		backgroundSound.start();
+
+		clockTicking = MediaPlayer.create(this, R.raw.clock_ticking);
+		clockTicking.setVolume(1.0f, 1.0f);
+		clockTicking.setLooping(true);
+		clockTicking.start();
+	}
+	
+	private void setCustomFontStyle()
+	{
+		android.graphics.Typeface font = 
+				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");		
+
+		((TextView) findViewById(R.id.points)).setTypeface(font);
+	}
+	
+	
+	
+	private void setTargetLocation(){				
+		currentLocation = locations.getRandomCity();
+		aq.id(R.id.locationLabel).text(
+				currentLocation.toString());
+		
+		progressBar.setProgress(0);
+		
+		startRoundTimer();
+	}
+	
+	private double getKmDistanceFromTarget(Point pointClicked){	
+		Point currentTarget = currentLocation.getMapPoint();
+		double distance = GeometryEngine.distance(pointClicked,
+				currentTarget, map.getSpatialReference());
+
+		Unit mapUnit = map.getSpatialReference().getUnit();
+		double distanceKm = Unit.convertUnits(distance,mapUnit,
+											 Unit.create(LinearUnit.Code.KILOMETER));	
+		
+		return distanceKm;
+	}
+	
+	private void showLocationsInMap() {
 		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
 				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));
 
@@ -165,63 +277,5 @@ public class InGameActivity extends Activity {
 		}
 
 		map.addLayer(locationsLayer);
-	}
-
-	protected void startRoundTimer() {
-		gameTiming.stopRound();
-		gameTiming.startRound(new Runnable() {
-			  public void run() {
-				     try {			    	 
-				    	 progressBar.setProgress((int) gameTiming.getElapsetTime());
-				     } catch (Throwable t) {
-				       // handle exceptions there
-				     }
-				  }
-				});
-	}
-
-	private void InitBackgroundSounds() {
-		backgroundSound = MediaPlayer.create(this, R.raw.game_bg);
-		backgroundSound.setVolume(0.3f, 0.3f);
-		backgroundSound.setLooping(true);
-		backgroundSound.start();
-
-		clockTicking = MediaPlayer.create(this, R.raw.clock_ticking);
-		clockTicking.setVolume(1.0f, 1.0f);
-		clockTicking.setLooping(true);
-		clockTicking.start();
-	}
-	
-	public void setCustomFontStyle()
-	{
-		android.graphics.Typeface font = 
-				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");		
-
-		((TextView) findViewById(R.id.points)).setTypeface(font);
-	}
-	
-	
-	
-	public void setTargetLocation(){				
-		City city = locations.getRandomCity();
-		aq.id(R.id.locationLabel).text(
-				city.getName() + "-" + city.getCountry());
-		currentLocation = city.getMapPoint();
-		
-		progressBar.setProgress(0);
-		
-		startRoundTimer();
-	}
-	
-	private double getKmDistanceFromTarget(float x, float y){
-		Point pointClicked = map.toMapPoint(new Point(x, y));
-		double distance = GeometryEngine.distance(pointClicked,
-				currentLocation, map.getSpatialReference());
-
-		Unit mapUnit = map.getSpatialReference().getUnit();
-		double distanceKm = Unit.convertUnits(distance,mapUnit,
-											 Unit.create(LinearUnit.Code.KILOMETER));	
-		
-		return distanceKm;
 	}
 }

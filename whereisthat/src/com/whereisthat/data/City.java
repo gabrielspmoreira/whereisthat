@@ -4,8 +4,7 @@ import com.esri.core.geometry.Point;
 
 public class City extends Location {
 	private long population;
-	private String country;
-	private Point mapPoint;
+	private String country;	
 	
 	public void setPopulation(long population) {
 		this.population = population;
@@ -18,11 +17,8 @@ public class City extends Location {
 	}
 	public String getCountry() {
 		return country;
-	}
-	public void setMapPoint(Point mapPoint) {
-		this.mapPoint = mapPoint;
-	}
-	public Point getMapPoint() {
-		return mapPoint;
+	}	
+	public String toString(){
+		return this.name + " - " + this.country;		
 	}
 }

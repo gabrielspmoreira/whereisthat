@@ -1,11 +1,14 @@
 package com.whereisthat.data;
 
+import com.esri.core.geometry.Point;
+
 public class Location {
 
-	private int id;
-	private String name;
-	private double latitude;
-	private double longitude;
+	protected int id;
+	protected String name;
+	protected double latitude;
+	protected double longitude;
+	protected Point mapPoint;
 
 	public Location() {
 		super();
@@ -42,5 +45,15 @@ public class Location {
 	public double getLongitude() {
 		return longitude;
 	}
-
+	
+	public void setMapPoint(Point mapPoint) {
+		this.mapPoint = mapPoint;
+	}
+	public Point getMapPoint() {
+		return mapPoint;
+	}
+	
+	public String toString(){
+		return this.name;		
+	}
 }
