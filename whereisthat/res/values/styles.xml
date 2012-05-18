@@ -107,4 +107,11 @@
 	    <item name="android:shadowDy">1</item>
 	    <item name="android:shadowRadius">2</item>
 	 </style>
+	 
+	 <style name="DialogStartStyle">
+	    <item name="android:textColor">#ffe9d5</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">40dp</item>
+	    <item name="android:textStyle">bold</item>
+	 </style>
 </resources>

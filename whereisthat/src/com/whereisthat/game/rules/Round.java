@@ -1,10 +1,8 @@
 package com.whereisthat.game.rules;
 
+import com.whereisthat.helper.GameConstants;
+
 public class Round {
-	
-	public static final long MAXIMUM_KM_DISTANCE_TO_SCORE = 2000;
-	public static final long MAXIMUM_MILISECONDS_TO_ANSWER = 10000;
-	public static final long MAXIMUM_SCORE_FOR_TIME = 200;
 	
 	private double distance;
 	private long answerDelay;
@@ -34,9 +32,10 @@ public class Round {
 		if (distance < 0){
 			return 0;
 		}
-		long distanceScore = Math.max(0, MAXIMUM_KM_DISTANCE_TO_SCORE - (long) Math.floor(distance));
+		long distanceScore = Math.max(0, GameConstants.MAXIMUM_KM_DISTANCE_TO_SCORE - (long) Math.floor(distance));
 
-		long answerDelayScore = Math.max(0, (MAXIMUM_MILISECONDS_TO_ANSWER - answerDelay) / (MAXIMUM_MILISECONDS_TO_ANSWER / MAXIMUM_SCORE_FOR_TIME));
+		long answerDelayScore = Math.max(0, (GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER - answerDelay) / 
+				(GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER / GameConstants.MAXIMUM_SCORE_FOR_TIME));
 		
 		return distanceScore + answerDelayScore;
 	}

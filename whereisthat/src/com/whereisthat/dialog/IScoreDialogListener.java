@@ -1,4 +1,4 @@
-package com.whereisthat.data;
+package com.whereisthat.dialog;
 
 public interface IScoreDialogListener{
     void nextRound(); 

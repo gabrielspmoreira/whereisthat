@@ -1,4 +1,4 @@
-package com.whereisthat.screen;
+package com.whereisthat.dialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.whereisthat.R;
-import com.whereisthat.data.IScoreDialogListener;
 
 public class ScoreDialog extends Dialog {
 	

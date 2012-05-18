@@ -30,10 +30,6 @@ public class Location {
 		return name;
 	}
 	
-	public String getCityName() {
-		return name.split(" - ")[0];
-	}
-
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}

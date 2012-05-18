@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+        android:orientation="vertical" 
+        android:stretchColumns="0" 
+        android:background="#00000000" 
+        android:layout_gravity="center_vertical|center_horizontal" 
+        android:layout_height="260dp" 
+        android:layout_width="220dp">   
+ 		
+       <RelativeLayout
+			android:id="@+id/btnContent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:paddingLeft="10dp" >
+		
+		<Button
+			android:id="@+id/btnStart"
+			android:width="170dp"
+			android:height="170dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/btn_start"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true" />
+		</RelativeLayout>       
+		
+        <TableRow>                     
+            <TextView
+		        android:id="@+id/sd_start"
+		        style="@style/DialogStartStyle"
+		        android:layout_marginLeft="30dip" 
+		        android:text="@string/btn_start_label"		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow> 
+        
+</TableLayout>

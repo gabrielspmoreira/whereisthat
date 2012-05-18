@@ -9,6 +9,9 @@
     <string name="about_label">About</string>
     <string name="exit_label">Exit</string>
     
+    <!-- START DIALOG LABELS -->
+    <string name="btn_start_label">Start!</string>
+    
     <!-- IN GAME LABELS -->
     <string name="initial_points_label">0 pts</string>
     

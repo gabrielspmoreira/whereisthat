@@ -1,7 +1,5 @@
 package com.whereisthat.data;
 
-import com.esri.core.geometry.Point;
-
 public class City extends Location {
 	private long population;
 	private String country;	

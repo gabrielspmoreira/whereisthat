@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.esri.android.map.GraphicsLayer;
@@ -30,32 +29,28 @@ import com.esri.core.symbol.SimpleMarkerSymbol;
 import com.esri.core.symbol.SimpleMarkerSymbol.STYLE;
 import com.whereisthat.R;
 import com.whereisthat.data.City;
-import com.whereisthat.data.IScoreDialogListener;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.Locations;
 import com.whereisthat.data.LocationsParser;
+import com.whereisthat.dialog.IScoreDialogListener;
+import com.whereisthat.dialog.IStartDialogListener;
+import com.whereisthat.dialog.ScoreDialog;
+import com.whereisthat.dialog.StartDialog;
 import com.whereisthat.game.rules.GameScore;
 import com.whereisthat.game.rules.Round;
+import com.whereisthat.helper.GameConstants;
 
 public class InGameActivity extends Activity {
-
-	private MapView map;
-	private GraphicsLayer locationsLayer;
 	
+	private AQuery aq;
+	private MapView map;
+	private GraphicsLayer locationsLayer;	
 	private ProgressBar progressBar;
 	private ProgressDialog progressDialog;
-
-	private AQuery aq;
-
 	private Locations locations = new Locations();
-
-	private Location currentLocation;
-
-	
+	private Location currentLocation;	
 	private GameScore gameScore = new GameScore();
 	private GameTiming gameTiming = new GameTiming();
-	
-
 	private MediaPlayer clockTicking;
 	private MediaPlayer backgroundSound;
 
@@ -65,9 +60,9 @@ public class InGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ingame);
 		
-		progressDialog = ProgressDialog.show(InGameActivity.this, "", "Loading map, Plese wait...");
-
-		aq = new AQuery(this);
+		progressDialog = ProgressDialog.show(InGameActivity.this, "", GameConstants.PROGRESS_DIALOG_MESSAGE);
+		
+		aq = new AQuery(this);		
 		
 		//setCustomFontStyle();
 
@@ -78,8 +73,7 @@ public class InGameActivity extends Activity {
 		// Retrieve the map and initial extent from XML layout
 		map = (MapView) findViewById(R.id.gameMap);
 
-		ArcGISTiledMapServiceLayer baseMap = new ArcGISTiledMapServiceLayer(
-				"http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer");
+		ArcGISTiledMapServiceLayer baseMap = new ArcGISTiledMapServiceLayer(GameConstants.ARCGIS_MAP_SERVICE_URL);
 		map.addLayer(baseMap);
 		
 		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
@@ -142,10 +136,14 @@ public class InGameActivity extends Activity {
 	}
 	
 	private void gameStart(){
-		//showLocationsInMap();
-		setTargetLocation();
-		startRoundTimer();
-		progressDialog.dismiss();
+		progressDialog.dismiss();			
+		StartDialog dialog = new StartDialog(this);
+		dialog.addListener(new IStartDialogListener() {					
+			public void startGame() {
+				nextGameRound();
+			}
+		});		
+		dialog.show();		
 	}
 
 	private void readLocations() {
@@ -156,15 +154,14 @@ public class InGameActivity extends Activity {
 	
 	private void showRoundScore(double distanceKm, long elapsedTime, long roundScore){
 		ScoreDialog dialog = new ScoreDialog(this, 
-											 currentLocation.getCityName(), 
+											 currentLocation.getName().split(" - ")[0], 
 											 Math.round(elapsedTime/1000),
 											 Math.round(distanceKm),
 											 roundScore);
 		
 		dialog.addListener(new IScoreDialogListener() {			
 			public void nextRound() {
-				clearLocationsLayer();
-				setTargetLocation();				
+				nextGameRound();
 			}		
 			public void stopGame() {
 			
@@ -173,6 +170,12 @@ public class InGameActivity extends Activity {
 		dialog.show();
 	}
 
+	private void nextGameRound()
+	{
+		clearLocationsLayer();
+		setTargetLocation();
+		startRoundTimer();
+	}
 	
 	private void showFlagPointInMap(Point point, int pictureId){
 		Drawable drawable = getResources().getDrawable(pictureId);
@@ -220,19 +223,11 @@ public class InGameActivity extends Activity {
 		clockTicking.setLooping(true);
 		clockTicking.start();
 	}
-	
-	private void setCustomFontStyle()
-	{
-		android.graphics.Typeface font = 
-				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");
-		((TextView) findViewById(R.id.points)).setTypeface(font);
-	}	
-	
+		
 	private void setTargetLocation(){				
 		currentLocation = locations.getRandomCity(map);		
 		aq.id(R.id.locationLabel).text(currentLocation.toString());		
 		progressBar.setProgress(0);		
-		startRoundTimer();
 	}
 	
 	private double getKmDistanceFromTarget(Point pointClicked){	
