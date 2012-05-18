@@ -15,6 +15,7 @@ import com.androidquery.AQuery;
 import com.esri.android.map.GraphicsLayer;
 import com.esri.android.map.MapView;
 import com.esri.android.map.ags.ArcGISDynamicMapServiceLayer;
+import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
 import com.esri.android.map.event.OnSingleTapListener;
 import com.esri.android.map.event.OnStatusChangedListener;
 import com.esri.core.geometry.Envelope;
@@ -74,7 +75,9 @@ public class InGameActivity extends Activity {
 		// Retrieve the map and initial extent from XML layout
 		map = (MapView) findViewById(R.id.gameMap);
 
-		ArcGISDynamicMapServiceLayer baseMap = new ArcGISDynamicMapServiceLayer(
+		/*ArcGISDynamicMapServiceLayer baseMap = new ArcGISDynamicMapServiceLayer(
+				"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");*/
+		ArcGISTiledMapServiceLayer baseMap = new ArcGISTiledMapServiceLayer(
 				"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");
 		map.addLayer(baseMap);
 		
