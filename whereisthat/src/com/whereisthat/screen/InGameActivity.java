@@ -75,10 +75,8 @@ public class InGameActivity extends Activity {
 		// Retrieve the map and initial extent from XML layout
 		map = (MapView) findViewById(R.id.gameMap);
 
-		/*ArcGISDynamicMapServiceLayer baseMap = new ArcGISDynamicMapServiceLayer(
-				"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");*/
 		ArcGISTiledMapServiceLayer baseMap = new ArcGISTiledMapServiceLayer(
-				"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");
+				"http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer");
 		map.addLayer(baseMap);
 		
 		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
