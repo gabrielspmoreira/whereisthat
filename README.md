@@ -9,6 +9,8 @@ If you enjoy programming, mobile, games and geography, please join us and have f
 Screenshots
 -----------
 
+![Where Is That? screenshots](http://github.com/gabrielspmoreira/whereisthat/raw/master/resources/screenshots/screenshots.png) 
+
 Roadmap
 -----------
 Currently, the main menu, game playing and score have already been developed.
