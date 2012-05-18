@@ -4,16 +4,12 @@ import java.io.InputStream;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.esri.android.map.GraphicsLayer;
@@ -33,6 +29,7 @@ import com.esri.core.symbol.SimpleMarkerSymbol;
 import com.esri.core.symbol.SimpleMarkerSymbol.STYLE;
 import com.whereisthat.R;
 import com.whereisthat.data.City;
+import com.whereisthat.data.IScoreDialogListener;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.Locations;
 import com.whereisthat.data.LocationsParser;
@@ -82,17 +79,15 @@ public class InGameActivity extends Activity {
 		map.addLayer(baseMap);
 		
 		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
-				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));
-
+				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));		
+		map.addLayer(locationsLayer);
+		
 		progressBar = aq.id(R.id.progressBar).getProgressBar();
 		progressBar.setMax(10000);
-		progressBar.setProgress(0);	
-				
+		progressBar.setProgress(0);					
 		
 		map.setOnStatusChangedListener(new OnStatusChangedListener() {
-
 			private static final long serialVersionUID = 1L;
-
 			public void onStatusChanged(Object source, STATUS status) {
 				if (source == map && status == STATUS.INITIALIZED) {
 					gameStart();
@@ -144,34 +139,33 @@ public class InGameActivity extends Activity {
 	
 	private void gameStart(){
 		//showLocationsInMap();
-
 		setTargetLocation();
 		startRoundTimer();
 	}
 
 	private void readLocations() {
 		InputStream is = getResources().openRawResource(R.raw.cities);
-
 		List<City> cities = LocationsParser.parseCities(is);
 		locations.setCities(cities);
-	}
-	
+	}	
 	
 	private void showRoundScore(double distanceKm, long elapsedTime, long roundScore){
-		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-	    alertDialog.setTitle(currentLocation.toString());
-    	alertDialog.setMessage( "Distance(Km): "+Math.round(distanceKm) + 
-								"\nElapsed Time(s): "+Math.round(elapsedTime/1000)+
-								"\nRound Score: "+roundScore);
-    	
-    	alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-	        public void onClick(DialogInterface dialog, int which) {
-	        	clearLocationsLayer();
-				setTargetLocation();
-	         }
-	    });	  	  
-    	
-    	alertDialog.show();
+		ScoreDialog dialog = new ScoreDialog(this, 
+											 currentLocation.getCityName(), 
+											 Math.round(elapsedTime/1000),
+											 Math.round(distanceKm),
+											 roundScore);
+		
+		dialog.addListener(new IScoreDialogListener() {			
+			public void nextRound() {
+				clearLocationsLayer();
+				setTargetLocation();				
+			}		
+			public void stopGame() {
+			
+			}
+		});		
+		dialog.show();
 	}
 
 	
@@ -187,9 +181,7 @@ public class InGameActivity extends Activity {
 	
 	private void clearLocationsLayer(){
 		locationsLayer.removeAll();
-	}
-	
-	
+	}	
 	
 	private void updateScorePanel(long totalScore){
 		aq.id(R.id.points).text(totalScore + " pts");
@@ -227,20 +219,14 @@ public class InGameActivity extends Activity {
 	private void setCustomFontStyle()
 	{
 		android.graphics.Typeface font = 
-				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");		
-
+				android.graphics.Typeface.createFromAsset(getAssets(), "fonts/showers.ttf");
 		((TextView) findViewById(R.id.points)).setTypeface(font);
-	}
-	
-	
+	}	
 	
 	private void setTargetLocation(){				
-		currentLocation = locations.getRandomCity();
-		aq.id(R.id.locationLabel).text(
-				currentLocation.toString());
-		
-		progressBar.setProgress(0);
-		
+		currentLocation = locations.getRandomCity(map);		
+		aq.id(R.id.locationLabel).text(currentLocation.toString());		
+		progressBar.setProgress(0);		
 		startRoundTimer();
 	}
 	
@@ -275,7 +261,5 @@ public class InGameActivity extends Activity {
 			locationsLayer.addGraphic(graphic);
 
 		}
-
-		map.addLayer(locationsLayer);
 	}
 }

@@ -52,5 +52,59 @@
         <item name="android:minHeight">10dip</item>
         <item name="android:maxHeight">20dip</item>"
 	 </style>
+	 
+	 <style name="DialogDistanceStyle">
+	    <item name="android:textColor">#177ba2</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">70dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#1ea1c7</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	 </style>
+	 
+	 <style name="DialogLocationStyle">
+	    <item name="android:textColor">#ff7c09</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">40dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#fc9336</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	 </style>
+	 
+	 <style name="DialogScoreStyle">
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">70dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#1e2302</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	 </style>
+	 
+	 <style name="DialogNextStyle">
+	    <item name="android:textColor">#cef2ff</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">35dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#115581</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	 </style>
     
+	 <style name="DialogStopStyle">
+	    <item name="android:textColor">#ffe9d5</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">35dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#a04f09</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	 </style>
 </resources>

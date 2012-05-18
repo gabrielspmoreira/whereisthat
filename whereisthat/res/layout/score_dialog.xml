@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+        android:orientation="vertical" 
+        android:stretchColumns="0" 
+        android:background="@drawable/gradient_dialog" 
+        android:layout_gravity="center_vertical|center_horizontal" 
+        android:layout_height="375dp" 
+        android:layout_width="350dp"> 
+ 
+        <TableRow>                     
+            <TextView
+		        android:id="@+id/rd_distance"
+		        style="@style/DialogDistanceStyle"
+		        android:layout_marginLeft="30dip" 		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow>  
+       
+       <TableRow>                     
+            <TextView
+		        android:id="@+id/rd_city"
+		        style="@style/DialogLocationStyle"
+		        android:layout_marginLeft="30dip" 		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow> 
+       
+       <TableRow
+            android:background="@drawable/gradient_score">                     
+            <TextView
+		        android:id="@+id/rd_roundScore"
+		        style="@style/DialogScoreStyle"
+		        android:layout_marginLeft="30dip" 		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow> 
+ 		
+       <RelativeLayout
+			android:id="@+id/btnContent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="30dp"
+			android:layout_marginLeft="6dp" >
+		<Button
+			android:id="@+id/btnNext"
+			android:width="160dp"
+			android:height="70dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/btn_next_label"
+			style="@style/DialogNextStyle"
+			android:background="@drawable/btn_menu"
+			android:layout_alignParentTop="true"
+			android:layout_toRightOf="@+id/btnStop" />
+		<Button
+			android:id="@+id/btnStop"
+			android:width="160dp"
+			android:height="70dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/btn_stop_label"
+			style="@style/DialogStopStyle"
+			android:background="@drawable/btn_cancel"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true" />
+		</RelativeLayout>       
+        
+</TableLayout>
