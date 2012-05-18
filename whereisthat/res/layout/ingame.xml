@@ -32,7 +32,7 @@
             
             <TextView
                 style="@style/PointsTextStyle"
-                android:id="@+id/points"
+                android:id="@+id/scoreLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"

@@ -2,9 +2,9 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
         android:orientation="vertical" 
         android:stretchColumns="0" 
-        android:background="#00000000" 
+        android:background="#77ad03" 
         android:layout_gravity="center_vertical|center_horizontal" 
-        android:layout_height="260dp" 
+        android:layout_height="270dp" 
         android:layout_width="220dp">   
  		
        <RelativeLayout
@@ -12,7 +12,8 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:paddingLeft="10dp" >
+			android:paddingLeft="10dp"
+			android:paddingTop="10dp" >
 		
 		<Button
 			android:id="@+id/btnStart"
@@ -28,6 +29,7 @@
         <TableRow>                     
             <TextView
 		        android:id="@+id/sd_start"
+		        android:layout_marginRight="10dp"
 		        style="@style/DialogStartStyle"
 		        android:layout_marginLeft="30dip" 
 		        android:text="@string/btn_start_label"		        

@@ -18,7 +18,7 @@ public class StartDialog extends Dialog {
     private List<IStartDialogListener> listeners;
 
 	public StartDialog(Context context) {
-		super(context, android.R.style.Theme_Translucent_NoTitleBar);
+		super(context);
         listeners = new ArrayList<IStartDialogListener>();
 	}
 	

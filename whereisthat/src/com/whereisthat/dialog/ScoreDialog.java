@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,7 +27,8 @@ public class ScoreDialog extends Dialog {
 		this.elapseTime = elapseTime;		 
         this.distance = distance;
         this.roundScore = roundScore;
-        listeners = new ArrayList<IScoreDialogListener>();
+        listeners = new ArrayList<IScoreDialogListener>(); 
+        
 	}
 	
 	@Override	 

@@ -1,23 +1,33 @@
 package com.whereisthat.data;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Random;
+
+import android.content.res.Resources;
 
 import com.esri.android.map.MapView;
 import com.esri.core.geometry.GeometryEngine;
 import com.esri.core.geometry.Point;
 import com.esri.core.geometry.SpatialReference;
+import com.whereisthat.R;
 
-public class Locations {
+public class Locations {	
 	
 	private List<City> cities;
-	
+		
 	public void setCities(List<City> cities){
 		this.cities = cities;
 	}
 
 	public List<City> getCities(){
 		return cities;
+	}
+	
+	public void loadFromXml(Resources resource)
+	{
+		InputStream is = resource.openRawResource(R.raw.cities);
+		cities = LocationsParser.parseCities(is);
 	}
 	
 	public City getRandomCity(MapView map){

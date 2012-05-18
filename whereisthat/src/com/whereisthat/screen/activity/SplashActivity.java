@@ -1,4 +1,4 @@
-package com.whereisthat.screen;
+package com.whereisthat.screen.activity;
 
 import com.whereisthat.R;
 import android.app.Activity;

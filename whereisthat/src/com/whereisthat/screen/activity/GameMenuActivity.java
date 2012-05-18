@@ -1,4 +1,4 @@
-package com.whereisthat.screen;
+package com.whereisthat.screen.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,30 +9,29 @@ import android.widget.Button;
 
 import com.whereisthat.R;
 import com.whereisthat.helper.FontHelper;
+import com.whereisthat.helper.SoundType;
+import com.whereisthat.screen.core.SoundManager;
 
 public class GameMenuActivity extends Activity {
-
-	private MediaPlayer soundbackground;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu);	
-		setCustomFont();	
+		setCustomFont();
+		SoundManager.Init(getApplicationContext());
+		SoundManager.start(SoundType.menu);
 	}
 
 	@Override
 	protected void onStart() {
-		super.onStart();
-		soundbackground = MediaPlayer.create(this, R.raw.game_menu);
-		soundbackground.setLooping(true);
-		soundbackground.start();
+		super.onStart();		
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		soundbackground.stop();
+		SoundManager.stop(SoundType.menu);
 	}
 
 	public void btnNewGame(View view) {
