@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 import com.androidquery.AQuery;
 import com.esri.android.map.GraphicsLayer;
 import com.esri.android.map.MapView;
-import com.esri.android.map.ags.ArcGISDynamicMapServiceLayer;
 import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
 import com.esri.android.map.event.OnSingleTapListener;
 import com.esri.android.map.event.OnStatusChangedListener;
@@ -43,6 +43,7 @@ public class InGameActivity extends Activity {
 	private GraphicsLayer locationsLayer;
 	
 	private ProgressBar progressBar;
+	private ProgressDialog progressDialog;
 
 	private AQuery aq;
 
@@ -63,6 +64,8 @@ public class InGameActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ingame);
+		
+		progressDialog = ProgressDialog.show(InGameActivity.this, "", "Loading map, Plese wait...");
 
 		aq = new AQuery(this);
 		
@@ -142,6 +145,7 @@ public class InGameActivity extends Activity {
 		//showLocationsInMap();
 		setTargetLocation();
 		startRoundTimer();
+		progressDialog.dismiss();
 	}
 
 	private void readLocations() {
