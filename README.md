@@ -15,7 +15,7 @@ Roadmap
 -----------
 Currently, the main menu, game playing and score have already been developed.
 
-There are a list of opened [issues](issues/) of improvement for the project. In our vision, the next main steps are:
+There are a list of opened [issues](issues) of improvement for the project. In our vision, the next main steps are:
 
 **Version 1**
 * New location datasets - Currently questions are related only to world cities. We intend to ask a player new location types, like World-known points of interest (e.g. Pisa Tower, Golden-Gate Bridge, ...) and Historic Events (e.g. Where occured the D-Day in Second World War?)
