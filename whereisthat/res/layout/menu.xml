@@ -1,64 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:orientation="vertical"
-   android:layout_width="fill_parent"
-   android:layout_height="fill_parent"
-   android:background="@drawable/menu_bg"
-   android:gravity="center_horizontal"
-   >
-   
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/menu_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_margin="50dip"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_margin="50dp"
         android:orientation="vertical"
-        android:paddingTop="400dip"
-    >        
+        android:gravity="bottom" >
+
         <Button
-            style="@style/MenuBtnTextStyle"
             android:id="@+id/new_game_button"
+            style="@style/MenuBtnTextStyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_menu"
+            android:height="60dp"
+            android:onClick="btnNewGame"
             android:text="@string/new_game_label"
-            android:textSize="40dip"
-            android:height="100dip"
-            android:background="@drawable/btn_menu"
-            android:onClick="btnNewGame"          
-        />
-       
+            android:textSize="15dp" />
+
         <Button
-            style="@style/MenuBtnTextStyle"
             android:id="@+id/settings_button"
+            style="@style/MenuBtnTextStyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_menu"
+            android:height="60dp"
             android:text="@string/settings_label"
-            android:textSize="40dip"
-            android:height="100dip"
-            android:background="@drawable/btn_menu"
-        />
-       
+            android:textSize="15dp" />
+
         <Button
-            style="@style/MenuBtnTextStyle"
             android:id="@+id/about_button"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/about_label"
-            android:textSize="40dip"
-            android:height="100dip"
-            android:background="@drawable/btn_menu"
-        />
-       
-        <Button
             style="@style/MenuBtnTextStyle"
-            android:id="@+id/exit_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/exit_label"
-            android:textSize="40dip"
-            android:height="100dip"
             android:background="@drawable/btn_menu"
-            android:onClick="btnExit" 
-        />
+            android:height="60dp"
+            android:text="@string/about_label"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/exit_button"
+            style="@style/MenuBtnTextStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_menu"
+            android:height="60dp"
+            android:onClick="btnExit"
+            android:text="@string/exit_label"
+            android:textSize="15dp" />
     </LinearLayout>
-   
+
 </LinearLayout>
