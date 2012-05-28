@@ -6,7 +6,7 @@
     <!-- MENU LABELS -->
     <string name="new_game_label">New Game</string>
     <string name="settings_label">Options</string>
-    <string name="about_label">About</string>
+    <string name="ranking_label">Ranking</string>
     <string name="exit_label">Exit</string>
     
     <!-- START DIALOG LABELS -->

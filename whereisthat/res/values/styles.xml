@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <style name="TitleBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:id">@+id/title_container</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:background">#0460a2</item>
+    </style>
+    
     <style name="MenuBtnTextStyle">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">wrap_content</item>
-	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:textColor">#d6e0f6</item>
 	    <item name="android:gravity">center</item>
 	    <item name="android:layout_margin">3dp</item>
 	    <item name="android:textSize">30dp</item>
 	    <item name="android:textStyle">bold</item>
-	    <item name="android:shadowColor">#000000</item>
-	    <item name="android:shadowDx">1</item>
-	    <item name="android:shadowDy">1</item>
-	    <item name="android:shadowRadius">2</item>
 	</style>
 	
      <style name="PointsTextStyle">
