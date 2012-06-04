@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Master" id="1" x="159" measuredWidth="430" measuredHeight="844">
+    <screen xsi:type="model:WidgetGroup" href="../assets/Android4/Android4.screen#Phone"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="2" x="197" y="133" measuredWidth="360" measuredHeight="46">
+    <screen xsi:type="model:WidgetGroup" href="../assets/Android4/Android4.screen#Action Bar"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Insert" newIndex="6">
+        <object xsi:type="model:Label" x="278" y="3" text="145pts">
+          <font size="24px" bold="true" italic="false"/>
+        </object>
+      </widgetChanges>
+      <widgetChanges xsi:type="o:Insert" newIndex="6">
+        <object xsi:type="model:Image" x="4" y="3" src="../assets/Img/logo-mini.png"/>
+      </widgetChanges>
+      <widgetChanges xsi:type="o:Delete" ref="693"/>
+      <widgetChanges xsi:type="o:Delete" ref="672"/>
+      <widgetChanges xsi:type="o:Delete" ref="669"/>
+      <widgetChanges xsi:type="o:Delete" ref="670"/>
+      <widgetChanges xsi:type="o:Delete" ref="690"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Map" id="3" x="196" y="208" width="361" height="498" measuredWidth="361" measuredHeight="498"/>
+  <widgets xsi:type="model:Panel" id="5" x="196" y="320" width="361" height="281" measuredWidth="361" measuredHeight="281"/>
+  <widgets xsi:type="model:Label" id="14" x="307" y="330" text="Amazing!" measuredWidth="147" measuredHeight="53">
+    <font size="32px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:ProgressBar" id="16" x="196" y="178" width="361" height="31" measuredWidth="361" measuredHeight="31" value="100"/>
+  <widgets xsi:type="model:Label" id="17" x="324" y="182" text="San Diego - USA" measuredWidth="96" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="23" x="225" y="388" width="305" height="57" measuredWidth="305" measuredHeight="57" background="#cccccc"/>
+  <widgets xsi:type="model:Label" id="24" x="320" y="390" text="1105pts" measuredWidth="123" measuredHeight="53">
+    <font size="32px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="25" x="296" y="496" text="next level word cities." measuredWidth="196" measuredHeight="33">
+    <font size="19px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="30" x="230" y="459" measuredWidth="32" measuredHeight="32" icon="image (large)"/>
+  <widgets xsi:type="model:Label" id="31" x="264" y="464" text="Tuwitter" measuredWidth="54" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="32" x="318" y="459" measuredWidth="32" measuredHeight="32" icon="image (large)"/>
+  <widgets xsi:type="model:Label" id="33" x="352" y="464" text="Facebook" measuredWidth="58" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="34" x="203" y="536" width="172" height="56" text="Exit" measuredWidth="172" measuredHeight="56">
+    <font size="17px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="35" x="379" y="536" width="172" height="56" text="Start" measuredWidth="172" measuredHeight="56">
+    <font size="17px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler>
+    <guides position="-31"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>
