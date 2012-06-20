@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		setContentView(R.layout.menu);
 		setCustomFont();
 		SoundManager.Init(getApplicationContext());
@@ -50,20 +52,17 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 	
 	private void setCustomFont() {
 		FontHelper.Init(getAssets());
-		FontHelper.SetFont((TextView) findViewById(R.id.new_game_button));
-		FontHelper.SetFont((TextView) findViewById(R.id.settings_button));
-		FontHelper.SetFont((TextView) findViewById(R.id.ranking_button));
-		FontHelper.SetFont((TextView) findViewById(R.id.exit_button));
+		FontHelper.SetFont((TextView) findViewById(R.id.new_game_button));		
 	}
 	
 	@Override		
 	public boolean onTouch(View v, MotionEvent event) {
 	
-		switch (v.getId()) {
-		case R.id.ivSettings:
-				setButtonImage(R.id.ivSettings, event.getAction(), R.drawable.mbt_settings_p, R.drawable.mbt_settings);
-			break;
-		}		
+		//switch (v.getId()) {
+		//case R.id.ivSettings:
+		//		setButtonImage(R.id.ivSettings, event.getAction(), R.drawable.mbt_settings_p, R.drawable.mbt_settings);
+		//	break;
+		//}		
 		return false;
 	}
 	

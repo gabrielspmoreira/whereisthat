@@ -1,101 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/InGameLayout"
+    android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:background="@drawable/gradient_header" >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" >
-
-            <ImageView                
-                android:id="@+id/imgLogo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:layout_marginLeft="-35dp"
-                android:src="@drawable/ingame_logo" /> 
-
-       </LinearLayout> 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:orientation="vertical"
-            android:paddingTop="0dp"
-            android:paddingRight="24dp" >
-            
-            <TextView
-                style="@style/PointsTextStyle"
-                android:id="@+id/scoreLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="center_horizontal"
-                android:maxLength="25"
-                android:singleLine="false"
-                android:text="@string/initial_points_label"
-             />
-            
-            <TextView
-                style="@style/OtherPointsTextStyle"
-                android:id="@+id/levelLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="center_horizontal"
-                android:maxLength="25"
-                android:singleLine="false"
-                android:text="Level 1 score: 0" />
-
-            <TextView
-                style="@style/OtherPointsTextStyle"
-                android:id="@+id/AdvanceLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="center_horizontal"
-                android:maxLength="25"
-                android:singleLine="false"
-                android:text="Score to advance: 1500" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    android:background="#FFFFFF"
+    android:gravity="center" >
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="82dp"
-        android:gravity="center_horizontal" >
-	    <ProgressBar
-	        android:id="@+id/progressBar"
-	        style="@style/InGameProgressbarStyle"
-	        android:layout_width="fill_parent"
-	        android:layout_height="82dp"
-	        android:layout_alignParentTop="true"
-	        android:scaleType="center" />
-	
-	    <TextView
-	        android:id="@+id/locationLabel"
-	        style="@style/QuestionProgressBarStyle"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignTop="@id/progressBar"
-	        android:layout_centerHorizontal="true"
-	        android:text="Location"
-	        android:textAppearance="?android:attr/textAppearanceLarge" />  
-	    
+        android:id="@+id/inGameHeader"
+        style="@style/TitleBarInGame" >
+        <ImageView
+            android:id="@+id/imgInGameLogo"
+            android:layout_width="181dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/menu_logo" />
+        <TextView
+            android:id="@+id/scoreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/initial_points_label"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </RelativeLayout>
-    
- 	<com.esri.android.map.MapView
-      android:id="@+id/gameMap"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      />
+ 
+    <RelativeLayout
+        android:id="@+id/inGameGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llRodape"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/inGameHeader" > 
+        <RelativeLayout
+            android:id="@+id/inGameContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+            
+            <ProgressBar
+		        android:id="@+id/progressBar"
+		        style="@style/InGameProgressbarStyle"
+		        android:layout_width="fill_parent"
+		        android:layout_height="42dp"
+		        android:scaleType="center" />
 
+             <TextView
+		        android:id="@+id/locationLabel"
+		        style="@style/QuestionProgressBarStyle"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignTop="@id/progressBar"
+		        android:layout_centerHorizontal="true"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+            <com.esri.android.map.MapView
+                android:id="@+id/gameMap"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/progressBar" />
+            
+        </RelativeLayout>
+ 
+    </RelativeLayout>
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/llRodape"
+        android:layout_width="fill_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/menu_bar_border"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="4dp" >
+
+        <TextView
+            android:id="@+id/levelLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/AdvanceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/levelLabel"
+            android:layout_alignBottom="@+id/levelLabel"
+            android:layout_toRightOf="@+id/levelLabel"
+            android:text="TextView" />
+                
+    </RelativeLayout>       
+ 
+</RelativeLayout>
