@@ -16,7 +16,7 @@
             android:layout_alignParentTop="true"
             android:src="@drawable/menu_logo" />
         <TextView
-            android:id="@+id/scoreLabel"
+            android:id="@+id/scoreLabel" 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -67,7 +67,7 @@
         </RelativeLayout>
  
     </RelativeLayout>
-
+
     <RelativeLayout
         android:id="@+id/llRodape"
         android:layout_width="fill_parent"
@@ -77,25 +77,40 @@
         android:background="@drawable/menu_bar_border"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingTop="4dp" >
+        android:paddingTop="4dp" >
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/barLevel" />
 
         <TextView
             android:id="@+id/levelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="TextView" />
-
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView1"
+            android:text="Level 1 (cities)" />
+        
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/AdvanceLabel"
+            android:src="@drawable/barNextLevel" />
+        
         <TextView
             android:id="@+id/AdvanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/levelLabel"
-            android:layout_alignBottom="@+id/levelLabel"
-            android:layout_toRightOf="@+id/levelLabel"
-            android:text="TextView" />
-                
-    </RelativeLayout>       
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="Next level: 2500 pts" />
+
+    </RelativeLayout>
  
 </RelativeLayout>
