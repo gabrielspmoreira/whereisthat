@@ -5,10 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.view.Menu;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.esri.android.map.GraphicsLayer;
 import com.esri.android.map.MapView;
@@ -22,21 +20,20 @@ import com.esri.core.geometry.Point;
 import com.esri.core.geometry.Unit;
 import com.esri.core.map.Graphic;
 import com.esri.core.symbol.PictureMarkerSymbol;
+import com.esri.core.symbol.SimpleFillSymbol;
 import com.whereisthat.R;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.Locations;
+import com.whereisthat.dialog.FinishDialog;
 import com.whereisthat.dialog.IFinishDialogListener;
 import com.whereisthat.dialog.IScoreDialogListener;
-import com.whereisthat.dialog.IStartDialogListener;
-import com.whereisthat.dialog.FinishDialog;
-import com.whereisthat.dialog.StartDialog;
 import com.whereisthat.game.rules.GameScore;
 import com.whereisthat.game.rules.Round;
 import com.whereisthat.helper.GameConstants;
+import com.whereisthat.helper.GeometryHelper;
 import com.whereisthat.helper.SoundType;
 import com.whereisthat.screen.activity.GameMenuActivity;
 import com.whereisthat.screen.activity.GameTiming;
-import com.whereisthat.screen.activity.InGameActivity;
 
 public class GameEngine {
 
@@ -44,6 +41,7 @@ public class GameEngine {
 	private Resources resources;
 	private MapView map;
 	private GraphicsLayer locationsLayer;
+	private GraphicsLayer circleLayer;
 	private PanelManager panelManager;
 	private ScoreManager scoreManager;
 	private ProgressDialog progressDialog;
@@ -88,10 +86,16 @@ public class GameEngine {
 	
 	private void initMap(){
 		ArcGISTiledMapServiceLayer baseMap = new ArcGISTiledMapServiceLayer(GameConstants.ARCGIS_MAP_SERVICE_URL);		
-		map.addLayer(baseMap);		
+		map.addLayer(baseMap);	
+		
+		circleLayer = new GraphicsLayer(map.getSpatialReference(),
+				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));		
+		map.addLayer(circleLayer);
+		
+		
 		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
 				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));		
-		map.addLayer(locationsLayer);			
+		map.addLayer(locationsLayer);
 		
 		map.setOnStatusChangedListener(new OnStatusChangedListener() {
 			private static final long serialVersionUID = 1L;
@@ -117,7 +121,8 @@ public class GameEngine {
 	
 	private void nextGameRound()
 	{
-		clearLocationsLayer();
+		clearCircleLayer();
+		clearLocationsLayer();		
 		
 		if(!hasFinished())
 		{		
@@ -130,6 +135,10 @@ public class GameEngine {
 	
 	private void clearLocationsLayer(){
 		locationsLayer.removeAll();
+	}
+	
+	private void clearCircleLayer(){
+		circleLayer.removeAll();
 	}
 	
 	private void setTargetLocation(){
@@ -185,7 +194,9 @@ public class GameEngine {
 		Point pointClicked = map.toMapPoint(new Point(x, y));
 		Point targetPoint = currentLocation.getMapPoint();					
 		showFlagPointInMap(pointClicked, R.drawable.flag_clicked);
-		showFlagPointInMap(targetPoint, R.drawable.flag_target);		
+		showFlagPointInMap(targetPoint, R.drawable.flag_target);
+		//createCircle(targetPoint, pointClicked);
+		createCircleWithAnim(targetPoint, pointClicked, 30);
 		double distanceKm = getKmDistanceFromTarget(pointClicked);		
 		gameScore.addRound(new Round(distanceKm, elapsedTime));
 		long score = gameScore.getScore();
@@ -201,6 +212,43 @@ public class GameEngine {
 		markerSymbol.setOffsetY(13);		
 		Graphic graphic = new Graphic(point, markerSymbol);		
 		locationsLayer.addGraphic(graphic);
+	}
+		
+	private void createCircleWithAnim(Point from, Point to, int size)
+	{
+		double maxDistance = GeometryHelper.distance(from, to);
+		
+		double minDistance = maxDistance / size;
+		
+		while(minDistance <= maxDistance)
+		{			
+			createCircle(from, minDistance);
+			if(minDistance < maxDistance) 
+			{
+				try {
+					Thread.sleep(20);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				clearCircleLayer(); 
+							    
+			    minDistance = maxDistance / --size;			    
+			}
+			else return;
+		}
+	}
+	
+	private void createCircle(Point from, double distance)
+	{
+        int drawColor =Color.GREEN;
+        int transparentColor = Color.argb(50, Color.red(drawColor),
+                Color.green(drawColor), Color.blue(drawColor));       
+        
+        SimpleFillSymbol fillSymbol = new SimpleFillSymbol(transparentColor);        
+        
+        Graphic graphic = new Graphic(GeometryHelper.createCircle(from, distance), fillSymbol);
+        
+        circleLayer.addGraphic(graphic);
 	}
 
 	private double getKmDistanceFromTarget(Point pointClicked){
