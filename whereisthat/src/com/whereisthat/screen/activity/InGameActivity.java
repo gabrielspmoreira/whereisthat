@@ -3,13 +3,17 @@ package com.whereisthat.screen.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.esri.android.map.MapView;
 import com.whereisthat.R;
 import com.whereisthat.helper.FontHelper;
 import com.whereisthat.screen.core.GameEngine;
+import com.whereisthat.screen.core.PanelManager;
+import com.whereisthat.screen.core.ScoreManager;
 
 public class InGameActivity extends Activity {
 	
@@ -20,17 +24,23 @@ public class InGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		setContentView(R.layout.ingame);
-		FontHelper.SetFont((TextView) findViewById(R.id.scoreLabel));	
-		FontHelper.SetFont((TextView) findViewById(R.id.locationLabel));	
+		setCustomFont();	
+		
+		PanelManager panelManager = new PanelManager((TextView) findViewById(R.id.scoreLabel), 
+                                                     (TextView) findViewById(R.id.levelLabel), 
+                                                     (TextView) findViewById(R.id.AdvanceLabel), 
+                                                     (TextView) findViewById(R.id.locationLabel),  
+                                                     (ProgressBar) findViewById(R.id.progressBar));	
+		
+		ScoreManager scoreManager = new ScoreManager((RelativeLayout) findViewById(R.id.llResult),
+													 (Button) findViewById(R.id.btnStopGame),
+													 (Button) findViewById(R.id.btnNextRound));		
 		
 		engine = new GameEngine(InGameActivity.this,
 							   getResources(),
 							   (MapView) findViewById(R.id.gameMap),
-							   (ProgressBar) findViewById(R.id.progressBar),
-							   (TextView) findViewById(R.id.locationLabel),
-							   (TextView) findViewById(R.id.scoreLabel),
-							   (TextView) findViewById(R.id.levelLabel),
-							   (TextView) findViewById(R.id.AdvanceLabel));		
+							   panelManager,
+							   scoreManager);		
 		engine.start();
 	}
 	
@@ -44,5 +54,14 @@ public class InGameActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		engine.finish();
+	}
+	
+	private void setCustomFont() {
+		FontHelper.SetFont((TextView) findViewById(R.id.scoreLabel));	
+		FontHelper.SetFont((TextView) findViewById(R.id.locationLabel));
+		FontHelper.SetFont((TextView) findViewById(R.id.levelLabel));	
+		FontHelper.SetFont((TextView) findViewById(R.id.AdvanceLabel));
+		FontHelper.SetFont((Button) findViewById(R.id.btnStopGame));
+		FontHelper.SetFont((Button) findViewById(R.id.btnNextRound));
 	}
 }

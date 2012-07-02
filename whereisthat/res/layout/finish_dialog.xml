@@ -4,24 +4,13 @@
         android:stretchColumns="0" 
         android:background="@drawable/gradient_dialog" 
         android:layout_gravity="center_vertical|center_horizontal" 
-        android:layout_height="375dp" 
-        android:layout_width="350dp"> 
- 
-        <TableRow>                     
-            <TextView
-		        android:id="@+id/rd_distance"
-		        style="@style/DialogDistanceStyle"
-		        android:layout_marginLeft="30dip" 		        
-		        android:layout_gravity="center_horizontal"
-		        android:layout_height="wrap_content" 
-		        android:layout_width="wrap_content"
-		        android:textAppearance="?android:attr/textAppearanceLarge" />  
-       </TableRow>  
-       
+        android:layout_height="270dp" 
+        android:layout_width="340dp"> 
+      
        <TableRow>                     
             <TextView
-		        android:id="@+id/rd_city"
-		        style="@style/DialogLocationStyle"
+		        android:id="@+id/rd_result"
+		        style="@style/DialogResultStyle"
 		        android:layout_marginLeft="30dip" 		        
 		        android:layout_gravity="center_horizontal"
 		        android:layout_height="wrap_content" 
@@ -32,8 +21,20 @@
        <TableRow
             android:background="@drawable/gradient_score">                     
             <TextView
-		        android:id="@+id/rd_roundScore"
-		        style="@style/DialogScoreStyle"
+		        android:id="@+id/rd_score"
+		        style="@style/DialogFinalScoreStyle"
+		        android:layout_marginLeft="30dip" 		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow>
+       
+       <TableRow
+            android:id="@+id/rd_row_nextLevel">                     
+            <TextView
+		        android:id="@+id/rd_nextLevel"
+		        style="@style/DialogNextLevelStyle"
 		        android:layout_marginLeft="30dip" 		        
 		        android:layout_gravity="center_horizontal"
 		        android:layout_height="wrap_content" 
@@ -46,26 +47,26 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="30dp"
+			android:layout_marginTop="40dp"
 			android:layout_marginLeft="6dp" >
 		<Button
-			android:id="@+id/btnNext"
-			android:width="160dp"
-			android:height="70dp"
+			android:id="@+id/btnContinue"
+			android:width="155dp"
+			android:height="53dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/btn_next_label"
+			android:text="@string/btn_start_label"
 			style="@style/DialogNextStyle"
-			android:background="@drawable/btn_menu"
+			android:background="@drawable/btn_next"
 			android:layout_alignParentTop="true"
-			android:layout_toRightOf="@+id/btnStop" />
+			android:layout_toRightOf="@+id/btnEnd" />
 		<Button
-			android:id="@+id/btnStop"
-			android:width="160dp"
-			android:height="70dp"
+			android:id="@+id/btnEnd"
+			android:width="155dp"
+			android:height="53dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/btn_stop_label"
+			android:text="@string/exit_label"
 			style="@style/DialogStopStyle"
 			android:background="@drawable/btn_cancel"
 			android:layout_alignParentLeft="true"

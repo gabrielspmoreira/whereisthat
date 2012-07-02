@@ -79,29 +79,28 @@
         android:orientation="horizontal"
         android:paddingTop="4dp" >
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/imageLevel"
             android:layout_width="30dp"
             android:layout_height="32dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/barLevel" />
+            android:src="@drawable/level" />
 
         <TextView
             android:id="@+id/levelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageView1"
+            android:layout_toRightOf="@+id/imageLevel"
             android:text="Level 1 (cities)" />
         
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageAdvanced"
             android:layout_width="30dp"
             android:layout_height="32dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/AdvanceLabel"
-            android:src="@drawable/barNextLevel" />
-        
+            android:src="@drawable/nextlevel" /> 
         <TextView
             android:id="@+id/AdvanceLabel"
             android:layout_width="wrap_content"
@@ -111,6 +110,80 @@
             android:layout_marginRight="15dp"
             android:text="Next level: 2500 pts" />
 
+    </RelativeLayout>    
+    <RelativeLayout
+        android:id="@+id/llResult"
+        android:layout_width="fill_parent"
+        android:layout_height="122dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/gradient_dialog"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:paddingTop="4dp" 
+        android:visibility="invisible">        
+        
+        <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="#2a2a2a"
+	        android:orientation="horizontal" >
+ 
+	        <TextView
+	            android:id="@+id/rt_total_points"
+	            style="@style/DialogScoreStyle"
+				android:layout_weight="1"
+	            android:layout_marginTop="10dp"
+	            android:layout_marginBottom="10dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center"
+	            android:text="1105 pts"
+	            android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	        <TextView
+	            android:id="@+id/rt_distance"
+	            style="@style/DialogScoreStyle"
+	 			android:layout_weight="1"
+	            android:layout_marginTop="10dp"
+	            android:layout_marginBottom="10dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center"
+	            android:text="1386 km"
+	            android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+    	</LinearLayout>
+        <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_alignParentBottom="true" >
+	
+	        <Button
+				android:id="@+id/btnStopGame"
+				style="@style/DialogStopStyle"
+				android:layout_weight="1"
+	            android:layout_marginTop="10dp"
+	            android:layout_marginBottom="10dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="60dp"
+				android:text="@string/btn_stop_label"			
+				android:background="@drawable/btn_cancel" />
+	        
+	        <Button
+				android:id="@+id/btnNextRound"
+				style="@style/DialogNextStyle"
+				android:layout_weight="1"
+	            android:layout_marginTop="10dp"
+	            android:layout_marginBottom="10dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="60dp"				
+				android:text="@string/btn_next_label"			
+				android:background="@drawable/btn_next" />
+ 
+    	</LinearLayout>  
+        
     </RelativeLayout>
  
 </RelativeLayout>

@@ -17,7 +17,8 @@
 
     <application android:icon="@drawable/wt_ico" android:label="@string/app_name">
         <activity android:name=".screen.activity.SplashActivity"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,12 +27,14 @@
         
         <activity
             android:name=".screen.activity.GameMenuActivity"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >            
         </activity>
         
         <activity
             android:name=".screen.activity.InGameActivity"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >            
         </activity>
 
     </application>

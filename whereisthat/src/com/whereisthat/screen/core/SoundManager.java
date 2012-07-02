@@ -10,6 +10,8 @@ public abstract class SoundManager {
 
 	private static MediaPlayer menubackground;
 	private static MediaPlayer inGamebackground;
+	private static MediaPlayer winbackground;
+	private static MediaPlayer losebackground;
 	
 	public static void Init(Context context){
 		menubackground = MediaPlayer.create(context, R.raw.game_menu);
@@ -17,7 +19,11 @@ public abstract class SoundManager {
 		
 		inGamebackground = MediaPlayer.create(context, R.raw.game_bg);
 		inGamebackground.setVolume(0.3f, 0.3f);
-		inGamebackground.setLooping(true);		
+		inGamebackground.setLooping(true);	
+		
+		winbackground = MediaPlayer.create(context, R.raw.game_win);
+		
+		losebackground = MediaPlayer.create(context, R.raw.game_lose);
 	}
 	
 	public static void start(SoundType type){
@@ -27,6 +33,14 @@ public abstract class SoundManager {
 				break;
 			case menu:	
 				menubackground.start();
+				break;
+			case win:	
+				inGamebackground.setVolume(0.08f, 0.08f);
+				winbackground.start();
+				break;
+			case lose:	
+				inGamebackground.setVolume(0.08f, 0.08f);
+				losebackground.start();
 				break;
 		}
 	}
@@ -38,6 +52,14 @@ public abstract class SoundManager {
 				break;
 			case menu:	
 				menubackground.stop();
+				break;
+			case win:
+				inGamebackground.setVolume(0.3f, 0.3f);
+				winbackground.stop();
+				break;
+			case lose:	
+				inGamebackground.setVolume(0.3f, 0.3f);
+				losebackground.stop();
 				break;
 		}
 	}

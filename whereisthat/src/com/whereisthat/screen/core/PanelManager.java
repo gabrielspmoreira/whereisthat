@@ -27,7 +27,7 @@ public class PanelManager {
 	public void updatePanel(long score, int level, long minimumScoreToAvance)	{
 		gameScoreView.setText(String.format("%s pts", score));
 		//levelView.setText(String.format("Level %l", level));
-		minimumScoreToAvanceView.setText(String.format("Score to advance: %s", minimumScoreToAvance));
+		//minimumScoreToAvanceView.setText(String.format("Score to advance: %s", minimumScoreToAvance));
 	}
 	
 	public void setLocationView(String location){

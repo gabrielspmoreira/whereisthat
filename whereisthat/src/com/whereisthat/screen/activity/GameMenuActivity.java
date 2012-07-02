@@ -25,6 +25,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 		setCustomFont();
 		SoundManager.Init(getApplicationContext());
 		SoundManager.start(SoundType.menu);
+		((ImageView) findViewById(R.id.imgSettings)).setOnTouchListener(this);
 	}
 
 	@Override
@@ -58,11 +59,11 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 	@Override		
 	public boolean onTouch(View v, MotionEvent event) {
 	
-		//switch (v.getId()) {
-		//case R.id.ivSettings:
-		//		setButtonImage(R.id.ivSettings, event.getAction(), R.drawable.mbt_settings_p, R.drawable.mbt_settings);
-		//	break;
-		//}		
+		switch (v.getId()) {
+		case R.id.imgSettings:
+				setButtonImage(R.id.imgSettings, event.getAction(), R.drawable.mbt_settings_p, R.drawable.mbt_settings);
+			break;
+		}		
 		return false;
 	}
 	

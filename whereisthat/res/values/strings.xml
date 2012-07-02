@@ -2,20 +2,12 @@
 <resources>
     
     <string name="app_name">Where Is That?</string>
-    
-    <!-- MENU LABELS -->
     <string name="new_game_label">New Game</string>
     <string name="settings_label">Options</string>
     <string name="ranking_label">Ranking</string>
     <string name="exit_label">Exit</string>
-    
-    <!-- START DIALOG LABELS -->
     <string name="btn_start_label">Start!</string>
-    
-    <!-- IN GAME LABELS -->
     <string name="initial_points_label">0 pts</string>
-    
-    <!-- SCORE DIALOG LABELS -->
     <string name="btn_next_label">Next »</string>
 	<string name="btn_stop_label">Stop</string>
 </resources>
