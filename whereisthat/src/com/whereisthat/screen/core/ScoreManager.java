@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.whereisthat.R;
 import com.whereisthat.dialog.IScoreDialogListener;
+import com.whereisthat.helper.SoundType;
 
 public class ScoreManager {
 
@@ -33,9 +37,10 @@ public class ScoreManager {
 	
 	public void show(long score, long distance){
 		listeners.clear();
-		totalPoints.setText(String.format("%s pts", score));
+		//totalPoints.setText(String.format("%s pts", score));
 		totaldistance.setText(String.format("%d km", distance));
-		container.setVisibility(View.VISIBLE);
+		container.setVisibility(View.VISIBLE);		
+		countUp(totalPoints, score, 0);
 	}
 	
 	private void hide()
@@ -45,8 +50,29 @@ public class ScoreManager {
 		container.setVisibility(View.GONE);
 	}
 	
-	private class NextListener implements android.view.View.OnClickListener {
-		public void onClick(View v) {				
+	private void countUp(final TextView tv, final long total, final long count) {
+		if (total == 0) { 
+	     tv.setText("0 pts"); 
+	     return;
+	   } 			
+	   if(count > total) return;
+	   tv.setText(String.format("%s pts", count));
+	   AlphaAnimation animation = new AlphaAnimation(1.0f, 0.9f);
+	   animation.setDuration(1);
+	   animation.setAnimationListener(new AnimationListener() {			
+			public void onAnimationStart(Animation animation) {	}			
+			public void onAnimationRepeat(Animation animation) { }			
+			public void onAnimationEnd(Animation animation) {							
+				int i = total > 1000 ? 100 : 10;
+				countUp(tv, total, count + i);
+			}
+	   });
+	   tv.startAnimation(animation);
+	}	
+
+	private class NextListener implements android.view.View.OnClickListener {		
+		public void onClick(View v) {	
+			SoundManager.start(SoundType.click);
 			for (IScoreDialogListener listener : listeners) listener.nextRound();
 			hide();
 		}
@@ -54,6 +80,7 @@ public class ScoreManager {
     
     private class StopListener implements android.view.View.OnClickListener {
 		public void onClick(View v) {	
+			SoundManager.start(SoundType.click);
 			for (IScoreDialogListener listener : listeners) listener.stopGame();
 			hide();	
 		}

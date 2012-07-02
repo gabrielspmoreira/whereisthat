@@ -8,12 +8,16 @@ import com.whereisthat.helper.SoundType;
 
 public abstract class SoundManager {
 
+	private static MediaPlayer click;
+	private static MediaPlayer mapTouch;	
 	private static MediaPlayer menubackground;
 	private static MediaPlayer inGamebackground;
 	private static MediaPlayer winbackground;
-	private static MediaPlayer losebackground;
+	private static MediaPlayer losebackground;	
+	
 	
 	public static void Init(Context context){
+		
 		menubackground = MediaPlayer.create(context, R.raw.game_menu);
 		menubackground.setLooping(true);		
 		
@@ -24,10 +28,20 @@ public abstract class SoundManager {
 		winbackground = MediaPlayer.create(context, R.raw.game_win);
 		
 		losebackground = MediaPlayer.create(context, R.raw.game_lose);
+		
+		click = MediaPlayer.create(context, R.raw.click);
+		
+		mapTouch = MediaPlayer.create(context, R.raw.touch_map);
 	}
 	
 	public static void start(SoundType type){
 		switch (type) {
+			case click:
+				click.start();
+				break;
+			case touchMap:
+				mapTouch.start();
+				break;
 			case inGame:
 				inGamebackground.start();
 				break;
@@ -60,6 +74,8 @@ public abstract class SoundManager {
 			case lose:	
 				inGamebackground.setVolume(0.3f, 0.3f);
 				losebackground.stop();
+				break;
+			default:
 				break;
 		}
 	}

@@ -36,8 +36,8 @@ public class FinishDialog extends Dialog {
 	
 	    setContentView(R.layout.finish_dialog);	   
 	    ((TextView) findViewById(R.id.rd_score)).setText(String.format("%s pts", score));
-	    ((Button) findViewById(R.id.btnEnd)).setOnClickListener(new ContinueListener());
-	    ((Button) findViewById(R.id.btnContinue)).setOnClickListener(new EndListener());
+	    ((Button) findViewById(R.id.btnEnd)).setOnClickListener(new EndListener());
+	    ((Button) findViewById(R.id.btnContinue)).setOnClickListener(new ContinueListener());
 	    
 	    if(win)
 	    {	    

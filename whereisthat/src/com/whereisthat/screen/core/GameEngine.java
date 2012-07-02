@@ -1,9 +1,12 @@
 package com.whereisthat.screen.core;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.view.Menu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -31,7 +34,9 @@ import com.whereisthat.game.rules.GameScore;
 import com.whereisthat.game.rules.Round;
 import com.whereisthat.helper.GameConstants;
 import com.whereisthat.helper.SoundType;
+import com.whereisthat.screen.activity.GameMenuActivity;
 import com.whereisthat.screen.activity.GameTiming;
+import com.whereisthat.screen.activity.InGameActivity;
 
 public class GameEngine {
 
@@ -159,10 +164,14 @@ public class GameEngine {
 		
 		dialog.addListener(new IFinishDialogListener() {				
 			public void continueGame() {
+				SoundManager.start(SoundType.click);
 				nextGameRound();
 			}		
 			public void endGame() {
-			
+				SoundManager.start(SoundType.click);
+				Intent action = new Intent(context, GameMenuActivity.class);
+				context.startActivity(action);
+				((Activity) context).finish();
 			}
 		});		
 		dialog.show();
@@ -170,7 +179,7 @@ public class GameEngine {
 	
 	private void executeSingleTap(float x, float y){
 		if (!map.isLoaded()) return;
-		
+		SoundManager.start(SoundType.touchMap);
 		long elapsedTime = gameTiming.getElapsetTime();
 		gameTiming.stopRound();
 		Point pointClicked = map.toMapPoint(new Point(x, y));
@@ -207,10 +216,11 @@ public class GameEngine {
 		
 		scoreManager.addListener(new IScoreDialogListener() {			
 			public void nextRound() {
+				SoundManager.start(SoundType.click);
 				nextGameRound();
 			}		
 			public void stopGame() {
-			
+				SoundManager.start(SoundType.click);
 			}
 		});
 	}
