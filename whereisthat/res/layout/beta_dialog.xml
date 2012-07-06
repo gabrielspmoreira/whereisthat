@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+        android:orientation="vertical" 
+        android:stretchColumns="0" 
+        android:background="@drawable/gradient_dialog" 
+        android:layout_gravity="center_vertical|center_horizontal" 
+        android:layout_height="270dp" 
+        android:layout_width="340dp"> 
+      
+       <TableRow>                     
+            <TextView
+		        android:id="@+id/rd_result"
+		        style="@style/DialogResultStyle"
+		        android:layout_marginLeft="30dip" 		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow> 
+       
+       <TableRow
+            android:background="@drawable/gradient_score">                     
+            <TextView
+		        android:id="@+id/rd_score"
+		        style="@style/DialogFinalScoreStyle"
+		        android:layout_marginLeft="30dip" 		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow>
+       
+       <TableRow
+            android:id="@+id/rd_row_nextLevel">                     
+            <TextView
+		        android:id="@+id/rd_nextLevel"
+		        style="@style/DialogNextLevelStyle"
+		        android:layout_marginLeft="30dip" 		        
+		        android:layout_gravity="center_horizontal"
+		        android:layout_height="wrap_content" 
+		        android:layout_width="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />  
+       </TableRow> 
+ 		
+       <RelativeLayout
+			android:id="@+id/btnContent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="6dp" >
+		<Button
+			android:id="@+id/btnendbeta"
+			android:height="75dp"
+			android:layout_width="315dp"
+			android:layout_height="wrap_content"
+			android:text="@string/exit_label"
+			style="@style/DialogNextStyle"
+			android:background="@drawable/btn_next"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true" />
+		</RelativeLayout>       
+        
+</TableLayout>

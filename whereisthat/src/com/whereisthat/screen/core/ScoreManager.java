@@ -38,7 +38,7 @@ public class ScoreManager {
 	public void show(long score, long distance){
 		listeners.clear();
 		totaldistance.setText(String.format("%d km", distance));
-		container.setVisibility(View.VISIBLE);		
+		container.setVisibility(View.VISIBLE);			
 		countUp(totalPoints, score, 0);
 	}
 	

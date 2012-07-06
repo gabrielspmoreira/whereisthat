@@ -1,6 +1,8 @@
 package com.whereisthat.screen.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.whereisthat.R;
+import com.whereisthat.helper.ConnHelper;
 import com.whereisthat.helper.FontHelper;
 import com.whereisthat.helper.SoundType;
 import com.whereisthat.screen.core.SoundManager;
@@ -26,6 +29,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 		SoundManager.Init(getApplicationContext());
 		SoundManager.start(SoundType.menu);
 		((ImageView) findViewById(R.id.imgSettings)).setOnTouchListener(this);
+		checkNetwork();		
 	}
 
 	@Override
@@ -39,22 +43,42 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 		SoundManager.stop(SoundType.menu);
 	}
 
-	public void btnNewGame(View view) {
+	public void btnNewGame(View view){
+		if(!checkNetwork()) return;		
 		SoundManager.start(SoundType.click);
 		Intent action = new Intent(GameMenuActivity.this, InGameActivity.class);
 		GameMenuActivity.this.startActivity(action);
 		GameMenuActivity.this.finish();
 	}
 
+	public void btnClose(View view){
+		finish();
+	}
+	
 	public void btnExit(View view) {
 		finish();
 		System.exit(0);
-	}
-	
+	}	
 	
 	private void setCustomFont() {
 		FontHelper.Init(getAssets());
 		FontHelper.SetFont((TextView) findViewById(R.id.new_game_button));		
+	}
+	
+	private Boolean checkNetwork(){
+		if(!ConnHelper.isValid(GameMenuActivity.this)){			
+			AlertDialog ad = new AlertDialog.Builder(this).create();  
+			ad.setTitle(getString(R.string.app_name));
+			ad.setMessage(getString(R.string.msg_network_error)); 
+			ad.setButton(getString(R.string.msg_ok), new DialogInterface.OnClickListener() {  
+			    public void onClick(DialogInterface dialog, int which) {  
+			        dialog.dismiss();                      
+			    }  
+			});
+			ad.show(); 
+			return false;
+		}
+		return true;
 	}
 	
 	private void setButtonImage(int button, int action, int imageIn, int imageOut)

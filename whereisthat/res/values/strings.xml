@@ -8,6 +8,14 @@
     <string name="exit_label">Exit</string>
     <string name="btn_start_label">Start!</string>
     <string name="initial_points_label">0 pts</string>
+    <string name="level_label">Level </string>
+    <string name="next_score_level_label">Next level: </string>
+    <string name="next_level_label">next level </string>
     <string name="btn_next_label">Next »</string>
 	<string name="btn_stop_label">Stop</string>
+	<string name="msg_ok">OK</string>
+	<string name="msg_network_error">You need a network connection to play.</string>
+	<string name="msg_loading_map">Loading map, Plese wait.</string>
+	
 </resources>
+

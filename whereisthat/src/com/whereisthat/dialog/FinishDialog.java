@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.whereisthat.R;
+import com.whereisthat.helper.FontHelper;
 import com.whereisthat.helper.SoundType;
 import com.whereisthat.screen.core.SoundManager;
 
@@ -26,15 +27,16 @@ public class FinishDialog extends Dialog {
 		this.score = score;
 		this.win = win;
 		this.nextLevel = nextLevel;		 
-        listeners = new ArrayList<IFinishDialogListener>();        
-        startSound();	
+        listeners = new ArrayList<IFinishDialogListener>();  
+        startSound();        
 	}
 	
 	@Override	 
     public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	
-	    setContentView(R.layout.finish_dialog);	   
+	    super.onCreate(savedInstanceState);	
+	    setContentView(R.layout.finish_dialog);	  
+	    setCustomFont();    
+	    
 	    ((TextView) findViewById(R.id.rd_score)).setText(String.format("%s pts", score));
 	    ((Button) findViewById(R.id.btnEnd)).setOnClickListener(new EndListener());
 	    ((Button) findViewById(R.id.btnContinue)).setOnClickListener(new ContinueListener());
@@ -51,26 +53,34 @@ public class FinishDialog extends Dialog {
 	    ((TextView) findViewById(R.id.rd_result)).setText("So close! =(");
     	((TextView) findViewById(R.id.rd_nextLevel)).setText("Try again!");
     	((Button) findViewById(R.id.btnContinue)).setText("New");
+    	
+    	
     }	
 	
 	public void addListener(IFinishDialogListener listener){
 		listeners.add(listener); 
 	}
 	
-	private void startSound()
-	{
+	private void startSound(){
 		if(win)
         	SoundManager.start(SoundType.win);
         else
         	SoundManager.start(SoundType.lose);	
 	}
 	
-	private void stopSound()
-	{
+	private void stopSound(){
 		if(win)
         	SoundManager.stop(SoundType.win);
         else
         	SoundManager.stop(SoundType.lose);	
+	}
+	
+	private void setCustomFont(){
+		FontHelper.SetFont((TextView) findViewById(R.id.rd_score));	
+		FontHelper.SetFont((TextView) findViewById(R.id.rd_result));
+		FontHelper.SetFont((TextView) findViewById(R.id.rd_nextLevel));			
+		FontHelper.SetFont((Button) findViewById(R.id.btnEnd));
+		FontHelper.SetFont((Button) findViewById(R.id.btnContinue));		
 	}
 	
     private class ContinueListener implements android.view.View.OnClickListener {
@@ -87,7 +97,7 @@ public class FinishDialog extends Dialog {
 			stopSound();
 			FinishDialog.this.dismiss();		
 		}
-    }   
+    }     
 }
 
 

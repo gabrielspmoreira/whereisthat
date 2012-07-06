@@ -26,7 +26,8 @@ public class InGameActivity extends Activity {
 		setContentView(R.layout.ingame);
 		setCustomFont();	
 		
-		PanelManager panelManager = new PanelManager((TextView) findViewById(R.id.scoreLabel), 
+		PanelManager panelManager = new PanelManager(InGameActivity.this,
+													 (TextView) findViewById(R.id.scoreLabel), 
                                                      (TextView) findViewById(R.id.levelLabel), 
                                                      (TextView) findViewById(R.id.AdvanceLabel), 
                                                      (TextView) findViewById(R.id.locationLabel),  
@@ -49,6 +50,12 @@ public class InGameActivity extends Activity {
 		super.onPause();
 		engine.pause();
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		engine.pause();
+	};
 
 	@Override
 	protected void onDestroy() {
@@ -61,7 +68,9 @@ public class InGameActivity extends Activity {
 		FontHelper.SetFont((TextView) findViewById(R.id.locationLabel));
 		FontHelper.SetFont((TextView) findViewById(R.id.levelLabel));	
 		FontHelper.SetFont((TextView) findViewById(R.id.AdvanceLabel));
+		FontHelper.SetFont((TextView) findViewById(R.id.rt_total_points));	
+		FontHelper.SetFont((TextView) findViewById(R.id.rt_distance));
 		FontHelper.SetFont((Button) findViewById(R.id.btnStopGame));
-		FontHelper.SetFont((Button) findViewById(R.id.btnNextRound));
+		FontHelper.SetFont((Button) findViewById(R.id.btnNextRound));		
 	}
 }

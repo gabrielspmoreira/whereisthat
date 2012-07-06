@@ -24,6 +24,7 @@ import com.esri.core.symbol.SimpleFillSymbol;
 import com.whereisthat.R;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.Locations;
+import com.whereisthat.dialog.BetaDialog;
 import com.whereisthat.dialog.FinishDialog;
 import com.whereisthat.dialog.IFinishDialogListener;
 import com.whereisthat.dialog.IScoreDialogListener;
@@ -39,6 +40,7 @@ public class GameEngine {
 
 	private Context context;
 	private Resources resources;
+	private Boolean hasTap;
 	private MapView map;
 	private GraphicsLayer locationsLayer;
 	private GraphicsLayer circleLayer;
@@ -61,6 +63,7 @@ public class GameEngine {
 		this.map = map;
 		this.panelManager = panelManager;
 		this.scoreManager = scoreManager;
+		hasTap = false;
 		
 		gameScore = new GameScore();
 		locations = new Locations();
@@ -70,7 +73,7 @@ public class GameEngine {
 	public void start()
 	{
 		SoundManager.start(SoundType.inGame);
-		progressDialog = ProgressDialog.show(context, "", GameConstants.PROGRESS_DIALOG_MESSAGE);
+		progressDialog = ProgressDialog.show(context, "", context.getString(R.string.msg_loading_map));
 		locations.loadFromXml(resources);
 		initMap();
 	}
@@ -78,6 +81,10 @@ public class GameEngine {
 	public void pause() {
 		map.pause();
 		SoundManager.stop(SoundType.inGame);
+	}
+	
+	public void resume() {
+		SoundManager.start(SoundType.inGame);
 	}
 	
 	public void finish(){
@@ -90,8 +97,7 @@ public class GameEngine {
 		
 		circleLayer = new GraphicsLayer(map.getSpatialReference(),
 				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));		
-		map.addLayer(circleLayer);
-		
+		map.addLayer(circleLayer);		
 		
 		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
 				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));		
@@ -121,16 +127,17 @@ public class GameEngine {
 	
 	private void nextGameRound()
 	{
+		hasTap = false;
 		clearCircleLayer();
 		clearLocationsLayer();		
 		
-		if(!hasFinished())
-		{		
+		//if(!hasFinished())
+		//{		
 			setTargetLocation();
 			startRoundTimer();
 			return;
-		}
-		endLevel();		
+		//}
+		//endLevel();		
 	}
 	
 	private void clearLocationsLayer(){
@@ -187,7 +194,8 @@ public class GameEngine {
 	}
 	
 	private void executeSingleTap(float x, float y){
-		if (!map.isLoaded()) return;
+		if (!map.isLoaded() || hasTap) return;		
+		hasTap = true;
 		SoundManager.start(SoundType.touchMap);
 		long elapsedTime = gameTiming.getElapsetTime();
 		gameTiming.stopRound();
@@ -240,7 +248,7 @@ public class GameEngine {
 	
 	private void createCircle(Point from, double distance)
 	{
-        int drawColor =Color.GREEN;
+        int drawColor =Color.parseColor("#82bd02");
         int transparentColor = Color.argb(50, Color.red(drawColor),
                 Color.green(drawColor), Color.blue(drawColor));       
         
@@ -268,7 +276,7 @@ public class GameEngine {
 				nextGameRound();
 			}		
 			public void stopGame() {
-				SoundManager.start(SoundType.click);
+				endBeta();
 			}
 		});
 	}
@@ -276,4 +284,23 @@ public class GameEngine {
 	private void updateScorePanel(long totalScore){
 		panelManager.updatePanel(totalScore, 1, 1500);
 	}	
+	
+	
+	private void endBeta(){
+		BetaDialog dialog = new BetaDialog(context, gameScore.getScore());
+		
+		dialog.addListener(new IFinishDialogListener() {				
+			public void continueGame() {
+
+			}		
+			public void endGame() {
+				SoundManager.start(SoundType.click);
+				SoundManager.stop(SoundType.inGame);
+				Intent action = new Intent(context, GameMenuActivity.class);
+				context.startActivity(action);
+				((Activity) context).finish();
+			}
+		});		
+		dialog.show();
+	}
 }

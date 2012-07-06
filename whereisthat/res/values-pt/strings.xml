@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">Onde é isso?</string>
+    <string name="new_game_label">Novo jogo</string>
+    <string name="settings_label">Opções</string>
+    <string name="ranking_label">Ranking</string>
+    <string name="exit_label">Sair</string>
+    <string name="btn_start_label">Iniciar!</string>
+    <string name="initial_points_label">0 pts</string>
+    <string name="level_label">Nível </string>
+    <string name="next_score_level_label">Próximo nível: </string>
+    <string name="next_level_label">próximo level </string>
+    <string name="btn_next_label">Próximo »</string>
+	<string name="btn_stop_label">Parar</string>	
+	<string name="msg_ok">OK</string>
+	<string name="msg_network_error">Você precisa de uma conexão com a rede para jogar.</string>
+	<string name="msg_loading_map">Carregando mapa, aguarde</string>
+	
+</resources>
+
