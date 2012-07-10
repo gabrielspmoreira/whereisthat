@@ -22,13 +22,14 @@ import com.esri.core.map.Graphic;
 import com.esri.core.symbol.PictureMarkerSymbol;
 import com.esri.core.symbol.SimpleFillSymbol;
 import com.whereisthat.R;
+import com.whereisthat.data.Level;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.Locations;
 import com.whereisthat.dialog.BetaDialog;
 import com.whereisthat.dialog.FinishDialog;
 import com.whereisthat.dialog.IFinishDialogListener;
 import com.whereisthat.dialog.IScoreDialogListener;
-import com.whereisthat.game.rules.GameScore;
+import com.whereisthat.game.rules.Game;
 import com.whereisthat.game.rules.Round;
 import com.whereisthat.helper.GameConstants;
 import com.whereisthat.helper.GeometryHelper;
@@ -47,9 +48,8 @@ public class GameEngine {
 	private PanelManager panelManager;
 	private ScoreManager scoreManager;
 	private ProgressDialog progressDialog;
-	private Locations locations;
 	private Location currentLocation;	
-	private GameScore gameScore;
+	private Game game;
 	private GameTiming gameTiming;
 	
 	public GameEngine(Context context,
@@ -65,8 +65,8 @@ public class GameEngine {
 		this.scoreManager = scoreManager;
 		hasTap = false;
 		
-		gameScore = new GameScore();
-		locations = new Locations();
+		game = new Game(map);
+		game.loadDatasets(resources);
 		gameTiming = new GameTiming();				
 	}
 		
@@ -74,7 +74,6 @@ public class GameEngine {
 	{
 		SoundManager.start(SoundType.inGame);
 		progressDialog = ProgressDialog.show(context, "", context.getString(R.string.msg_loading_map));
-		locations.loadFromXml(resources);
 		initMap();
 	}
 	
@@ -121,6 +120,7 @@ public class GameEngine {
 	}
 		
 	private void gameStart(){
+		game.startGame();
 		progressDialog.dismiss();			
 		nextGameRound();		
 	}
@@ -131,13 +131,13 @@ public class GameEngine {
 		clearCircleLayer();
 		clearLocationsLayer();		
 		
-		//if(!hasFinished())
-		//{		
+		if(!hasFinished())
+		{		
 			setTargetLocation();
 			startRoundTimer();
 			return;
-		//}
-		//endLevel();		
+		}
+		endLevel();		
 	}
 	
 	private void clearLocationsLayer(){
@@ -149,7 +149,7 @@ public class GameEngine {
 	}
 	
 	private void setTargetLocation(){
-		currentLocation = locations.getRandomCity(map);		
+		currentLocation = game.getNextLocation();		
 		panelManager.setLocationView(currentLocation.toString());	
 	}
 	
@@ -164,19 +164,16 @@ public class GameEngine {
 	}
 
 	private Boolean hasFinished(){
-		
-		if(gameScore.getScore() > 500.0)
-		{			
-			return true;
-		}		
-		return false;
+		return game.IsNextLevelReached();
 	}
 	
 	private void endLevel(){
+		game.nextLevel();
+		Level currentLevel = game.getCurrentLevel();
 		FinishDialog dialog = new FinishDialog(context, 
-											   gameScore.getScore(),
+											   game.getScore(),
 											   true,
-											   "next level (cities)");
+											   currentLevel.getDescription());
 		
 		dialog.addListener(new IFinishDialogListener() {				
 			public void continueGame() {
@@ -205,10 +202,11 @@ public class GameEngine {
 		showFlagPointInMap(targetPoint, R.drawable.flag_target);
 		//createCircle(targetPoint, pointClicked);
 		createCircleWithAnim(targetPoint, pointClicked, 30);
-		double distanceKm = getKmDistanceFromTarget(pointClicked);		
-		gameScore.addRound(new Round(distanceKm, elapsedTime));
-		long score = gameScore.getScore();
-		long roundScore = gameScore.getLastRoundScore();		
+		double distanceKm = getKmDistanceFromTarget(pointClicked);	
+		Round round = new Round(distanceKm, elapsedTime);
+		game.addRound(round);
+		long score = game.getScore();
+		long roundScore = round.getScore();		
 		showRoundScore(distanceKm, elapsedTime, roundScore);	
 		updateScorePanel(score);
 	}
@@ -287,7 +285,7 @@ public class GameEngine {
 	
 	
 	private void endBeta(){
-		BetaDialog dialog = new BetaDialog(context, gameScore.getScore());
+		BetaDialog dialog = new BetaDialog(context, game.getScore());
 		
 		dialog.addListener(new IFinishDialogListener() {				
 			public void continueGame() {

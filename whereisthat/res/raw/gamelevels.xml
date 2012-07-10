@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Levels>
+    <Level Name="Cities" MaxRoundsToPass="10" MinScoreToPass="5000" HasLongQuestions="false"
+           Dataset="cities" Description="Large World Cities"></Level>
+    <Level Name="Events" MaxRoundsToPass="10" MinScoreToPass="5000" HasLongQuestions="true"
+           Dataset="historicevents" Description="Historic World Events (-431 to 2011)"></Level>
+</Levels>

@@ -11,6 +11,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.whereisthat.data.City;
+import com.whereisthat.data.Location;
 import com.whereisthat.data.LocationsParser;
 
 public class LocationsParserTests {
@@ -26,15 +27,17 @@ public class LocationsParserTests {
 			fail(e.getMessage());
 			return;
 		}		
-		List<City> cities = LocationsParser.parseCities(in);
+		List<Location> cities = LocationsParser.parseCities(in);
 		
 		assertEquals(2, cities.size());
-		assertEquals(2, cities.get(1).getId());
-		assertEquals("Abidjan", cities.get(1).getName());
-		assertEquals(4351086, cities.get(1).getPopulation());
-		assertEquals(5.33, cities.get(1).getLatitude(),0);
-		assertEquals(-4.03, cities.get(1).getLongitude(),0);
-		assertEquals("Ivory Coast", cities.get(1).getCountry());
+		
+		City city2 = (City) cities.get(1);
+		assertEquals(2, city2.getId());
+		assertEquals("Abidjan", city2.getName());
+		assertEquals(4351086, city2.getPopulation());
+		assertEquals(5.33, city2.getLatitude(),0);
+		assertEquals(-4.03, city2.getLongitude(),0);
+		assertEquals("Ivory Coast", city2.getCountry());
 	}
 
 }

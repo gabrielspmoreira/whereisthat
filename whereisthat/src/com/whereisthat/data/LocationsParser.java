@@ -10,11 +10,11 @@ import com.androidquery.util.XmlDom;
 
 public class LocationsParser {
 	
-	public static List<City> parseCities(InputStream is){		
+	public static List<Location> parseCities(InputStream is){		
 		try {
 			XmlDom xmlRoot = new XmlDom(is);
 			List<XmlDom> citiesDom = xmlRoot.children("City");
-			List<City> cities = new ArrayList<City>();
+			List<Location> cities = new ArrayList<Location>();
 			
 			for(XmlDom cityDom: citiesDom){
 				City city = new City();
@@ -28,6 +28,33 @@ public class LocationsParser {
 			}
 			
 			return cities;
+			
+			
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		return null;
+	}
+	
+	public static List<Location> parseHistoricEvent(InputStream is){		
+		try {
+			XmlDom xmlRoot = new XmlDom(is);
+			List<XmlDom> eventsDom = xmlRoot.children("HistoricEvent");
+			List<Location> events = new ArrayList<Location>();
+			
+			for(XmlDom eventDom : eventsDom){
+				HistoricEvent event = new HistoricEvent();
+				event.setYear(Short.parseShort(eventDom.text("Year")));
+				event.setName(eventDom.text("Place"));
+				event.setLatitude(Double.parseDouble(eventDom.text("Lat")));
+				event.setLongitude(Double.parseDouble(eventDom.text("Long")));
+				event.setDescription(eventDom.text("Description"));
+				events.add(event);
+			}
+			
+			return events;
 			
 			
 		} catch (SAXException e) {

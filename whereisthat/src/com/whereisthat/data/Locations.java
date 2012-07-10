@@ -14,34 +14,57 @@ import com.whereisthat.R;
 
 public class Locations {	
 	
-	private List<City> cities;
-		
-	public void setCities(List<City> cities){
-		this.cities = cities;
+	private MapView map; //TODO: Remove this map dependency
+	
+	public Locations(MapView map){
+		this.map = map;
 	}
+	
+	private List<Location> cities;
+	private List<Location> events;
 
-	public List<City> getCities(){
+	public List<Location> getCities(){
 		return cities;
+	}
+	
+	public List<Location> getEvents(){
+		return events;
 	}
 	
 	public void loadFromXml(Resources resource)
 	{
-		InputStream is = resource.openRawResource(R.raw.cities);
-		cities = LocationsParser.parseCities(is);
+		InputStream isCities = resource.openRawResource(R.raw.cities);
+		cities = LocationsParser.parseCities(isCities);
+		
+		InputStream isEvents = resource.openRawResource(R.raw.historicevents);
+		events = LocationsParser.parseHistoricEvent(isEvents);
 	}
 	
-	public City getRandomCity(MapView map){
+	public Location getNextLocation(Level level) {
+		List<Location> dataset = null;
+		//TODO: Change to enumerable
+		if (level.getDataset().equals("cities")){
+			dataset = cities;
+		}
+		else if (level.getDataset().equals("historicevents")){
+			dataset = events;
+		}
+		
+		return getRandomLocation(dataset);
+	}
+	
+	public Location getRandomLocation(List<Location> dataset){
 		Random random = new Random();
-		int randomCity = random.nextInt(cities.size() - 1);
-		City city = cities.get(randomCity);
+		int randomLocation = random.nextInt(dataset.size() - 1);
+		Location location = dataset.get(randomLocation);
 		
 		Point point = new Point();
-		point.setX(city.getLongitude());
-		point.setY(city.getLatitude());
+		point.setX(location.getLongitude());
+		point.setY(location.getLatitude());
 		Point pointReproj = (Point) GeometryEngine.project(point,
 				SpatialReference.create(4326), map.getSpatialReference());
-		city.setMapPoint(pointReproj);
+		location.setMapPoint(pointReproj);
 		
-		return city;
+		return location;
 	}
 }
