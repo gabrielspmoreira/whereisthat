@@ -8,21 +8,23 @@ import android.content.res.Resources;
 
 import com.whereisthat.R;
 
-public class Levels implements Iterable<Level> {
+public class Levels {
 	
-	private List<Level> levels;
+	private static List<Level> levels;
 	
-	public List<Level> getLevels(){
-		return levels;
-	}
-	
-	public void loadFromXml(Resources resource)
+	public static void loadFromXml(Resources resource)
 	{
 		InputStream isLevels = resource.openRawResource(R.raw.gamelevels);
 		levels = LevelsParser.parseXml(isLevels);
 	}
 	
-	public Iterator<Level> iterator(){
-		return levels.iterator();
+	public static List<Level> getLevels(){
+		return levels;
 	}
+	
+	
+	public static void setLevels(List<Level> levelsList){
+		levels = levelsList;
+	}
+
 }

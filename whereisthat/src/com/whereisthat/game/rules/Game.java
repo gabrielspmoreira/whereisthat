@@ -54,4 +54,8 @@ public class Game {
 		Level level = getCurrentLevel();
 		return locations.getNextLocation(level);
 	}
+	
+	public void restart() {
+		gameLevels.reset();
+	}
 }

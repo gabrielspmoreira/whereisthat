@@ -78,7 +78,7 @@ public class Level {
 	}
 	
 	public boolean IsMaximumRoundsReached(int rounds){
-		return (rounds > maxRoundsToPass);
+		return (rounds >= maxRoundsToPass);
 	}
 
 	public Level getNextLevel() {

@@ -164,20 +164,24 @@ public class GameEngine {
 	}
 
 	private Boolean hasFinished(){
-		return game.IsNextLevelReached();
+		return game.IsNextLevelReached() || game.IsMaximumRoundsReached();
 	}
 	
 	private void endLevel(){
-		game.nextLevel();
 		Level currentLevel = game.getCurrentLevel();
 		FinishDialog dialog = new FinishDialog(context, 
 											   game.getScore(),
-											   true,
+											   !game.IsMaximumRoundsReached(),
 											   currentLevel.getDescription());
 		
 		dialog.addListener(new IFinishDialogListener() {				
 			public void continueGame() {
 				SoundManager.start(SoundType.click);
+				if (game.IsMaximumRoundsReached()){
+					game.restart();
+					updateScorePanel(game.getScore());
+				}
+				game.nextLevel();
 				nextGameRound();
 			}		
 			public void endGame() {
@@ -214,8 +218,8 @@ public class GameEngine {
 	private void showFlagPointInMap(Point point, int pictureId){
 		Drawable drawable = resources.getDrawable(pictureId);
 		PictureMarkerSymbol markerSymbol = new PictureMarkerSymbol(drawable);
-		markerSymbol.setOffsetX(10);
-		markerSymbol.setOffsetY(13);		
+		markerSymbol.setOffsetX(20);
+		markerSymbol.setOffsetY(23);		
 		Graphic graphic = new Graphic(point, markerSymbol);		
 		locationsLayer.addGraphic(graphic);
 	}

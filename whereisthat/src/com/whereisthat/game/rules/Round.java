@@ -14,16 +14,8 @@ public class Round {
 		this.calculatedScore = -1;
 	}
 	
-	public void setDistance(double distance){
-		this.distance = distance;
-	}
-	
 	public double getDistance(){
 		return distance;
-	}
-	
-	public void setAnswerDelay(long answerDelay){
-		this.answerDelay = answerDelay;
 	}
 	
 	public long getAnswerDelay(){
@@ -32,14 +24,18 @@ public class Round {
 	
 	public long getScore(){
 		if (calculatedScore < 0){
-			if (distance < 0){
-				calculatedScore = 0;
-			}
-			else{
+			calculatedScore = 0;
+			if (distance >= 0 && answerDelay >= 0 &&
+			    answerDelay <= GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER){
+				
 				long distanceScore = Math.max(0, GameConstants.MAXIMUM_KM_DISTANCE_TO_SCORE - (long) Math.floor(distance));
+				long answerDelayScore = 0;
 
-				long answerDelayScore = Math.max(0, (GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER - answerDelay) / 
-						(GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER / GameConstants.MAXIMUM_SCORE_FOR_TIME));
+				if (distanceScore > 0){
+					answerDelayScore = Math.max(0, (GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER - answerDelay) / 
+							(GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER / GameConstants.MAXIMUM_SCORE_FOR_TIME));
+				}
+				
 				
 				calculatedScore = distanceScore + answerDelayScore;
 			}
