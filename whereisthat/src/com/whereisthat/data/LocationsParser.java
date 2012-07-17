@@ -10,9 +10,17 @@ import com.androidquery.util.XmlDom;
 
 public class LocationsParser {
 	
-	public static List<Location> parseCities(InputStream is){		
+	private static LocationsDataset parseLocationsDatasetSettings(XmlDom xmlRoot){
+		//String description = xmlRoot.attr("Description");
+		//boolean hasLongQuestions = Boolean.parseBoolean(xmlRoot.attr("HasLongQuestions"));
+		boolean reproject = Boolean.parseBoolean(xmlRoot.attr("Reproject"));
+		return new LocationsDataset(null, reproject);
+	}
+	
+	public static LocationsDataset parseCities(InputStream is){		
 		try {
 			XmlDom xmlRoot = new XmlDom(is);
+			
 			List<XmlDom> citiesDom = xmlRoot.children("City");
 			List<Location> cities = new ArrayList<Location>();
 			
@@ -27,7 +35,10 @@ public class LocationsParser {
 				cities.add(city);
 			}
 			
-			return cities;
+			LocationsDataset locationDataset = parseLocationsDatasetSettings(xmlRoot);
+			locationDataset.setLocations(cities);
+			
+			return locationDataset;
 			
 			
 		} catch (SAXException e) {
@@ -38,9 +49,10 @@ public class LocationsParser {
 		return null;
 	}
 	
-	public static List<Location> parseHistoricEvent(InputStream is){		
+	public static LocationsDataset parseHistoricEvent(InputStream is){		
 		try {
 			XmlDom xmlRoot = new XmlDom(is);
+			
 			List<XmlDom> eventsDom = xmlRoot.children("HistoricEvent");
 			List<Location> events = new ArrayList<Location>();
 			
@@ -54,7 +66,38 @@ public class LocationsParser {
 				events.add(event);
 			}
 			
-			return events;
+			LocationsDataset locationDataset = parseLocationsDatasetSettings(xmlRoot);
+			locationDataset.setLocations(events);
+			return locationDataset;
+			
+			
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		return null;
+	}
+	
+	public static LocationsDataset parseLandmarks(InputStream is){		
+		try {
+			XmlDom xmlRoot = new XmlDom(is);
+			List<XmlDom> landmarkDom = xmlRoot.children("Landmark");
+			List<Location> landmarks = new ArrayList<Location>();
+			
+			for(XmlDom eventDom : landmarkDom){
+				Landmark landmark = new Landmark();
+				landmark.setName(eventDom.text("Name"));
+				landmark.setLatitude(Double.parseDouble(eventDom.text("Lat")));
+				landmark.setLongitude(Double.parseDouble(eventDom.text("Long")));
+				landmark.setCity(eventDom.text("Town"));
+				landmark.setCountry(eventDom.text("Country"));
+				landmarks.add(landmark);
+			}
+			
+			LocationsDataset locationDataset = parseLocationsDatasetSettings(xmlRoot);
+			locationDataset.setLocations(landmarks);
+			return locationDataset;
 			
 			
 		} catch (SAXException e) {

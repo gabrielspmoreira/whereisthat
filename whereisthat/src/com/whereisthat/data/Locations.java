@@ -20,14 +20,15 @@ public class Locations {
 		this.map = map;
 	}
 	
-	private List<Location> cities;
-	private List<Location> events;
+	private LocationsDataset cities;
+	private LocationsDataset events;
+	private LocationsDataset landmarks;
 
-	public List<Location> getCities(){
+	public LocationsDataset getCities(){
 		return cities;
 	}
 	
-	public List<Location> getEvents(){
+	public LocationsDataset getEvents(){
 		return events;
 	}
 	
@@ -38,10 +39,13 @@ public class Locations {
 		
 		InputStream isEvents = resource.openRawResource(R.raw.historicevents);
 		events = LocationsParser.parseHistoricEvent(isEvents);
+		
+		InputStream isLandmarks = resource.openRawResource(R.raw.landmarks);
+		landmarks = LocationsParser.parseLandmarks(isLandmarks);
 	}
 	
 	public Location getNextLocation(Level level) {
-		List<Location> dataset = null;
+		LocationsDataset dataset = null;
 		//TODO: Change to enumerable
 		if (level.getDataset().equals("cities")){
 			dataset = cities;
@@ -49,20 +53,27 @@ public class Locations {
 		else if (level.getDataset().equals("historicevents")){
 			dataset = events;
 		}
+		else if (level.getDataset().equals("landmarks")){
+			dataset = landmarks;
+		}
 		
 		return getRandomLocation(dataset);
 	}
 	
-	public Location getRandomLocation(List<Location> dataset){
+	public Location getRandomLocation(LocationsDataset dataset){
 		Random random = new Random();
-		int randomLocation = random.nextInt(dataset.size() - 1);
-		Location location = dataset.get(randomLocation);
+		int randomLocation = random.nextInt(dataset.getLocations().size() - 1);
+		Location location = dataset.getLocations().get(randomLocation);
 		
-		Point point = new Point();
-		point.setX(location.getLongitude());
-		point.setY(location.getLatitude());
-		Point pointReproj = (Point) GeometryEngine.project(point,
-				SpatialReference.create(4326), map.getSpatialReference());
+		Point point = new Point(location.getLongitude(), location.getLatitude());
+		SpatialReference originSpatialReference = null;
+		if (dataset.getReproject()){ // Convert from WGS84 to WebMercador
+			originSpatialReference = SpatialReference.create(4326);
+		}
+		else {
+			originSpatialReference = map.getSpatialReference();
+		}
+		Point pointReproj = (Point) GeometryEngine.project(point, originSpatialReference, map.getSpatialReference());
 		location.setMapPoint(pointReproj);
 		
 		return location;

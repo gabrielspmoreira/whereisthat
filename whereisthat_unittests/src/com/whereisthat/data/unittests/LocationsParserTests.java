@@ -10,8 +10,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import android.database.DataSetObservable;
+
 import com.whereisthat.data.City;
 import com.whereisthat.data.Location;
+import com.whereisthat.data.LocationsDataset;
 import com.whereisthat.data.LocationsParser;
 
 public class LocationsParserTests {
@@ -27,11 +30,11 @@ public class LocationsParserTests {
 			fail(e.getMessage());
 			return;
 		}		
-		List<Location> cities = LocationsParser.parseCities(in);
+		LocationsDataset cities = LocationsParser.parseCities(in);
 		
-		assertEquals(2, cities.size());
+		assertEquals(2, cities.getLocations().size());
 		
-		City city2 = (City) cities.get(1);
+		City city2 = (City) cities.getLocations().get(1);
 		assertEquals(2, city2.getId());
 		assertEquals("Abidjan", city2.getName());
 		assertEquals(4351086, city2.getPopulation());
