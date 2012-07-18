@@ -37,19 +37,23 @@ public class Locations {
 		return events;
 	}
 	
+	public LocationsDataset getLandmarks(){
+		return landmarks;
+	}
+	
 	public void loadFromXml(Resources resource)
 	{
 		InputStream isCitiesEasy = resource.openRawResource(R.raw.citieseasy);
-		citiesEasy = LocationsParser.parseCities(isCitiesEasy);
+		citiesEasy = LocationsParser.parseCities(isCitiesEasy, LocationType.citiesEasy);
 		
 		InputStream isCitiesHard = resource.openRawResource(R.raw.citieshard);
-		citiesHard = LocationsParser.parseCities(isCitiesHard);
+		citiesHard = LocationsParser.parseCities(isCitiesHard, LocationType.citiesHard);
 		
 		InputStream isEvents = resource.openRawResource(R.raw.historicevents);
-		events = LocationsParser.parseHistoricEvent(isEvents);
+		events = LocationsParser.parseHistoricEvent(isEvents, LocationType.historicEvents);
 		
 		InputStream isLandmarks = resource.openRawResource(R.raw.landmarks);
-		landmarks = LocationsParser.parseLandmarks(isLandmarks);
+		landmarks = LocationsParser.parseLandmarks(isLandmarks, LocationType.landmarks);
 	}
 	
 	public Location getNextLocation(Level level) {

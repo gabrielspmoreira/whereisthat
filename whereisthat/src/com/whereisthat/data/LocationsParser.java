@@ -17,7 +17,7 @@ public class LocationsParser {
 		return new LocationsDataset(null, reproject);
 	}
 	
-	public static LocationsDataset parseCities(InputStream is){		
+	public static LocationsDataset parseCities(InputStream is, LocationType locationType){		
 		try {
 			XmlDom xmlRoot = new XmlDom(is);
 			
@@ -32,7 +32,7 @@ public class LocationsParser {
 				city.setLatitude(Double.parseDouble(cityDom.text("Lat")));
 				city.setLongitude(Double.parseDouble(cityDom.text("Long")));
 				city.setCountry(cityDom.text("Country"));
-				city.setType(LocationType.cities);
+				city.setType(locationType);
 				cities.add(city);
 			}
 			
@@ -50,7 +50,7 @@ public class LocationsParser {
 		return null;
 	}
 	
-	public static LocationsDataset parseHistoricEvent(InputStream is){		
+	public static LocationsDataset parseHistoricEvent(InputStream is, LocationType locationType){		
 		try {
 			XmlDom xmlRoot = new XmlDom(is);
 			
@@ -64,7 +64,7 @@ public class LocationsParser {
 				event.setLatitude(Double.parseDouble(eventDom.text("Lat")));
 				event.setLongitude(Double.parseDouble(eventDom.text("Long")));
 				event.setDescription(eventDom.text("Description"));
-				event.setType(LocationType.historicevents);
+				event.setType(locationType);
 				events.add(event);
 			}
 			
@@ -81,7 +81,7 @@ public class LocationsParser {
 		return null;
 	}
 	
-	public static LocationsDataset parseLandmarks(InputStream is){		
+	public static LocationsDataset parseLandmarks(InputStream is, LocationType locationType){		
 		try {
 			XmlDom xmlRoot = new XmlDom(is);
 			List<XmlDom> landmarkDom = xmlRoot.children("Landmark");
@@ -94,6 +94,7 @@ public class LocationsParser {
 				landmark.setLongitude(Double.parseDouble(eventDom.text("Long")));
 				landmark.setCity(eventDom.text("Town"));
 				landmark.setCountry(eventDom.text("Country"));
+				landmark.setType(locationType);
 				landmarks.add(landmark);
 			}
 			

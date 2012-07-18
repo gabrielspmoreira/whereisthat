@@ -68,7 +68,7 @@ public class PanelManager {
 	private void expandDescription()
 	{
 		switch(location.getType()) {
-			case historicevents:		
+			case historicEvents:		
 				hasExpanded = true;
 				SoundManager.start(SoundType.openPb);				
 				//DropDownAnim anim = new DropDownAnim(progressBar, 150, true);
@@ -83,7 +83,7 @@ public class PanelManager {
 	private void unExpandDescription()
 	{
 		switch(location.getType()) {
-			case historicevents:
+			case historicEvents:
 				hasExpanded = false;
 				SoundManager.start(SoundType.closePb);
 				progressBar.getLayoutParams().height = oldHeight;

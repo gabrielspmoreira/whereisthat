@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Levels>
     <Level Name="Cities_Easy" MaxRoundsToPass="7" MinScoreToPass="5000" HasLongQuestions="false" 
-           Dataset="citiesEasy" Description="World Cities (Easy)"></Level>
+           LocationType="citiesEasy" Description="World Cities (Easy)"></Level>
     <Level Name="Landmarks" MaxRoundsToPass="7" MinScoreToPass="5000" HasLongQuestions="false" 
-           Dataset="landmarks" Description="Famous Landmarks"></Level>
+           LocationType="landmarks" Description="Famous Landmarks"></Level>
     <Level Name="Cities_Hard" MaxRoundsToPass="7" MinScoreToPass="5000" HasLongQuestions="false" 
-           Dataset="citiesHard" Description="World Cities (Hard)"></Level>
+           LocationType="citiesHard" Description="World Cities (Hard)"></Level>
     <Level Name="Events" MaxRoundsToPass="50" MinScoreToPass="30000" HasLongQuestions="true" 
-           Dataset="historicEvents" Description="Historical Events (years from -431 to 2011)"></Level>
+           LocationType="historicEvents" Description="Historical Events (years from -431 to 2011)"></Level>
 </Levels>
