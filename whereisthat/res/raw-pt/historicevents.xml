@@ -408,7 +408,7 @@
 	</HistoricEvent>
 	<HistoricEvent>
 		<Year>1783</Year>
-		<Place>Iceland</Place>
+		<Place>Islândia</Place>
 		<Lat>64.0588331</Lat>
 		<Long>-18.22233244</Long>
 		<Description>O vulcão Laki, na Islândia, inicia uma erupção de 8 meses que mata dezenas de milhares ao redor da Europa</Description>
@@ -486,8 +486,8 @@
 	<HistoricEvent>
 		<Year>1810</Year>
 		<Place>Argentina</Place>
-		<Lat>-37.2017285</Lat>
-		<Long>-59.8410697</Long>
+		<Lat>-34.6170824</Lat>
+		<Long>-58.38193769</Long>
 		<Description>Revolução de Maio: Cidadãos armados em Buenos Aires declaram independência da Espanha e estabelecem o governo provincial da Argentina</Description>
 	</HistoricEvent>
 	<HistoricEvent>
@@ -1052,7 +1052,7 @@
 	</HistoricEvent>
 	<HistoricEvent>
 		<Year>1961</Year>
-		<Place>Berlin Lesta</Place>
+		<Place>Berlim Leste</Place>
 		<Lat>52.51783126</Lat>
 		<Long>13.40266506</Long>
 		<Description>A construção dos Muros de Berlin inicia, restringindo o trânsito entre Berlin Leste e Oeste</Description>

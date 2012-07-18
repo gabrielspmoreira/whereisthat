@@ -2,564 +2,558 @@
 <Landmarks Reproject="false">
     <Landmark>
         <Long>2641186.28</Long>
-        <Lat>4549008.04</Lat>
-        <Name>Acropolis</Name>
-        <Town>Athens</Town>
-        <Country>Greece</Country>
+        <Lat>4575311.54</Lat>
+        <Name>Acrópolis</Name>
+        <Town>Atenas</Town>
+        <Country>Grécia</Country>
     </Landmark>
     <Landmark>
         <Long>-400668.12</Long>
         <Lat>4437672.08</Lat>
         <Name>Alhambra</Name>
         <Town>Granada</Town>
-        <Country>Spain</Country>
+        <Country>Espanha</Country>
     </Landmark>
     <Landmark>
         <Long>-6961426.21</Long>
         <Lat>661064.16</Lat>
-        <Name>Angel Falls</Name>
+        <Name>Cataratas do Anjo</Name>
 		<Town>Gransabana</Town>
         <Country>Venezuela</Country>
     </Landmark>
     <Landmark>
         <Long>255325.17819999903</Long>
         <Lat>6254009.944600001</Lat>
-        <Name>Arc de Triomphe</Name>
+        <Name>Arco do Triúnfo</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>14586592.74</Long>
         <Lat>-2899886</Lat>
-        <Name>Ayers Rock</Name>
-        <Country>Australia</Country>
+        <Name>A Rocha</Name>
+        <Country>Austrália</Country>
     </Landmark>
     <Landmark>
         <Long>-359388.2969000004</Long>
         <Lat>7768955.3706</Lat>
-        <Name>Balmoral Castle</Name>
+        <Name>Castelo Balmoral</Name>
         <Town>Aberdeenshire</Town>
-        <Country>Scotland</Country>
+        <Country>Escócia</Country>
     </Landmark>
     <Landmark>
         <Long>-9807.29</Long>
         <Lat>6679164.27</Lat>
-        <Name>Bank of England</Name>
-        <Town>London</Town>
-        <Country>England</Country>
+        <Name>Banco da Inglaterra</Name>
+        <Town>Londres</Town>
+        <Country>Inglaterra</Country>
     </Landmark>
     <Landmark>
         <Long>-13862.62</Long>
         <Lat>6676866.89</Lat>
         <Name>Big Ben</Name>
-        <Town>London</Town>
-        <Country>England</Country>
+        <Town>Londres</Town>
+        <Country>Inglaterra</Country>
     </Landmark>
     <Landmark>
         <Long>1491860.07</Long>
         <Lat>6859096.02</Lat>
-        <Name>Brandenburg Gate</Name>
-        <Town>Berlin</Town>
-        <Country>Germany</Country>
+        <Name>Ponte de Brandenburg</Name>
+        <Town>Berlim</Town>
+        <Country>Alemanha</Country>
     </Landmark>
     <Landmark>
         <Long>-15981.026099998504</Long>
         <Lat>6709969.415399998</Lat>
-        <Name>Buckingham Palace</Name>
-        <Town>London</Town>
-        <Country>England</Country>
+        <Name>Palácio de Buckingham</Name>
+        <Town>Londres</Town>
+        <Country>Inglaterra</Country>
     </Landmark>
     <Landmark>
         <Long>-8564013.9893</Long>
         <Lat>4705887.325599998</Lat>
-        <Name>Capitol</Name>
+        <Name>Capitólio</Name>
         <Town>Washington DC</Town>
-        <Country>USA</Country>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>240038.99720000103</Long>
         <Lat>5094913.472199999</Lat>
         <Name>Casa Mila</Name>
         <Town>Barcelona</Town>
-        <Country>Spain</Country>
+        <Country>Espanha</Country>
     </Landmark>
     <Landmark>
         <Long>-8234896.534399999</Long>
         <Lat>4978334.454499997</Lat>
         <Name>Central Park</Name>
-        <Town>New York</Town>
-        <Country>USA</Country>
+        <Town>Nova Iorque</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>256309.7322999984</Long>
         <Lat>6253067.939199999</Lat>
         <Name>Champs-Elysees</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>1373737.06</Long>
         <Lat>5659574.39</Lat>
         <Name>Doge's Palace</Name>
         <Town>Venice</Town>
-        <Country>Italy</Country>
+        <Country>Itália</Country>
     </Landmark>
     <Landmark>
         <Long>-9569292.5546</Long>
         <Lat>4562734.241499998</Lat>
-        <Name>Fort Knox</Name>
+        <Name>Forte Knox</Name>
         <Town>Kenntucky</Town>
-        <Country>USA</Country>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>-13634235.804</Long>
         <Lat>4553789.710000001</Lat>
-        <Name>Golden Gate Bridge</Name>
-        <Town>San Francisco</Town>
-        <Country>USA</Country>
+        <Name>Ponte Golden Gate</Name>
+        <Town>São Francisco</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>8335345.821600001</Long>
         <Lat>3713674.913999997</Lat>
-        <Name>Golden Temple</Name>
+        <Name>Templo Dourado</Name>
         <Town>Amritsar</Town>
-        <Country>India</Country>
+        <Country>Índia</Country>
     </Landmark>
     <Landmark>
         <Long>-12483059.3314</Long>
         <Lat>4308437.275600001</Lat>
         <Name>Grand Canyon</Name>
         <Town>Arizona</Town>
-        <Country>USA</Country>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>1822846.8990000002</Long>
         <Lat>6153970.836400002</Lat>
         <Name>Hofburg</Name>
-        <Town>Vienna</Town>
-        <Country>Austria</Country>
+        <Town>Viena</Town>
+        <Country>Áustria</Country>
     </Landmark>
     <Landmark>
         <Long>-353588.5625</Long>
         <Lat>7548649.167300001</Lat>
-        <Name>Holyrood Palace</Name>
-        <Town>Edinburgh</Town>
-        <Country>Scotland</Country>
+        <Name>Palácio Holyrood</Name>
+        <Town>Edimburgo</Town>
+        <Country>Escócia</Country>
     </Landmark>
     <Landmark>
         <Long>241498.7296999991</Long>
         <Lat>5098981.551399998</Lat>
-        <Name>La Sagrada</Name>
+        <Name>Sagrada Família</Name>
         <Town>Barcelona</Town>
-        <Country>Spain</Country>
+        <Country>Espanha</Country>
     </Landmark>
     <Landmark>
         <Long>260585.5918999985</Long>
         <Lat>6251100.351400003</Lat>
         <Name>Louvre</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>-8074916.377599999</Long>
         <Lat>-1480518.2014000006</Lat>
         <Name>Machu Picchu</Name>
         <Town>Cuzco</Town>
-        <Country>Peru</Country>
+        <Country>Perú</Country>
     </Landmark>
     <Landmark>
         <Long>484865.9237000011</Long>
         <Lat>5440462.555500001</Lat>
         <Name>Maison Carrée</Name>
         <Town>Nimes</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>-9176818.1347</Long>
         <Lat>3136327.6220000014</Lat>
-        <Name>Marcus Square</Name>
+        <Name>Praça de São Marcos</Name>
         <Town>Venice</Town>
-        <Country>Italy</Country>
+        <Country>Itália</Country>
     </Landmark>
     <Landmark>
         <Long>-243058.31579999998</Long>
         <Lat>7796012.167300001</Lat>
-        <Name>Marishal College</Name>
+        <Name>Colégio Marishal</Name>
         <Town>Aberdeen</Town>
-        <Country>Scotland</Country>
+        <Country>Escócia</Country>
     </Landmark>
     <Landmark>
         <Long>336319.258200001</Long>
         <Lat>5479258.6976</Lat>
-        <Name>Millau Bridge</Name>
+        <Name>Ponte Millau</Name>
         <Town>Millau</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>-13010902.8719</Long>
         <Lat>3938153.3013999984</Lat>
-        <Name>Mount Palomar</Name>
-        <Town>San Diego</Town>
-        <Country>USA</Country>
+        <Name>Monte Palomar</Name>
+        <Town>São Diego</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>-10333060.6794</Long>
         <Lat>5577703.3763</Lat>
-        <Name>Mount Rushmore</Name>
-        <Town>South Dakota</Town>
-        <Country>USA</Country>
+        <Name>Monte Rushmore</Name>
+        <Town>Keystone</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>-8801390.8811</Long>
         <Lat>5328215.885300003</Lat>
-        <Name>Niagara Falls</Name>
-        <Country>USA</Country>
+        <Name>Cataratas do Niágara</Name>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>261449.31980000064</Long>
         <Lat>6250497.518799998</Lat>
         <Name>Notre Dame</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>-25562.294700000435</Long>
         <Lat>6722123.159199998</Lat>
         <Name>Number 10</Name>
-        <Town>London</Town>
-        <Country>England</Country>
+        <Town>Londres</Town>
+        <Country>Inglaterra</Country>
     </Landmark>
     <Landmark>
         <Long>-12338649.398400001</Long>
         <Lat>5536605.206500001</Lat>
-        <Name>Yellowstone Park</Name>
-        <Town>Yellowstone Park</Town>
-        <Country>USA</Country>
+        <Name>Parque Yellowstone</Name>
+        <Town>Parque Yellowstone</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>260992.35330000147</Long>
         <Lat>6248845.426899999</Lat>
-        <Name>Panthéon</Name>
+        <Name>Panteão</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>2642296.1</Long>
         <Lat>4549636.03</Lat>
-        <Name>Pathenon</Name>
-        <Town>Athens</Town>
-        <Country>Greece</Country>
+        <Name>Partenon</Name>
+        <Town>Atenas</Town>
+        <Country>Grécia</Country>
     </Landmark>
     <Landmark>
         <Long>1373205.9688000008</Long>
         <Lat>5690780.509300001</Lat>
-        <Name>Ponte di Rialto</Name>
-        <Town>Venice</Town>
-        <Country>Italy</Country>
+        <Name>Ponte da Constituição</Name>
+        <Town>Veneza</Town>
+        <Country>Itália</Country>
     </Landmark>
     <Landmark>
         <Long>1825720.5003999993</Long>
         <Lat>6142831.8499</Lat>
         <Name>Prater</Name>
-        <Town>Vienna</Town>
-        <Country>Austria</Country>
+        <Town>Viena</Town>
+        <Country>Áustria</Country>
     </Landmark>
     <Landmark>
         <Long>4188005.72</Long>
         <Lat>7474348.26</Lat>
-        <Name>Red Square</Name>
-        <Town>Moscow</Town>
-        <Country>Russia</Country>
+        <Name>Praça Vermelha</Name>
+        <Town>Moscou</Town>
+        <Country>Rússia</Country>
     </Landmark>
     <Landmark>
         <Long>-8235270.43</Long>
         <Lat>4948929.57</Lat>
         <Name>Rockefeller Center</Name>
-        <Town>New York</Town>
-        <Country>USA</Country>
+        <Town>Nova Iorque</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>496779.9032999985</Long>
         <Lat>6775362.826499999</Lat>
-        <Name>Rotterdam Harbour</Name>
-        <Town>Rotterdam</Town>
-        <Country>Netherlands</Country>
+        <Name>Porto de Roterdã</Name>
+        <Town>Roterdã</Town>
+        <Country>Holanda</Country>
     </Landmark>
     <Landmark>
         <Long>-354935.3947999999</Long>
         <Lat>7548480.0336000025</Lat>
-        <Name>Royal Mile</Name>
-        <Town>Edinburgh</Town>
-        <Country>Scotland</Country>
+        <Name>Milha Real</Name>
+        <Town>Edimburgo</Town>
+        <Country>Escócia</Country>
     </Landmark>
     <Landmark>
         <Long>260752.54879999906</Long>
         <Lat>6255743.121100001</Lat>
         <Name>Sacre Coeur</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>3474107.9497999996</Long>
         <Lat>3511420.813199997</Lat>
-        <Name>Sphinx</Name>
+        <Name>Esfinge</Name>
         <Town>Giza</Town>
-        <Country>Egypt</Country>
+        <Country>Egito</Country>
     </Landmark>
     <Landmark>
         <Long>1195429.1539000012</Long>
         <Lat>8380390.786399998</Lat>
         <Name>Storting</Name>
         <Town>Oslo</Town>
-        <Country>Norway</Country>
+        <Country>Noruega</Country>
     </Landmark>
     <Landmark>
         <Long>8687603.33</Long>
         <Lat>3125608.14</Lat>
         <Name>Taj Mahal</Name>
         <Town>Uttar Pradesh</Town>
-        <Country>India</Country>
+        <Country>Índia</Country>
     </Landmark>
     <Landmark>
         <Long>-8235966.648700001</Long>
         <Lat>4976299.293799996</Lat>
         <Name>Times Square</Name>
-        <Town>New York</Town>
-        <Country>USA</Country>
+        <Town>Nova Iorque</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>237124.1</Long>
         <Lat>6209043.39</Lat>
-        <Name>Versailles</Name>
+        <Name>Versalhes</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
     <Landmark>
         <Long>-14304.33</Long>
         <Lat>6676636.1</Lat>
         <Name>Westminster Abbey</Name>
-        <Town>London</Town>
-        <Country>England</Country>
+        <Town>Londres</Town>
+        <Country>Inglaterra</Country>
     </Landmark>
     <Landmark>
         <Long>-8575643.91</Long>
         <Lat>4680187.34</Lat>
-        <Name>White House</Name>
+        <Name>Casa Branca</Name>
         <Town>Washington DC</Town>
-        <Country>USA</Country>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>-67411.1</Long>
         <Lat>6673890.94</Lat>
-        <Name>Windsor Castle</Name>
+        <Name>Castelo Windsor</Name>
         <Town>Windsor</Town>
-        <Country>England</Country>
+        <Country>Inglaterra</Country>
     </Landmark>
     <Landmark>
         <Long>-8239197.385199999</Long>
         <Lat>4969772.279600002</Lat>
         <Name>World Trade Center</Name>
-        <Town>New York</Town>
-        <Country>USA</Country>
+        <Town>Nova Iorque</Town>
+        <Country>EUA</Country>
     </Landmark>
     <Landmark>
         <Long>-120508.91</Long>
         <Lat>7128337.96</Lat>
         <Name>York Minster</Name>
         <Town>York</Town>
-        <Country>England</Country>
+        <Country>Inglaterra</Country>
     </Landmark>
 	<Landmark>
         <Long>-4815345.7</Long>
         <Lat>-2628421.12</Lat>
-        <Name>Christ Redemptor</Name>
+        <Name>Cristo Redentor</Name>
         <Town>Rio de Janeiro</Town>
-        <Country>Brazil</Country>
+        <Country>Brasil</Country>
     </Landmark>
 	<Landmark>
         <Long>3142600.21</Long>
         <Lat>4362296.57</Lat>
-        <Name>Colossus of Rhodes</Name>
-        <Town>Rhodes</Town>
-        <Country>Greece</Country>
+        <Name>Colosso de Rodes</Name>
+        <Town>Rodes</Town>
+        <Country>Grécia</Country>
     </Landmark>
 	<Landmark>
         <Long>255431.81</Long>
         <Lat>6250832.86</Lat>
-        <Name>Eiffel Tower</Name>
+        <Name>Torre Eiffel</Name>
         <Town>Paris</Town>
-        <Country>France</Country>
+        <Country>França</Country>
     </Landmark>
 	<Landmark>
         <Long>-8235925.33</Long>
         <Lat>4975265.4</Lat>
-        <Name>Empire State Building</Name>
-        <Town>New York</Town>
-        <Country>USA</Country>
+        <Name>Torre Empire State</Name>
+        <Town>Nova Iorque</Town>
+        <Country>EUA</Country>
     </Landmark>
 	<Landmark>
         <Long>3472989.89</Long>
         <Lat>3510371.52</Lat>
-        <Name>Great Pyramid of Cheops</Name>
-        <Town>El Gizeh</Town>
-        <Country>Egypt</Country>
+        <Name>Pirâmide de Quéops</Name>
+        <Town>Gizé</Town>
+        <Country>Egito</Country>
     </Landmark>
 	<Landmark>
         <Long>12909332.17</Long>
         <Lat>4918923.51</Lat>
-        <Name>Great Wall</Name>
+        <Name>A Grande Muralha</Name>
         <Country>China</Country>
     </Landmark>
 	<Landmark>
         <Long>4187509.4</Long>
         <Lat>7508800.93</Lat>
         <Name>Kremlin</Name>
-		<Town>Moscow</Town>
-        <Country>Russia</Country>
+		<Town>Moscou</Town>
+        <Country>Rússia</Country>
     </Landmark>
 	<Landmark>
         <Long>3923203.65</Long>
         <Lat>3734368.38</Lat>
-        <Name>Mount of Olives</Name>
-		<Town>Jerusalem</Town>
+        <Name>Monte das Oliveiras</Name>
+		<Town>Jerusalém</Town>
         <Country>Israel</Country>
     </Landmark>
 	<Landmark>
         <Long>3330538.76</Long>
         <Lat>3658762.31</Lat>
-        <Name>Pharos of Egypt</Name>
+        <Name>Farol de Alexandria</Name>
 		<Town>Alexandria</Town>
-        <Country>Egypt</Country>
+        <Country>Egito</Country>
     </Landmark>
 	<Landmark>
         <Long>3473012.27</Long>
         <Lat>3504745.33</Lat>
-        <Name>Pyramids of Egypt</Name>
-		<Town>Giza</Town>
-        <Country>Egypt</Country>
+        <Name>Pirâmides do Egíto</Name>
+		<Town>Gizé</Town>
+        <Country>Egito</Country>
     </Landmark>
 	<Landmark>
         <Long>1386417.8</Long>
         <Lat>5146471.14</Lat>
-        <Name>Sistine Chapel</Name>
-		<Town>Rome</Town>
-        <Country>Italy</Country>
+        <Name>Capela Sistina</Name>
+		<Town>Roma</Town>
+        <Country>Itália</Country>
     </Landmark>
 	<Landmark>
         <Long>-8242703.68</Long>
         <Lat>4966753.95</Lat>
-        <Name>Statue of Liberty</Name>
-		<Town>New York</Town>
-        <Country>USA</Country>
+        <Name>Estátua da Liberdade</Name>
+		<Town>Nova Iorque</Town>
+        <Country>EUA</Country>
     </Landmark>
 	<Landmark>
         <Long>-4804116.31</Long>
         <Lat>-2625637.3</Lat>
-        <Name>Sugar Loaf</Name>
+        <Name>Pão de Açúcar</Name>
 		<Town>Rio de Janeiro</Town>
-        <Country>Brazil</Country>
+        <Country>Brasil</Country>
     </Landmark>
 	<Landmark>
         <Long>16833114.24</Long>
         <Lat>-4009735.25</Lat>
-        <Name>Sydney Opera House</Name>
-		<Town>Sydney</Town>
-        <Country>Australia</Country>
+        <Name>Ópera de Sidnei</Name>
+		<Town>Sidnei</Town>
+        <Country>Austrália</Country>
     </Landmark>
 	<Landmark>
         <Long>2875753.51</Long>
         <Lat>-2029746.8</Lat>
-        <Name>Victoria Falls</Name>
+        <Name>Cataratas Vitória</Name>
 		<Town>Matabeleland North</Town>
-        <Country>Zimbabwe</Country>
+        <Country>Zimbábue</Country>
     </Landmark>
-	<Landmark>
-        <Long>2641186.28</Long>
-        <Lat>4575311.54</Lat>
-        <Name>Acropolis</Name>
-		<Town>Athens</Town>
-        <Country>Greece</Country>
-    </Landmark>
+
 	<Landmark>
         <Long>15443105.57</Long>
         <Lat>4212987.79</Lat>
-        <Name>Mount Fuji</Name>
+        <Name>Monte Fuji</Name>
 		<Town>Fujinomiya</Town>
-        <Country>Japan</Country>
+        <Country>Japão</Country>
     </Landmark>
 	<Landmark>
         <Long>-12174614.6</Long>
         <Lat>-3138621.25</Lat>
-        <Name>Easter Island</Name>
-		<Town>Isla de Pascua</Town>
-        <Country>Polynesian Triangle</Country>
+        <Name>Ílha de Páscoa</Name>
+		<Town>Ílha de Páscoa</Town>
+        <Country>Polinésia</Country>
     </Landmark>
 	<Landmark>
         <Long>1157343.88</Long>
         <Lat>5422667.99</Lat>
-        <Name>Tower of Pisa</Name>
+        <Name>Torre de Pisa</Name>
 		<Town>Pisa</Town>
-        <Country>Italy</Country>
+        <Country>Itália</Country>
     </Landmark>
 	<Landmark>
         <Long>9676290.42</Long>
         <Lat>3247185.89</Lat>
-        <Name>Mount Everest</Name>		
+        <Name>Monte Everest</Name>		
 		<Town>Xizang</Town>
         <Country>Nepal</Country>
     </Landmark>
 	<Landmark>
         <Long>2056479.31</Long>
         <Lat>-4076841.89</Lat>
-        <Name>Cape of Good Hope</Name>
-		<Town>Cape Town</Town>
-        <Country>South Africa</Country>
+        <Name>Cabo da Boa Esperança</Name>
+		<Town>Cidade do Cabo</Town>
+        <Country>África do Sul</Country>
     </Landmark>
 	<Landmark>
         <Long>3945450.07</Long>
         <Lat>3545894.48</Lat>
         <Name>Petra</Name>
 		<Town>Maan</Town>
-        <Country>Jordan</Country>
+        <Country>Jordânia</Country>
     </Landmark>
 	<Landmark>
         <Long>1390638.14</Long>
         <Lat>5144556.27</Lat>
-        <Name>Colosseum</Name>
-		<Town>Rome</Town>
-        <Country>Italy</Country>
+        <Name>Coliseu</Name>
+		<Town>Roma</Town>
+        <Country>Itália</Country>
     </Landmark>
 	<Landmark>
         <Long>-6062153.79</Long>
         <Lat>-2960797.77</Lat>
-        <Name>Iguazu Falls</Name>
-        <Country>Brazil</Country>
+        <Name>Cataratas do Iguaçú</Name>
+        <Country>Brasil</Country>
     </Landmark>
 	<Landmark>
         <Long>4208852.95</Long>
         <Lat>-460560.29</Lat>
         <Name>Kilimanjaro</Name>
-        <Country>Tanzania</Country>
+        <Country>Tanzânia</Country>
     </Landmark>
 	<Landmark>
         <Long>-8527.41</Long>
         <Lat>6710932.08</Lat>
-        <Name>Tower Bridge</Name>
-		<Town>London</Town>
-        <Country>England</Country>
+        <Name>Ponte da Torre</Name>
+		<Town>Londres</Town>
+        <Country>Inglaterra</Country>
     </Landmark>
 	<Landmark>
         <Long>3922284.97</Long>
         <Lat>3734041.92</Lat>
-        <Name>Wailing Wall</Name>
-		<Town>Jerusalem</Town>
+        <Name>Muro das Lamentações</Name>
+		<Town>Jerusalém</Town>
         <Country>Israel</Country>
     </Landmark>
 	<Landmark>
         <Long>-13172286.33</Long>
         <Lat>4041270.85</Lat>
-        <Name>Hollywood Sign</Name>
+        <Name>Letreiro de Hollywood</Name>
 		<Town>Los Angeles</Town>
-        <Country>USA</Country>
+        <Country>EUA</Country>
     </Landmark>
 </Landmarks>

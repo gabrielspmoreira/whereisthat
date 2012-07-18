@@ -218,8 +218,8 @@ public class GameEngine {
 	private void showFlagPointInMap(Point point, int pictureId){
 		Drawable drawable = resources.getDrawable(pictureId);
 		PictureMarkerSymbol markerSymbol = new PictureMarkerSymbol(drawable);
-		markerSymbol.setOffsetX(20);
-		markerSymbol.setOffsetY(23);		
+		markerSymbol.setOffsetX(17);
+		markerSymbol.setOffsetY(20);		
 		Graphic graphic = new Graphic(point, markerSymbol);		
 		locationsLayer.addGraphic(graphic);
 	}

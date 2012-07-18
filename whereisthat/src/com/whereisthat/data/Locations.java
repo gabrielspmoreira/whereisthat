@@ -20,12 +20,17 @@ public class Locations {
 		this.map = map;
 	}
 	
-	private LocationsDataset cities;
+	private LocationsDataset citiesEasy;
+	private LocationsDataset citiesHard;
 	private LocationsDataset events;
 	private LocationsDataset landmarks;
 
-	public LocationsDataset getCities(){
-		return cities;
+	public LocationsDataset getCitiesEasy(){
+		return citiesEasy;
+	}
+	
+	public LocationsDataset getCitiesHard(){
+		return citiesHard;
 	}
 	
 	public LocationsDataset getEvents(){
@@ -34,8 +39,11 @@ public class Locations {
 	
 	public void loadFromXml(Resources resource)
 	{
-		InputStream isCities = resource.openRawResource(R.raw.cities);
-		cities = LocationsParser.parseCities(isCities);
+		InputStream isCitiesEasy = resource.openRawResource(R.raw.citieseasy);
+		citiesEasy = LocationsParser.parseCities(isCitiesEasy);
+		
+		InputStream isCitiesHard = resource.openRawResource(R.raw.citieshard);
+		citiesHard = LocationsParser.parseCities(isCitiesHard);
 		
 		InputStream isEvents = resource.openRawResource(R.raw.historicevents);
 		events = LocationsParser.parseHistoricEvent(isEvents);
@@ -47,8 +55,11 @@ public class Locations {
 	public Location getNextLocation(Level level) {
 		LocationsDataset dataset = null;
 		//TODO: Change to enumerable
-		if (level.getDataset().equals("cities")){
-			dataset = cities;
+		if (level.getDataset().equals("citiesEasy")){
+			dataset = citiesEasy;
+		}
+		else if (level.getDataset().equals("citiesHard")){
+			dataset = citiesHard;
 		}
 		else if (level.getDataset().equals("historicevents")){
 			dataset = events;
