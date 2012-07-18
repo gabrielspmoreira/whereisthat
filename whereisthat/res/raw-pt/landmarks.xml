@@ -175,13 +175,6 @@
         <Country>França</Country>
     </Landmark>
     <Landmark>
-        <Long>-9176818.1347</Long>
-        <Lat>3136327.6220000014</Lat>
-        <Name>Praça de São Marcos</Name>
-        <Town>Venice</Town>
-        <Country>Itália</Country>
-    </Landmark>
-    <Landmark>
         <Long>-243058.31579999998</Long>
         <Lat>7796012.167300001</Lat>
         <Name>Colégio Marishal</Name>
@@ -434,7 +427,7 @@
 	<Landmark>
         <Long>3473012.27</Long>
         <Lat>3504745.33</Lat>
-        <Name>Pirâmides do Egíto</Name>
+        <Name>Pirâmides do Egito</Name>
 		<Town>Gizé</Town>
         <Country>Egito</Country>
     </Landmark>
