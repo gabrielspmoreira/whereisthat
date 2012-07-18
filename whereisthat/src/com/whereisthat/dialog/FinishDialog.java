@@ -43,16 +43,16 @@ public class FinishDialog extends Dialog {
 	    
 	    if(win)
 	    {	    
-	    	setTitle(String.format("Finish level!"));	
-	    	((TextView) findViewById(R.id.rd_result)).setText("Amazing!");
+	    	setTitle(String.format(this.getContext().getString(R.string.msg_finish_level)));	
+	    	((TextView) findViewById(R.id.rd_result)).setText(this.getContext().getString(R.string.msg_finish_level_win));
 	    	((TextView) findViewById(R.id.rd_nextLevel)).setText(nextLevel);	    	
 	    	return;
 	    }
 	    
 	    setTitle(String.format("Ops..."));	  
-	    ((TextView) findViewById(R.id.rd_result)).setText("So close! =(");
-    	((TextView) findViewById(R.id.rd_nextLevel)).setText("Try again!");
-    	((Button) findViewById(R.id.btnContinue)).setText("New");
+	    ((TextView) findViewById(R.id.rd_result)).setText((this.getContext().getString(R.string.msg_finish_level_fail)));
+    	((TextView) findViewById(R.id.rd_nextLevel)).setText((this.getContext().getString(R.string.msg_finish_level_tryAgain)));
+    	((Button) findViewById(R.id.btnContinue)).setText((this.getContext().getString(R.string.msg_finish_level_new_label)));
     	
     	
     }	

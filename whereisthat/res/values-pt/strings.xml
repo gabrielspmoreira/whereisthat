@@ -16,6 +16,11 @@
 	<string name="msg_ok">OK</string>
 	<string name="msg_network_error">Você precisa de uma conexão com a rede para jogar.</string>
 	<string name="msg_loading_map">Carregando mapa, aguarde</string>
+	<string name="msg_finish_level">Nível concluído!</string>
+	<string name="msg_finish_level_win">Incrível!</string>
+	<string name="msg_finish_level_fail">Tão perto! =(</string>
+	<string name="msg_finish_level_tryAgain">Tente novamente!</string>
+	<string name="msg_finish_level_new_label">Novo</string>	
 	
 </resources>
 

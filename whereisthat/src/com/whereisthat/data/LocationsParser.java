@@ -32,6 +32,7 @@ public class LocationsParser {
 				city.setLatitude(Double.parseDouble(cityDom.text("Lat")));
 				city.setLongitude(Double.parseDouble(cityDom.text("Long")));
 				city.setCountry(cityDom.text("Country"));
+				city.setType(LocationType.cities);
 				cities.add(city);
 			}
 			
@@ -63,6 +64,7 @@ public class LocationsParser {
 				event.setLatitude(Double.parseDouble(eventDom.text("Lat")));
 				event.setLongitude(Double.parseDouble(eventDom.text("Long")));
 				event.setDescription(eventDom.text("Description"));
+				event.setType(LocationType.historicevents);
 				events.add(event);
 			}
 			

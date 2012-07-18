@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageLevel"
-            android:text="Level 1 (cities)" />
+            android:text="@string/level_1_cities_" />
         
         <ImageView
             android:id="@+id/imageAdvanced"

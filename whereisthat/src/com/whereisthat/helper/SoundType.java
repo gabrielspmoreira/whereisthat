@@ -7,4 +7,6 @@ public enum SoundType {
 	inGame,
 	win,
 	lose,
+	openPb,
+	closePb
 }

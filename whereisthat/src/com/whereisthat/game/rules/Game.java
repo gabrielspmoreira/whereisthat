@@ -11,6 +11,7 @@ public class Game {
 	
 	private GameLevels gameLevels;
 	private Locations locations;
+	private int numberOfPlays;
 	
 	public Game(MapView map){
 		gameLevels = new GameLevels();
@@ -30,7 +31,11 @@ public class Game {
 		gameLevels.addRound(round);
 	}
 	
-	public void nextLevel(){
+	public void nextLevel(){		
+		//if(++numberOfPlays > gameLevels.getCurrentLevel().getMaxRoundsToPass())
+		//{
+			
+		//}
 		gameLevels.nextLevel();
 	}
 	

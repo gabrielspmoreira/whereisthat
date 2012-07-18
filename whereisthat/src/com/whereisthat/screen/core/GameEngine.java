@@ -83,7 +83,7 @@ public class GameEngine {
 	}
 	
 	public void resume() {
-		SoundManager.start(SoundType.inGame);
+		//SoundManager.start(SoundType.inGame);
 	}
 	
 	public void finish(){
@@ -148,9 +148,9 @@ public class GameEngine {
 		circleLayer.removeAll();
 	}
 	
-	private void setTargetLocation(){
-		currentLocation = game.getNextLocation();		
-		panelManager.setLocationView(currentLocation.toString());	
+	private void setTargetLocation(){	
+		currentLocation = game.getNextLocation();
+		panelManager.updateView(currentLocation);	
 	}
 	
 	private void startRoundTimer(){

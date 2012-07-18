@@ -16,6 +16,13 @@
 	<string name="msg_ok">OK</string>
 	<string name="msg_network_error">You need a network connection to play.</string>
 	<string name="msg_loading_map">Loading map, Plese wait.</string>
+	<string name="msg_finish_level">Finish level!</string>
+	<string name="msg_finish_level_win">Amazing!</string>
+	<string name="msg_finish_level_fail">So close! =(</string>
+	<string name="msg_finish_level_tryAgain">Try again!</string>
+	<string name="msg_finish_level_new_label">New</string>	
+	
+	<string name="level_1_cities_">Level 1 (cities)</string>	
 	
 </resources>
 

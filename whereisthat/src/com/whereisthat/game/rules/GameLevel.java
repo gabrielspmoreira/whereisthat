@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.whereisthat.data.Level;
-import com.whereisthat.data.Location;
-import com.whereisthat.data.Locations;
 
 public class GameLevel {	
 	

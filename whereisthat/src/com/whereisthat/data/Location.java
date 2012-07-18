@@ -9,7 +9,8 @@ public class Location {
 	protected double latitude;
 	protected double longitude;
 	protected Point mapPoint;
-
+	private LocationType type;
+	
 	public Location() {
 		super();
 	}
@@ -55,5 +56,13 @@ public class Location {
 	
 	public String toString(){
 		return this.name;		
+	}
+
+	public LocationType getType() {
+		return type;
+	}
+
+	public void setType(LocationType type) {
+		this.type = type;
 	}
 }

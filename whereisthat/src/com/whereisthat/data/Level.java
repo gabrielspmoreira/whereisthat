@@ -6,8 +6,8 @@ public class Level {
 	private int maxRoundsToPass;
 	private long minScoreToPass;
 	private boolean hasLongQuestions;
-	private String dataset;
 	private String description;
+	private LocationType locationType;
 	
 	private Level nextLevel;
 	
@@ -16,13 +16,13 @@ public class Level {
 	}
 	
 	public Level(String name, int maxRoundsToPass, long minScoreToPass, boolean hasLongQuestions,
-			     String dataset, String description){
+			LocationType locationType, String description){
 		this.name = name;
 		this.maxRoundsToPass = maxRoundsToPass;
 		this.minScoreToPass = minScoreToPass;
 		this.hasLongQuestions = hasLongQuestions;
-		this.dataset = dataset;
 		this.description = description;
+		this.locationType = locationType;
 	}
 
 	public String getName() {
@@ -57,14 +57,6 @@ public class Level {
 		this.hasLongQuestions = hasLongQuestions;
 	}
 
-	public String getDataset() {
-		return dataset;
-	}
-
-	public void setDataset(String dataset) {
-		this.dataset = dataset;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -87,5 +79,13 @@ public class Level {
 
 	public void setNextLevel(Level nextLevel) {
 		this.nextLevel = nextLevel;
+	}
+
+	public LocationType getLocationType() {
+		return locationType;
+	}
+
+	public void setLocationType(LocationType locationType) {
+		this.locationType = locationType;
 	}
 }

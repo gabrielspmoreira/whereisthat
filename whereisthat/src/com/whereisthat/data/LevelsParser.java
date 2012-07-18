@@ -22,8 +22,8 @@ public class LevelsParser {
 				level.setMaxRoundsToPass(Integer.parseInt(levelDom.attr("MaxRoundsToPass")));
 				level.setMinScoreToPass(Integer.parseInt(levelDom.attr("MinScoreToPass")));
 				level.setHasLongQuestions(Boolean.parseBoolean(levelDom.attr("HasLongQuestions")));
-				level.setDataset(levelDom.attr("Dataset"));
-				level.setDescription(levelDom.attr("Description"));
+				level.setDescription(levelDom.attr("Description"));				
+				level.setLocationType(LocationType.valueOf(levelDom.attr("LocationType")));					
 				levels.add(level);
 			}
 			

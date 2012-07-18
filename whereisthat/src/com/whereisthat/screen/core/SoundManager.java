@@ -13,7 +13,9 @@ public abstract class SoundManager {
 	private static MediaPlayer menubackground;
 	private static MediaPlayer inGamebackground;
 	private static MediaPlayer winbackground;
-	private static MediaPlayer losebackground;	
+	private static MediaPlayer losebackground;
+	private static MediaPlayer openProgressBar;
+	private static MediaPlayer closeProgressBar;
 	
 	
 	public static void Init(Context context){
@@ -32,6 +34,10 @@ public abstract class SoundManager {
 		click = MediaPlayer.create(context, R.raw.click);
 		
 		mapTouch = MediaPlayer.create(context, R.raw.touch_map);
+		
+		openProgressBar = MediaPlayer.create(context, R.raw.openpb);	
+		
+		closeProgressBar = MediaPlayer.create(context, R.raw.closerpd);
 	}
 	
 	public static void start(SoundType type){
@@ -55,6 +61,12 @@ public abstract class SoundManager {
 			case lose:	
 				inGamebackground.setVolume(0.08f, 0.08f);
 				losebackground.start();
+				break;
+			case openPb:
+				openProgressBar.start();
+				break;
+			case closePb:
+				//closeProgressBar.start();
 				break;
 		}
 	}
