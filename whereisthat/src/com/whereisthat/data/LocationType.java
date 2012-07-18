@@ -1,6 +1,8 @@
 package com.whereisthat.data;
 
 public enum LocationType {
-	cities,
-	historicevents
+	citiesEasy,
+	citiesHard,
+	landmarks,
+	historicEvents
 }

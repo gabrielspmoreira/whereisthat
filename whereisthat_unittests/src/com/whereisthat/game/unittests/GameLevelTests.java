@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.whereisthat.data.Level;
+import com.whereisthat.data.LocationType;
 import com.whereisthat.game.rules.GameLevel;
 import com.whereisthat.game.rules.Round;
 
@@ -16,7 +17,7 @@ public class GameLevelTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		Level level = new Level("Cities", 5, 7000, false, "cities", "World Cities");
+		Level level = new Level("Cities", 5, 7000, false, LocationType.citiesEasy, "World Cities");
 		gameLevel = new GameLevel(level);
 	}
 

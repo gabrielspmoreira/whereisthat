@@ -7,5 +7,5 @@
     <Level Name="Cities_Hard" MaxRoundsToPass="7" MinScoreToPass="5000" HasLongQuestions="false" 
            Dataset="citiesHard" Description="World Cities (Hard)"></Level>
     <Level Name="Events" MaxRoundsToPass="50" MinScoreToPass="30000" HasLongQuestions="true" 
-           Dataset="historicevents" Description="Historical Events (years from -431 to 2011)"></Level>
+           Dataset="historicEvents" Description="Historical Events (years from -431 to 2011)"></Level>
 </Levels>

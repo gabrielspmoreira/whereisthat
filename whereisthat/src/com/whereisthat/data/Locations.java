@@ -53,19 +53,21 @@ public class Locations {
 	}
 	
 	public Location getNextLocation(Level level) {
-		LocationsDataset dataset = null;
-		//TODO: Change to enumerable
-		if (level.getDataset().equals("citiesEasy")){
-			dataset = citiesEasy;
-		}
-		else if (level.getDataset().equals("citiesHard")){
-			dataset = citiesHard;
-		}
-		else if (level.getDataset().equals("historicevents")){
-			dataset = events;
-		}
-		else if (level.getDataset().equals("landmarks")){
-			dataset = landmarks;
+		LocationsDataset dataset = null;		
+		
+		switch (level.getLocationType()){
+			case citiesEasy:
+				dataset = citiesEasy;
+				break;
+			case landmarks:
+				dataset = landmarks;
+				break;
+			case citiesHard:
+				dataset = citiesHard;
+				break;
+			case historicEvents:
+				dataset = events;
+				break;
 		}
 		
 		return getRandomLocation(dataset);
