@@ -26,8 +26,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		setContentView(R.layout.menu);
 		setCustomFont();
-		SoundManager.Init(getApplicationContext());
-		SoundManager.start(SoundType.menu);
+		//SoundManager.start(SoundType.menu);
 		((ImageView) findViewById(R.id.imgSettings)).setOnTouchListener(this);
 		checkNetwork();		
 	}
@@ -41,6 +40,13 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 	protected void onPause() {
 		super.onPause();
 		SoundManager.stop(SoundType.menu);
+	}
+	
+	@Override
+	protected void onResume() {
+		SoundManager.Init(getApplicationContext());
+		super.onResume();
+		SoundManager.start(SoundType.menu);
 	}
 
 	public void btnNewGame(View view){

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -67,23 +68,30 @@ public class GameEngine {
 		
 		game = new Game(map);
 		game.loadDatasets(resources);
-		gameTiming = new GameTiming();				
+		gameTiming = new GameTiming();	
 	}
 		
 	public void start()
 	{
-		SoundManager.start(SoundType.inGame);
+		//SoundManager.start(SoundType.inGame);
 		progressDialog = ProgressDialog.show(context, "", context.getString(R.string.msg_loading_map));
 		initMap();
 	}
 	
 	public void pause() {
-		map.pause();
+		map.pause(); 
+		 
 		SoundManager.stop(SoundType.inGame);
 	}
 	
 	public void resume() {
+<<<<<<< HEAD
 		//SoundManager.start(SoundType.inGame);
+=======
+		SoundManager.Init(context);
+		SoundManager.start(SoundType.inGame);
+		map.unpause();
+>>>>>>> Fixing map and game sound when returning from idle state
 	}
 	
 	public void finish(){

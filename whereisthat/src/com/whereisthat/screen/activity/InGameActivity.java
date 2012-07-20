@@ -26,8 +26,12 @@ public class InGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		setContentView(R.layout.ingame);
+<<<<<<< HEAD
 		setCustomFont();
 				
+=======
+		setCustomFont();	
+>>>>>>> Fixing map and game sound when returning from idle state
 		PanelManager panelManager = new PanelManager(InGameActivity.this,
 													 (TextView) findViewById(R.id.scoreLabel), 
                                                      (TextView) findViewById(R.id.levelLabel), 
@@ -56,7 +60,11 @@ public class InGameActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+<<<<<<< HEAD
 		//engine.pause();
+=======
+		engine.resume();
+>>>>>>> Fixing map and game sound when returning from idle state
 	};
 
 	@Override
