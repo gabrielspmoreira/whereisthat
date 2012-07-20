@@ -11,11 +11,9 @@ import android.widget.TextView;
 import com.esri.android.map.MapView;
 import com.whereisthat.R;
 import com.whereisthat.helper.FontHelper;
-import com.whereisthat.helper.SoundType;
 import com.whereisthat.screen.core.GameEngine;
 import com.whereisthat.screen.core.PanelManager;
 import com.whereisthat.screen.core.ScoreManager;
-import com.whereisthat.screen.core.SoundManager;
 
 public class InGameActivity extends Activity {
 	
@@ -26,12 +24,7 @@ public class InGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		setContentView(R.layout.ingame);
-<<<<<<< HEAD
-		setCustomFont();
-				
-=======
 		setCustomFont();	
->>>>>>> Fixing map and game sound when returning from idle state
 		PanelManager panelManager = new PanelManager(InGameActivity.this,
 													 (TextView) findViewById(R.id.scoreLabel), 
                                                      (TextView) findViewById(R.id.levelLabel), 
@@ -54,23 +47,19 @@ public class InGameActivity extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		//engine.pause();
+		engine.pause();
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-<<<<<<< HEAD
-		//engine.pause();
-=======
 		engine.resume();
->>>>>>> Fixing map and game sound when returning from idle state
 	};
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		//engine.finish();
+		engine.finish();
 	}
 	
 	private void setCustomFont() {

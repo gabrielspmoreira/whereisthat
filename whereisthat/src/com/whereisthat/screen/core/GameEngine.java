@@ -85,14 +85,11 @@ public class GameEngine {
 	}
 	
 	public void resume() {
-<<<<<<< HEAD
-		//SoundManager.start(SoundType.inGame);
-=======
 		SoundManager.Init(context);
 		SoundManager.start(SoundType.inGame);
 		map.unpause();
->>>>>>> Fixing map and game sound when returning from idle state
 	}
+	
 	
 	public void finish(){
 		gameTiming.stopRound();
@@ -156,9 +153,9 @@ public class GameEngine {
 		circleLayer.removeAll();
 	}
 	
-	private void setTargetLocation(){	
-		currentLocation = game.getNextLocation();
-		panelManager.updateView(currentLocation);	
+	private void setTargetLocation(){
+		currentLocation = game.getNextLocation();		
+		panelManager.setLocationView(currentLocation.toString());	
 	}
 	
 	private void startRoundTimer(){
