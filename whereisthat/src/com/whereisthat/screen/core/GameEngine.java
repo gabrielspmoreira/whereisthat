@@ -153,9 +153,11 @@ public class GameEngine {
 		circleLayer.removeAll();
 	}
 	
-	private void setTargetLocation(){
-		currentLocation = game.getNextLocation();		
-		panelManager.setLocationView(currentLocation.toString());	
+	private void setTargetLocation(){	
+		currentLocation = game.getNextLocation();
+		panelManager.updateView(currentLocation, 
+								game.getCurrentLevel().getSequence(), 
+								game.getCurrentLevel().getDescription());	
 	}
 	
 	private void startRoundTimer(){

@@ -30,7 +30,9 @@ public class InGameActivity extends Activity {
                                                      (TextView) findViewById(R.id.levelLabel), 
                                                      (TextView) findViewById(R.id.AdvanceLabel), 
                                                      (TextView) findViewById(R.id.locationLabel),  
-                                                     (ProgressBar) findViewById(R.id.progressBar));	
+                                                     (ProgressBar) findViewById(R.id.progressBar),
+                                                     (RelativeLayout) findViewById(R.id.tipContainerIni),
+                                                     (RelativeLayout) findViewById(R.id.tipContainer));	
 		
 		ScoreManager scoreManager = new ScoreManager((RelativeLayout) findViewById(R.id.llResult),
 													 (Button) findViewById(R.id.btnStopGame),
@@ -71,5 +73,7 @@ public class InGameActivity extends Activity {
 		FontHelper.SetFont((TextView) findViewById(R.id.rt_distance));
 		FontHelper.SetFont((Button) findViewById(R.id.btnStopGame));
 		FontHelper.SetFont((Button) findViewById(R.id.btnNextRound));		
+		FontHelper.SetFont((TextView) findViewById(R.id.textTip));
+		FontHelper.SetFont((TextView) findViewById(R.id.textTipDesc));
 	}
 }

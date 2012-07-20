@@ -4,11 +4,13 @@ package com.whereisthat.screen.core;
 import android.content.Context;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.whereisthat.R;
 import com.whereisthat.data.HistoricEvent;
 import com.whereisthat.data.Location;
+import com.whereisthat.data.LocationType;
 import com.whereisthat.helper.SoundType;
 
 public class PanelManager {
@@ -18,6 +20,8 @@ public class PanelManager {
 	private TextView levelView;
 	private TextView minimumScoreToAvanceView;
 	private TextView locationView;
+	private RelativeLayout containerTipClose;
+    private RelativeLayout containerTipOpen;
 	private ProgressBar progressBar;
 	private Location location;
 	private Boolean hasExpanded;
@@ -28,20 +32,25 @@ public class PanelManager {
 			            TextView levelView, 
 			            TextView minimumScoreToAvanceView, 
 			            TextView locationView,
-			            ProgressBar progressBar){
+			            ProgressBar progressBar,
+			            RelativeLayout containerTipClose,
+			            RelativeLayout containerTipOpen){
 		this.context = context;
 		this.gameScoreView = gameScoreView;
 		this.levelView = levelView;
 		this.minimumScoreToAvanceView = minimumScoreToAvanceView;
 		this.locationView = locationView;
 		this.progressBar = progressBar;
-		this.progressBar.setMax(10000);			
+		this.progressBar.setMax(10000);	
+		this.containerTipClose = containerTipClose;
+		this.containerTipOpen = containerTipOpen;
 		
 		hasExpanded = false;
-		progressBar.setOnClickListener(new DetailsListener());
-		levelView.setText(String.format("%s 1 (cidades)", context.getString(R.string.level_label)));
+		levelView.setText(String.format("%s 1", context.getString(R.string.level_label)));
 		minimumScoreToAvanceView.setText(String.format("%s --", context.getString(R.string.next_score_level_label)));
-		oldHeight = progressBar.getLayoutParams().height;
+		oldHeight = progressBar.getLayoutParams().height;		
+		containerTipClose.setOnClickListener(new DetailsListener());
+		containerTipOpen.setOnClickListener(new CloseDetailsListener());
 	}
 	
 	public void updatePanel(long score, int level, long minimumScoreToAvance)	{
@@ -50,9 +59,12 @@ public class PanelManager {
 		//minimumScoreToAvanceView.setText(String.format("Score to advance: %s", minimumScoreToAvance));
 	}
 	
-	public void updateView(Location location){
+	public void updateView(Location location, int sequence, String levelDescription){
 		this.location = location;
-		locationView.setText(location.toString());		
+		locationView.setText(location.toString());
+		levelView.setText(String.format("%s %d - %s", context.getString(R.string.level_label), sequence, levelDescription));		
+		if(location.getType() == LocationType.historicEvents) unExpandDescription();
+		
 		restartProgress();
 	}
 	
@@ -65,29 +77,33 @@ public class PanelManager {
 		progressBar.setProgress(progress);	
 	}
 	
-	private void expandDescription()
+	public void expandDescription()
 	{
 		switch(location.getType()) {
-			case historicEvents:		
-				hasExpanded = true;
-				SoundManager.start(SoundType.openPb);				
-				//DropDownAnim anim = new DropDownAnim(progressBar, 150, true);
-				//progressBar.setAnimation(anim);					
-				progressBar.getLayoutParams().height = 200;
-				progressBar.requestLayout();
+			case historicEvents:				
+				SoundManager.start(SoundType.openPb);
+				containerTipClose.setVisibility(View.GONE);
+				containerTipOpen.setVisibility(View.VISIBLE);					
+				containerTipClose.getLayoutParams().height = 0;
+				containerTipClose.requestLayout();				
+				containerTipOpen.getLayoutParams().height = 70;
+				containerTipOpen.requestLayout();				
 				locationView.setText(((HistoricEvent)location).getDescription());	
 				break;	
 		}
 	}
 	
-	private void unExpandDescription()
+	public void unExpandDescription()
 	{
 		switch(location.getType()) {
 			case historicEvents:
-				hasExpanded = false;
 				SoundManager.start(SoundType.closePb);
-				progressBar.getLayoutParams().height = oldHeight;
-				progressBar.requestLayout();
+				containerTipClose.setVisibility(View.VISIBLE);
+				containerTipOpen.setVisibility(View.GONE);					
+				containerTipClose.getLayoutParams().height = 25;
+				containerTipClose.requestLayout();				
+				containerTipOpen.getLayoutParams().height = 0;
+				containerTipOpen.requestLayout();
 				locationView.setText(location.toString());
 				break;	
 		}
@@ -95,8 +111,13 @@ public class PanelManager {
 	
 	private class DetailsListener implements android.view.View.OnClickListener {
 		public void onClick(View v) {
-			if(!hasExpanded) expandDescription();
-			else unExpandDescription();			
+			expandDescription();		
+		}
+    }
+	
+	private class CloseDetailsListener implements android.view.View.OnClickListener {
+		public void onClick(View v) {
+			unExpandDescription();			
 		}
     }
 }

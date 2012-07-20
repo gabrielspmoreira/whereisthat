@@ -47,22 +47,95 @@
 		        android:id="@+id/progressBar"
 		        style="@style/InGameProgressbarStyle"
 		        android:layout_width="fill_parent"
-		        android:layout_height="42dp"
-		        android:scaleType="center" />
-
+		        android:layout_height="32dp"
+		        android:scaleType="center" />
              <TextView
-		        android:id="@+id/locationLabel"
-		        style="@style/QuestionProgressBarStyle"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_alignTop="@id/progressBar"
-		        android:layout_centerHorizontal="true"
-		        android:textAppearance="?android:attr/textAppearanceLarge" />
+                 android:id="@+id/locationLabel"
+                 style="@style/QuestionProgressBarStyle"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignTop="@id/progressBar"
+                 android:layout_centerHorizontal="true"
+                 android:textAppearance="?android:attr/textAppearanceLarge"
+                 android:textSize="18dp" />
+                         
+             <RelativeLayout
+                 android:id="@+id/tipContainerIni"
+                 android:layout_width="fill_parent"
+                 android:layout_height="0dp"
+                 android:layout_below="@+id/progressBar"
+                 android:background="@drawable/gradient_dialog"
+                 android:gravity="bottom"
+                 android:orientation="horizontal"
+                 android:visibility="invisible" >
+                 
+                 <ImageView
+                     android:id="@+id/imgtip"
+                     android:layout_width="16dp"
+                     android:layout_height="16dp"
+                     android:layout_marginTop="5dp"
+                     android:layout_alignParentTop="true"
+                     android:gravity="center_vertical"                       
+                     android:src="@drawable/tip" />
+                 
+                 <TextView
+                     android:id="@+id/textTip"
+                     android:layout_width="fill_parent"
+                     android:layout_height="fill_parent"
+                     android:layout_centerInParent="true"
+                     android:layout_marginBottom="2dp"
+                     android:layout_marginLeft="30dp"
+                     android:layout_marginRight="5dp"
+                     android:layout_marginTop="7dp"
+                     android:gravity="center_vertical"
+                     android:text="@string/level_tip"
+                     android:textColor="#FFFFFF" />
+
+                 <ImageView
+                     android:id="@+id/arrowdown"
+                     android:layout_width="16dp"
+                     android:layout_height="16dp"
+                     android:layout_alignParentBottom="true"
+                     android:layout_centerHorizontal="true"                       
+                     android:src="@drawable/adown" />
+          
+             </RelativeLayout>
+                 
+             <RelativeLayout
+                 android:id="@+id/tipContainer"
+                 android:layout_width="fill_parent"
+                 android:layout_height="0dp"
+                 android:layout_below="@+id/tipContainerIni"
+                 android:background="@drawable/gradient_dialog"
+                 android:gravity="bottom"
+                 android:orientation="horizontal"
+                 android:visibility="invisible" >
+
+                 <TextView
+                     android:id="@+id/textTipDesc"
+                     android:layout_width="fill_parent"
+                     android:layout_height="fill_parent"
+                     android:layout_centerInParent="true"
+                     android:layout_marginBottom="2dp"
+                     android:layout_marginLeft="5dp"
+                     android:layout_marginRight="5dp"
+                     android:layout_marginTop="7dp"
+                     android:gravity="center_horizontal"                     
+                     android:textColor="#FFFFFF" />                 
+                 <ImageView
+                     android:id="@+id/arrowtop"
+                     android:layout_width="16dp"
+                     android:layout_height="16dp"
+                     android:layout_alignParentBottom="true"
+                     android:layout_centerHorizontal="true"                       
+                     android:src="@drawable/atop" />
+          
+             </RelativeLayout>
             <com.esri.android.map.MapView
                 android:id="@+id/gameMap"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_below="@+id/progressBar" />
+                android:layout_below="@+id/tipContainer" />
             
         </RelativeLayout>
  
@@ -93,14 +166,15 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageLevel"
             android:text="@string/level_1_cities_" />
-        
+               
         <ImageView
             android:id="@+id/imageAdvanced"
             android:layout_width="30dp"
             android:layout_height="32dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/AdvanceLabel"
-            android:src="@drawable/nextlevel" /> 
+            android:src="@drawable/nextlevel"
+            android:visibility="invisible" /> 
         <TextView
             android:id="@+id/AdvanceLabel"
             android:layout_width="wrap_content"
@@ -108,8 +182,9 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:text="Next level: 2500 pts" />
-
+            android:text="Next level: 2500 pts"
+            android:visibility="invisible" />
+		
     </RelativeLayout>    
     <RelativeLayout
         android:id="@+id/llResult"
@@ -138,7 +213,6 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:gravity="center"
-	            android:text="1105 pts"
 	            android:textAppearance="?android:attr/textAppearanceLarge" />
 	
 	        <TextView
@@ -150,7 +224,6 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:gravity="center"
-	            android:text="1386 km"
 	            android:textAppearance="?android:attr/textAppearanceLarge" />
  
     	</LinearLayout>

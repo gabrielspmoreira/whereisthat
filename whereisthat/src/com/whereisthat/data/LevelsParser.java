@@ -18,6 +18,7 @@ public class LevelsParser {
 			
 			for(XmlDom levelDom: levelsDom){
 				Level level = new Level();
+				level.setSequence(Integer.parseInt(levelDom.attr("Sequence")));
 				level.setName(levelDom.attr("Name"));
 				level.setMaxRoundsToPass(Integer.parseInt(levelDom.attr("MaxRoundsToPass")));
 				level.setMinScoreToPass(Integer.parseInt(levelDom.attr("MinScoreToPass")));

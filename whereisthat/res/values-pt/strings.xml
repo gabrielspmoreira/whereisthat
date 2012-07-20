@@ -21,6 +21,6 @@
 	<string name="msg_finish_level_fail">Tão perto! =(</string>
 	<string name="msg_finish_level_tryAgain">Tente novamente!</string>
 	<string name="msg_finish_level_new_label">Novo</string>	
-	
+	<string name="level_tip">Dica</string>
 </resources>
 

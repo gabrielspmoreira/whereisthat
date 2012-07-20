@@ -20,9 +20,9 @@
 	<string name="msg_finish_level_win">Amazing!</string>
 	<string name="msg_finish_level_fail">So close! =(</string>
 	<string name="msg_finish_level_tryAgain">Try again!</string>
-	<string name="msg_finish_level_new_label">New</string>	
-	
-	<string name="level_1_cities_">Level 1 (cities)</string>	
+	<string name="msg_finish_level_new_label">New</string>		
+	<string name="level_1_cities_">Level 1 (cities)</string>
+	<string name="level_tip">Tip</string>	
 	
 </resources>
 

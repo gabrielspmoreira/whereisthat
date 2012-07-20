@@ -7,6 +7,7 @@ public class Level {
 	private long minScoreToPass;
 	private boolean hasLongQuestions;
 	private String description;
+	private int sequence;
 	private LocationType locationType;
 	
 	private Level nextLevel;
@@ -15,8 +16,9 @@ public class Level {
 		
 	}
 	
-	public Level(String name, int maxRoundsToPass, long minScoreToPass, boolean hasLongQuestions,
+	public Level(int sequence, String name, int maxRoundsToPass, long minScoreToPass, boolean hasLongQuestions,
 			LocationType locationType, String description){
+		this.sequence = sequence;
 		this.name = name;
 		this.maxRoundsToPass = maxRoundsToPass;
 		this.minScoreToPass = minScoreToPass;
@@ -25,6 +27,14 @@ public class Level {
 		this.locationType = locationType;
 	}
 
+	public int getSequence() {
+		return sequence;
+	}
+	
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
+	}
+	
 	public String getName() {
 		return name;
 	}
