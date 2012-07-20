@@ -64,7 +64,7 @@
                  android:layout_width="fill_parent"
                  android:layout_height="0dp"
                  android:layout_below="@+id/progressBar"
-                 android:background="@drawable/gradient_dialog"
+                 android:background="#0564aa"
                  android:gravity="bottom"
                  android:orientation="horizontal"
                  android:visibility="invisible" >
@@ -106,7 +106,7 @@
                  android:layout_width="fill_parent"
                  android:layout_height="0dp"
                  android:layout_below="@+id/tipContainerIni"
-                 android:background="@drawable/gradient_dialog"
+                 android:background="#0564aa"
                  android:gravity="bottom"
                  android:orientation="horizontal"
                  android:visibility="invisible" >

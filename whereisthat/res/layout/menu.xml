@@ -94,6 +94,16 @@
         android:paddingTop="4dp" >
         
         <ImageView
+            android:id="@+id/imgAbout"
+            android:layout_width="45dp"
+            android:layout_height="32dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mbt_about" />
+        
+        <!-- 
+        
+        <ImageView
             android:id="@+id/imgRanking"
             android:layout_width="45dp"
             android:layout_height="32dp"
@@ -114,6 +124,8 @@
             android:layout_height="32dp"
             android:layout_toRightOf="@+id/imgRanking"
             android:src="@drawable/mbt_exit" />
+            
+         -->
         
     </RelativeLayout>       
  

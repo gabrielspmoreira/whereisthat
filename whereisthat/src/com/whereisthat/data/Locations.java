@@ -1,6 +1,7 @@
 package com.whereisthat.data;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,15 +16,19 @@ import com.whereisthat.R;
 public class Locations {	
 	
 	private MapView map; //TODO: Remove this map dependency
+	private ArrayList<Location> returnedLocations;
 	
 	public Locations(MapView map){
 		this.map = map;
+		this.returnedLocations = new ArrayList<Location>();
 	}
 	
 	private LocationsDataset citiesEasy;
 	private LocationsDataset citiesHard;
 	private LocationsDataset events;
 	private LocationsDataset landmarks;
+	
+	
 
 	public LocationsDataset getCitiesEasy(){
 		return citiesEasy;
@@ -74,7 +79,14 @@ public class Locations {
 				break;
 		}
 		
-		return getRandomLocation(dataset);
+		Location location = null;
+		do {
+			location = getRandomLocation(dataset);
+		} while (returnedLocations.contains(location));
+		
+		returnedLocations.add(location);
+		
+		return location;
 	}
 	
 	public Location getRandomLocation(LocationsDataset dataset){
@@ -94,5 +106,9 @@ public class Locations {
 		location.setMapPoint(pointReproj);
 		
 		return location;
+	}
+	
+	public void resetReturnedLocations(){
+		returnedLocations.clear();
 	}
 }

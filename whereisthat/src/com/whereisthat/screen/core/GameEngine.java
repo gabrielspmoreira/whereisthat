@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -25,8 +24,6 @@ import com.esri.core.symbol.SimpleFillSymbol;
 import com.whereisthat.R;
 import com.whereisthat.data.Level;
 import com.whereisthat.data.Location;
-import com.whereisthat.data.Locations;
-import com.whereisthat.dialog.BetaDialog;
 import com.whereisthat.dialog.FinishDialog;
 import com.whereisthat.dialog.IFinishDialogListener;
 import com.whereisthat.dialog.IScoreDialogListener;
@@ -65,6 +62,8 @@ public class GameEngine {
 		this.panelManager = panelManager;
 		this.scoreManager = scoreManager;
 		hasTap = false;
+		
+		this.map.setEsriLogoVisible(true);
 		
 		game = new Game(map);
 		game.loadDatasets(resources);
@@ -121,7 +120,7 @@ public class GameEngine {
 			public void onSingleTap(float x, float y) {
 				executeSingleTap(x, y);
 			}
-		});
+		});		
 	}
 		
 	private void gameStart(){
@@ -285,7 +284,11 @@ public class GameEngine {
 				nextGameRound();
 			}		
 			public void stopGame() {
-				endBeta();
+				SoundManager.start(SoundType.click);
+				SoundManager.stop(SoundType.inGame);
+				Intent action = new Intent(context, GameMenuActivity.class);
+				context.startActivity(action);
+				((Activity) context).finish();
 			}
 		});
 	}
@@ -293,23 +296,4 @@ public class GameEngine {
 	private void updateScorePanel(long totalScore){
 		panelManager.updatePanel(totalScore, 1, 1500);
 	}	
-	
-	
-	private void endBeta(){
-		BetaDialog dialog = new BetaDialog(context, game.getScore());
-		
-		dialog.addListener(new IFinishDialogListener() {				
-			public void continueGame() {
-
-			}		
-			public void endGame() {
-				SoundManager.start(SoundType.click);
-				SoundManager.stop(SoundType.inGame);
-				Intent action = new Intent(context, GameMenuActivity.class);
-				context.startActivity(action);
-				((Activity) context).finish();
-			}
-		});		
-		dialog.show();
-	}
 }

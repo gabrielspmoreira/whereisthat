@@ -7,6 +7,6 @@ public abstract class GameConstants {
 	public static final String CUSTOM_FONT = "fonts/exo.OTF";
 	
 	public static final long MAXIMUM_KM_DISTANCE_TO_SCORE = 2000;
-	public static final long MAXIMUM_MILISECONDS_TO_ANSWER = 10000;
+	public static final int MAXIMUM_MILISECONDS_TO_ANSWER = 20000;
 	public static final long MAXIMUM_SCORE_FOR_TIME = 200;
 }

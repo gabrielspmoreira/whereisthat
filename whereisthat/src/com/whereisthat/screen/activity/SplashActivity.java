@@ -9,7 +9,7 @@ import com.whereisthat.R;
 
 public class SplashActivity extends Activity {
     
-	private final int SPLASH_SCREEN_DURATION = 500;
+	private final int SPLASH_SCREEN_DURATION = 0;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {

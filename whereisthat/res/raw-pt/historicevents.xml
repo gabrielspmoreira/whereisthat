@@ -36,13 +36,6 @@
 		<Description>A construção da primeira muralha de Chang'an inicia</Description>
 	</HistoricEvent>
 	<HistoricEvent>
-		<Year>-25</Year>
-		<Place>China</Place>
-		<Lat>35</Lat>
-		<Long>105</Long>
-		<Description>Roma, capital do Império Romano, se torna a maior cidade do mundo</Description>
-	</HistoricEvent>
-	<HistoricEvent>
 		<Year>40</Year>
 		<Place>Alexandria</Place>
 		<Lat>31.198</Lat>

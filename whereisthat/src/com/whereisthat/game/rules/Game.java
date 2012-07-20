@@ -36,6 +36,8 @@ public class Game {
 		//{
 			
 		//}
+		
+		locations.resetReturnedLocations();
 		gameLevels.nextLevel();
 	}
 	

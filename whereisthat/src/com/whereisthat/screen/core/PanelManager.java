@@ -2,6 +2,7 @@
 package com.whereisthat.screen.core;
 
 import android.content.Context;
+import android.provider.SyncStateContract.Constants;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -11,6 +12,7 @@ import com.whereisthat.R;
 import com.whereisthat.data.HistoricEvent;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.LocationType;
+import com.whereisthat.helper.GameConstants;
 import com.whereisthat.helper.SoundType;
 
 public class PanelManager {
@@ -20,12 +22,11 @@ public class PanelManager {
 	private TextView levelView;
 	private TextView minimumScoreToAvanceView;
 	private TextView locationView;
+	private TextView locationDescription;
 	private RelativeLayout containerTipClose;
     private RelativeLayout containerTipOpen;
 	private ProgressBar progressBar;
 	private Location location;
-	private Boolean hasExpanded;
-	private int oldHeight;
 	
 	public PanelManager(Context context,
 			 			TextView gameScoreView, 
@@ -41,14 +42,13 @@ public class PanelManager {
 		this.minimumScoreToAvanceView = minimumScoreToAvanceView;
 		this.locationView = locationView;
 		this.progressBar = progressBar;
-		this.progressBar.setMax(10000);	
+		this.progressBar.setMax(GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER);
 		this.containerTipClose = containerTipClose;
 		this.containerTipOpen = containerTipOpen;
 		
-		hasExpanded = false;
 		levelView.setText(String.format("%s 1", context.getString(R.string.level_label)));
-		minimumScoreToAvanceView.setText(String.format("%s --", context.getString(R.string.next_score_level_label)));
-		oldHeight = progressBar.getLayoutParams().height;		
+		minimumScoreToAvanceView.setText(String.format("%s --", context.getString(R.string.next_score_level_label)));	
+		locationDescription = (TextView) containerTipOpen.findViewById(R.id.textTipDesc);
 		containerTipClose.setOnClickListener(new DetailsListener());
 		containerTipOpen.setOnClickListener(new CloseDetailsListener());
 	}
@@ -63,7 +63,7 @@ public class PanelManager {
 		this.location = location;
 		locationView.setText(location.toString());
 		levelView.setText(String.format("%s %d - %s", context.getString(R.string.level_label), sequence, levelDescription));		
-		if(location.getType() == LocationType.historicEvents) unExpandDescription();
+		if(location.getType() == LocationType.historicEvents) expandDescription();
 		
 		restartProgress();
 	}
@@ -73,40 +73,32 @@ public class PanelManager {
 		progressBar.setProgress(0);	
 	}
 	
-	public void setProgress(int progress) {
+	public void setProgress(int progress) {		
 		progressBar.setProgress(progress);	
 	}
 	
 	public void expandDescription()
-	{
-		switch(location.getType()) {
-			case historicEvents:				
-				SoundManager.start(SoundType.openPb);
-				containerTipClose.setVisibility(View.GONE);
-				containerTipOpen.setVisibility(View.VISIBLE);					
-				containerTipClose.getLayoutParams().height = 0;
-				containerTipClose.requestLayout();				
-				containerTipOpen.getLayoutParams().height = 70;
-				containerTipOpen.requestLayout();				
-				locationView.setText(((HistoricEvent)location).getDescription());	
-				break;	
-		}
+	{				
+		SoundManager.start(SoundType.click);
+		containerTipClose.setVisibility(View.GONE);
+		containerTipOpen.setVisibility(View.VISIBLE);					
+		containerTipClose.getLayoutParams().height = 0;
+		containerTipClose.requestLayout();				
+		containerTipOpen.getLayoutParams().height = 100;
+		containerTipOpen.requestLayout();	
+		locationDescription.setText(((HistoricEvent)location).getDescription());	
 	}
 	
 	public void unExpandDescription()
 	{
-		switch(location.getType()) {
-			case historicEvents:
-				SoundManager.start(SoundType.closePb);
-				containerTipClose.setVisibility(View.VISIBLE);
-				containerTipOpen.setVisibility(View.GONE);					
-				containerTipClose.getLayoutParams().height = 25;
-				containerTipClose.requestLayout();				
-				containerTipOpen.getLayoutParams().height = 0;
-				containerTipOpen.requestLayout();
-				locationView.setText(location.toString());
-				break;	
-		}
+		SoundManager.start(SoundType.click);
+		containerTipClose.setVisibility(View.VISIBLE);
+		containerTipOpen.setVisibility(View.GONE);					
+		containerTipClose.getLayoutParams().height = 50;
+		containerTipClose.requestLayout();				
+		containerTipOpen.getLayoutParams().height = 0;
+		containerTipOpen.requestLayout();
+		locationDescription.setText("");
 	}
 	
 	private class DetailsListener implements android.view.View.OnClickListener {
