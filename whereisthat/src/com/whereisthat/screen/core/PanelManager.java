@@ -12,6 +12,7 @@ import com.whereisthat.R;
 import com.whereisthat.data.HistoricEvent;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.LocationType;
+import com.whereisthat.game.rules.IRulesSettings;
 import com.whereisthat.helper.GameConstants;
 import com.whereisthat.helper.SoundType;
 
@@ -29,6 +30,7 @@ public class PanelManager {
 	private Location location;
 	
 	public PanelManager(Context context,
+						IRulesSettings rulesSettings,
 			 			TextView gameScoreView, 
 			            TextView levelView, 
 			            TextView minimumScoreToAvanceView, 
@@ -42,7 +44,7 @@ public class PanelManager {
 		this.minimumScoreToAvanceView = minimumScoreToAvanceView;
 		this.locationView = locationView;
 		this.progressBar = progressBar;
-		this.progressBar.setMax(GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER);
+		this.progressBar.setMax(rulesSettings.getMaximumMilisecondsToAnswer());
 		this.containerTipClose = containerTipClose;
 		this.containerTipOpen = containerTipOpen;
 		

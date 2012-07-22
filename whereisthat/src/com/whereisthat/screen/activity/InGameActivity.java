@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.esri.android.map.MapView;
 import com.whereisthat.R;
+import com.whereisthat.game.rules.IRulesSettings;
+import com.whereisthat.game.rules.RulesSettings;
 import com.whereisthat.helper.FontHelper;
 import com.whereisthat.screen.core.GameEngine;
 import com.whereisthat.screen.core.PanelManager;
@@ -25,7 +27,10 @@ public class InGameActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		setContentView(R.layout.ingame);
 		setCustomFont();	
+		IRulesSettings rulesSettings = new RulesSettings();
+		
 		PanelManager panelManager = new PanelManager(InGameActivity.this,
+													 rulesSettings,
 													 (TextView) findViewById(R.id.scoreLabel), 
                                                      (TextView) findViewById(R.id.levelLabel), 
                                                      (TextView) findViewById(R.id.AdvanceLabel), 
@@ -42,7 +47,8 @@ public class InGameActivity extends Activity {
 							   getResources(),
 							   (MapView) findViewById(R.id.gameMap),
 							   panelManager,
-							   scoreManager);		
+							   scoreManager,
+							   rulesSettings);		
 		engine.start();
 	}
 	

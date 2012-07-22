@@ -11,11 +11,12 @@ public class Game {
 	
 	private GameLevels gameLevels;
 	private Locations locations;
-	private int numberOfPlays;
+	private IRulesSettings rulesSettings;
 	
-	public Game(MapView map){
+	public Game(MapView map, IRulesSettings rulesSettings){
 		gameLevels = new GameLevels();
 		locations = new Locations(map);
+		this.rulesSettings = rulesSettings;
 	}
 	
 	public void loadDatasets(Resources resource){
@@ -27,16 +28,15 @@ public class Game {
 		nextLevel();
 	}
 	
-	public void addRound(Round round){
-		gameLevels.addRound(round);
+	public void addRound(double distance, long answerDelay){
+		gameLevels.addRound(new Round(distance, answerDelay, rulesSettings));
 	}
 	
-	public void nextLevel(){		
-		//if(++numberOfPlays > gameLevels.getCurrentLevel().getMaxRoundsToPass())
-		//{
-			
-		//}
-		
+	public long getLastRoundScore(){
+		return gameLevels.getLastRoundScore();
+	}
+	
+	public void nextLevel(){				
 		locations.resetReturnedLocations();
 		gameLevels.nextLevel();
 	}

@@ -28,7 +28,9 @@ import com.whereisthat.dialog.FinishDialog;
 import com.whereisthat.dialog.IFinishDialogListener;
 import com.whereisthat.dialog.IScoreDialogListener;
 import com.whereisthat.game.rules.Game;
+import com.whereisthat.game.rules.IRulesSettings;
 import com.whereisthat.game.rules.Round;
+import com.whereisthat.game.rules.RulesSettings;
 import com.whereisthat.helper.GameConstants;
 import com.whereisthat.helper.GeometryHelper;
 import com.whereisthat.helper.SoundType;
@@ -54,7 +56,8 @@ public class GameEngine {
 				      Resources resorces,
 					  MapView map, 					  
 					  PanelManager panelManager,
-					  ScoreManager scoreManager){
+					  ScoreManager scoreManager,
+					  IRulesSettings rulesSettings){
 		
 		this.context = context;
 		this.resources = resorces;
@@ -65,7 +68,7 @@ public class GameEngine {
 		
 		this.map.setEsriLogoVisible(true);
 		
-		game = new Game(map);
+		game = new Game(map,rulesSettings);
 		game.loadDatasets(resources);
 		gameTiming = new GameTiming();	
 	}
@@ -213,10 +216,9 @@ public class GameEngine {
 		//createCircle(targetPoint, pointClicked);
 		createCircleWithAnim(targetPoint, pointClicked, 30);
 		double distanceKm = getKmDistanceFromTarget(pointClicked);	
-		Round round = new Round(distanceKm, elapsedTime);
-		game.addRound(round);
+		game.addRound(distanceKm, elapsedTime);
 		long score = game.getScore();
-		long roundScore = round.getScore();		
+		long roundScore = game.getLastRoundScore();		
 		showRoundScore(distanceKm, elapsedTime, roundScore);	
 		updateScorePanel(score);
 	}

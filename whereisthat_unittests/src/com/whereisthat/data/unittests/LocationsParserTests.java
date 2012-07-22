@@ -14,6 +14,7 @@ import android.database.DataSetObservable;
 
 import com.whereisthat.data.City;
 import com.whereisthat.data.Location;
+import com.whereisthat.data.LocationType;
 import com.whereisthat.data.LocationsDataset;
 import com.whereisthat.data.LocationsParser;
 
@@ -30,17 +31,17 @@ public class LocationsParserTests {
 			fail(e.getMessage());
 			return;
 		}		
-		LocationsDataset cities = LocationsParser.parseCities(in);
+		LocationsDataset cities = LocationsParser.parseCities(in, LocationType.citiesEasy);
 		
 		assertEquals(2, cities.getLocations().size());
 		
-		City city2 = (City) cities.getLocations().get(1);
-		assertEquals(2, city2.getId());
-		assertEquals("Abidjan", city2.getName());
-		assertEquals(4351086, city2.getPopulation());
-		assertEquals(5.33, city2.getLatitude(),0);
-		assertEquals(-4.03, city2.getLongitude(),0);
-		assertEquals("Ivory Coast", city2.getCountry());
+		City city2 = (City) cities.getLocations().get(0);
+		assertEquals(10, city2.getId());
+		assertEquals("Alexandria", city2.getName());
+		assertEquals(4532174, city2.getPopulation());
+		assertEquals(31.22, city2.getLatitude(),0);
+		assertEquals(29.95, city2.getLongitude(),0);
+		assertEquals("Egypt", city2.getCountry());
 	}
 
 }

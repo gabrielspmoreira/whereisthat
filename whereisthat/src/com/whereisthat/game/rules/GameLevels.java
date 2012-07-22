@@ -61,6 +61,10 @@ public class GameLevels {
 		return score;
 	}
 	
+	public long getLastRoundScore(){
+		return gameLevels.get(gameLevels.size()-1).getLastRoundScore();
+	}
+	
 	public Level getCurrentLevel(){
 		return currentLevel.getLevel();
 	}

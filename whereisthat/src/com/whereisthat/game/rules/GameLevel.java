@@ -29,6 +29,10 @@ public class GameLevel {
 		return score;
 	}
 	
+	public long getLastRoundScore(){
+		return rounds.get(rounds.size()-1).getScore();
+	}
+	
 	
 	public boolean IsNextLevelReached(){
 		return level.IsNextLevelReached(getScore());

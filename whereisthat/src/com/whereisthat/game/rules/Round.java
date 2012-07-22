@@ -1,16 +1,16 @@
 package com.whereisthat.game.rules;
 
-import com.whereisthat.helper.GameConstants;
-
 public class Round {
 	
 	private double distance;
 	private long answerDelay;
 	private long calculatedScore;
+	private IRulesSettings rulesSettings;
 	
-	public Round(double distance, long answerDelay){
+	public Round(double distance, long answerDelay, IRulesSettings rulesSettings){
 		this.distance = distance;
 		this.answerDelay = answerDelay;
+		this.rulesSettings = rulesSettings;
 		this.calculatedScore = -1;
 	}
 	
@@ -26,14 +26,14 @@ public class Round {
 		if (calculatedScore < 0){
 			calculatedScore = 0;
 			if (distance >= 0 && answerDelay >= 0 &&
-			    answerDelay <= GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER){
+			    answerDelay <= rulesSettings.getMaximumMilisecondsToAnswer()){
 				
-				long distanceScore = Math.max(0, GameConstants.MAXIMUM_KM_DISTANCE_TO_SCORE - (long) Math.floor(distance));
+				long distanceScore = Math.max(0, rulesSettings.getMaximumKmDistanceToScore() - (long) Math.floor(distance));
 				long answerDelayScore = 0;
 
 				if (distanceScore > 0){
-					answerDelayScore = Math.max(0, (GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER - answerDelay) / 
-							(GameConstants.MAXIMUM_MILISECONDS_TO_ANSWER / GameConstants.MAXIMUM_SCORE_FOR_TIME));
+					answerDelayScore = Math.max(0, (rulesSettings.getMaximumMilisecondsToAnswer() - answerDelay) / 
+							(rulesSettings.getMaximumMilisecondsToAnswer() / rulesSettings.getMaximumScoreForTime()));
 				}
 				
 				
