@@ -2,7 +2,6 @@ package com.whereisthat.data;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import android.content.res.Resources;

@@ -1,20 +1,10 @@
 package com.whereisthat.screen.activity;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.whereisthat.R;
-import com.whereisthat.helper.ConnHelper;
-import com.whereisthat.helper.FontHelper;
 import com.whereisthat.helper.SoundType;
 import com.whereisthat.screen.core.SoundManager;
 

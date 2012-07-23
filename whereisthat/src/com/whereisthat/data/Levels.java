@@ -1,7 +1,6 @@
 package com.whereisthat.data;
 
 import java.io.InputStream;
-import java.util.Iterator;
 import java.util.List;
 
 import android.content.res.Resources;

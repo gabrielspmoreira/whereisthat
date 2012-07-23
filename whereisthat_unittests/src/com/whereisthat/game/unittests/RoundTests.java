@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.whereisthat.data.Level;
-import com.whereisthat.data.LocationType;
-import com.whereisthat.game.rules.GameLevel;
 import com.whereisthat.game.rules.IRulesSettings;
 import com.whereisthat.game.rules.Round;
 

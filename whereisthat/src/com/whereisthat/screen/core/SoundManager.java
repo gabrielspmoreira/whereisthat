@@ -1,7 +1,5 @@
 package com.whereisthat.screen.core;
 
-import java.io.IOException;
-
 import android.content.Context;
 import android.media.MediaPlayer;
 

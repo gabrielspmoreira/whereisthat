@@ -9,12 +9,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.whereisthat.R;
-import com.whereisthat.dialog.IScoreDialogListener;
 import com.whereisthat.helper.ConnHelper;
 import com.whereisthat.helper.FontHelper;
 import com.whereisthat.helper.SoundType;
@@ -97,7 +95,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 		return true;
 	}
 	
-	private void setButtonImage(int button, int action, int imageIn, int imageOut)
+	/*private void setButtonImage(int button, int action, int imageIn, int imageOut)
 	{
 		ImageView iButton = (ImageView) findViewById(button);
 		switch (action) {
@@ -109,7 +107,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 			iButton.setImageResource(imageOut);
 			break;
 		}	
-	}
+	}*/
 		
 	public boolean onTouch(View v, MotionEvent event) {
 	

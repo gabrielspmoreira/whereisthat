@@ -2,7 +2,6 @@
 package com.whereisthat.screen.core;
 
 import android.content.Context;
-import android.provider.SyncStateContract.Constants;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -13,7 +12,6 @@ import com.whereisthat.data.HistoricEvent;
 import com.whereisthat.data.Location;
 import com.whereisthat.data.LocationType;
 import com.whereisthat.game.rules.IRulesSettings;
-import com.whereisthat.helper.GameConstants;
 import com.whereisthat.helper.SoundType;
 
 public class PanelManager {
@@ -21,7 +19,6 @@ public class PanelManager {
 	private Context context;
 	private TextView gameScoreView;
 	private TextView levelView;
-	private TextView minimumScoreToAvanceView;
 	private TextView locationView;
 	private TextView locationDescription;
 	private RelativeLayout containerTipClose;
@@ -41,7 +38,6 @@ public class PanelManager {
 		this.context = context;
 		this.gameScoreView = gameScoreView;
 		this.levelView = levelView;
-		this.minimumScoreToAvanceView = minimumScoreToAvanceView;
 		this.locationView = locationView;
 		this.progressBar = progressBar;
 		this.progressBar.setMax(rulesSettings.getMaximumMilisecondsToAnswer());
