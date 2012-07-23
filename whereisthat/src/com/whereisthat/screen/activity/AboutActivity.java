@@ -6,6 +6,7 @@ import android.view.Window;
 
 import com.whereisthat.R;
 import com.whereisthat.helper.SoundType;
+import com.whereisthat.screen.core.SoundManager;
 
 public class AboutActivity extends Activity {
 
