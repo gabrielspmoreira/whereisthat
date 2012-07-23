@@ -2,7 +2,6 @@
 package com.whereisthat.screen.core;
 
 import android.content.Context;
-import android.provider.SyncStateContract.Constants;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;

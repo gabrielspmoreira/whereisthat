@@ -150,7 +150,7 @@
 		<Population>2656028</Population>
 		<Lat>41.84</Lat>
 		<Long>-87.68</Long>
-		<Country>United States of America</Country>
+		<Country>USA</Country>
 	</City>
 	<City>
 		<Id>50</Id>
@@ -198,7 +198,7 @@
 		<Population>2118379</Population>
 		<Lat>29.77</Lat>
 		<Long>-95.39</Long>
-		<Country>United States of America</Country>
+		<Country>USA</Country>
 	</City>
 	<City>
 		<Id>81</Id>
@@ -246,7 +246,7 @@
 		<Population>3800904</Population>
 		<Lat>34.11</Lat>
 		<Long>-118.41</Long>
-		<Country>United States of America</Country>
+		<Country>USA</Country>
 	</City>
 	<City>
 		<Id>114</Id>
@@ -278,7 +278,7 @@
 		<Population>8193718</Population>
 		<Lat>40.67</Lat>
 		<Long>-73.94</Long>
-		<Country>United States of America</Country>
+		<Country>USA</Country>
 	</City>
 	<City>
 		<Id>138</Id>

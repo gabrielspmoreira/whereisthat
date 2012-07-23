@@ -6,14 +6,9 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.List;
-
 import org.junit.Test;
 
-import android.database.DataSetObservable;
-
 import com.whereisthat.data.City;
-import com.whereisthat.data.Location;
 import com.whereisthat.data.LocationType;
 import com.whereisthat.data.LocationsDataset;
 import com.whereisthat.data.LocationsParser;

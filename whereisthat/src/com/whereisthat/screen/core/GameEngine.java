@@ -100,13 +100,14 @@ public class GameEngine {
 	private void initMap(){
 		ArcGISTiledMapServiceLayer baseMap = new ArcGISTiledMapServiceLayer(GameConstants.ARCGIS_MAP_SERVICE_URL);		
 		map.addLayer(baseMap);	
+		map.setExtent(new Envelope(-9507508, -17071868, 9507508, 17071868));
 		
 		circleLayer = new GraphicsLayer(map.getSpatialReference(),
-				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));		
+				new Envelope(-20037508, -19971868, 20037508, 19971868));		
 		map.addLayer(circleLayer);		
 		
 		locationsLayer = new GraphicsLayer(map.getSpatialReference(),
-				new Envelope(-19332033.11, -3516.27, -1720941.80, 11737211.28));		
+				new Envelope(-20037508, -19971868, 20037508, 19971868));		
 		map.addLayer(locationsLayer);
 		
 		map.setOnStatusChangedListener(new OnStatusChangedListener() {
@@ -226,8 +227,9 @@ public class GameEngine {
 	private void showFlagPointInMap(Point point, int pictureId){
 		Drawable drawable = resources.getDrawable(pictureId);
 		PictureMarkerSymbol markerSymbol = new PictureMarkerSymbol(drawable);
-		markerSymbol.setOffsetX(17);
-		markerSymbol.setOffsetY(20);		
+		// Adjusting offset according to flag image size for device resolution
+		markerSymbol.setOffsetX(5*(markerSymbol.getWidth()/16));
+		markerSymbol.setOffsetY(6*(markerSymbol.getHeight()/16));
 		Graphic graphic = new Graphic(point, markerSymbol);		
 		locationsLayer.addGraphic(graphic);
 	}
