@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.List;
 
 import android.content.res.Resources;
-
 import com.whereisthat.R;
 
 public class Levels {

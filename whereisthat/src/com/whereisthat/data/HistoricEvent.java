@@ -21,6 +21,6 @@ public class HistoricEvent extends Location {
 	}
 	
 	public String toString(){
-		return this.year + " - " + this.name;		
+		return this.year + " - " + this.getName();		
 	}
 }

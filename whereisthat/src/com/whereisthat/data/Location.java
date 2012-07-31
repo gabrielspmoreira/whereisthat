@@ -4,11 +4,11 @@ import com.esri.core.geometry.Point;
 
 public class Location {
 
-	protected int id;
-	protected String name;
-	protected double latitude;
-	protected double longitude;
-	protected Point mapPoint;
+	private int id;
+	private String name;
+	private double latitude;
+	private double longitude;
+	private Point mapPoint;
 	private LocationType type;
 	
 	public Location() {
