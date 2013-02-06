@@ -16,6 +16,6 @@ public class Landmark extends Location {
 		this.country = country;
 	}
 	public String toString(){
-		return this.name + " - " + this.country;		
+		return this.getName() + " - " + this.country;		
 	}
 }

@@ -17,6 +17,6 @@ public class City extends Location {
 		return country;
 	}	
 	public String toString(){
-		return this.name + " - " + this.country;		
+		return this.getName() + " - " + this.country;		
 	}
 }
