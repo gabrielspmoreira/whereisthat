@@ -9,7 +9,7 @@ If you enjoy programming, mobile, games and geography, please join us and have f
 Screenshots
 -----------
 
-![Where Is That? screenshots](/gabrielspmoreira/whereisthat/raw/master/resources/screenshots/screenshots.png) 
+![Where Is That? screenshots](/gabrielspmoreira/whereisthat/master/resources/screenshots/screenshots.png) 
 
 Roadmap
 -----------
